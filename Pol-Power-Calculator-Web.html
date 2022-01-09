@@ -1,0 +1,513 @@
+﻿<!DOCTYPE html>
+<head>
+<html lang="es_ES" >
+<meta charset="UTF-8" >
+<meta name="author" content="Pol Flórez Viciana" >
+<meta name="owner" content="Pol Flórez Viciana" >
+<meta name="keywords" content="Calculadora, Números, Cálculos" >
+<title>Pol Power Calculator Web</title>
+<meta name="description" content="Calculadora Pol Power Calculator Web" >
+<meta name="robots" content="index, dofollow" >
+<script src="./JavaScript/Pol-Calculator.js" ></script>
+	<style>
+		* { margin: 0px; }
+		body { background-color: rgb(24,24,24); }
+		h1 { text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue; }
+		h2 { font-size: 5mm; text-align: left; }
+		#Numeros1 { display: inline-block; min-width: 460px; width: 48%; vertical-align: top; }
+		#Numeros2 { display: inline-block; min-width: 460px; width: 48%; vertical-align: top; }
+		#ParteNum1 { margin: 4px; border-radius: 10px 10px 10px 10px; background-color: white; }
+		#ParteNum2 { margin: 4px; border-radius: 10px 10px 10px 10px; background-color: white; }
+		#ParteNum3 { margin: 4px; border-radius: 10px 10px 10px 10px; background-color: white; }
+		#ParteNumResultado { margin: 4px; border-radius: 10px 10px 10px 10px; background-color: white; }
+		#ParteListado { margin: 4px; border-radius: 10px 10px 10px 10px; background-color: white; }
+		#Controles0 { padding: 0px 10px 10px 10px; border-radius: 0px 0px 10px 10px; vertical-align: top; }
+		#Controles1 { padding: 0px 10px 10px 10px; border-radius: 0px 0px 10px 10px; vertical-align: top; }
+		#Controles2 { padding: 0px 10px 10px 10px; border-radius: 0px 0px 10px 10px; vertical-align: top; }
+		#Controles3 { padding: 0px 10px 10px 10px; border-radius: 0px 0px 10px 10px; vertical-align: top; }
+		#Controles4 { padding: 0px 10px 10px 10px; border-radius: 0px 0px 10px 10px; vertical-align: top; }
+		#Controles5 { padding: 0px 10px 10px 10px; border-radius: 0px 0px 10px 10px; vertical-align: top; }
+		#Controles6 { padding: 0px 10px 10px 10px; border-radius: 0px 0px 10px 10px; vertical-align: top; }
+		#Numero1 { font-size: 5mm; }
+		#Numero2 { font-size: 5mm; }
+		#Numero3 { font-size: 5mm; }
+		#TextoNum1 { padding: 2px; font-size: 5mm; background-color: yellow; border-radius: 10px 10px 0px 0px; }
+		#TextoNum2 { padding: 2px; font-size: 5mm; background-color: yellow; border-radius: 10px 10px 0px 0px; }
+		#TextoNum3 { padding: 2px; font-size: 5mm; background-color: yellow; border-radius: 10px 10px 0px 0px; }
+		#TextoNumResultado { padding: 2px; font-size: 5mm; background-color: yellow; border-radius: 10px 10px 0px 0px; }
+		#PropiedadesNumero1 { border-radius: 0px 0px 10px 10px; background-color: yellow; }
+		#PropiedadesNumero2 { border-radius: 0px 0px 10px 10px; background-color: yellow; }
+		#PropiedadesNumero3 { border-radius: 0px 0px 10px 10px; background-color: yellow; }
+		#PropiedadesResultado { border-radius: 0px 0px 10px 10px; background-color: yellow; }
+		#Resultado { font-size: 5mm; }
+        #BtnSumar { width: 40px; height: 40px; border-radius: 20px; }
+		#BtnRestar { width: 40px; height: 40px; border-radius: 20px; }
+		#BtnMultiplicarSimetrico { width: 40px; height: 40px; border-radius: 20px; }
+		#BtnDividir { width: 40px; height: 40px; border-radius: 20px; }	
+		#BtnResiduo { width: 40px; height: 40px; border-radius: 20px; }
+		#BtnPow { width: 40px; height: 40px; border-radius: 20px; }
+		#BtnLog { width: 40px; height: 40px; border-radius: 20px; }
+		#BtnPorUnidaje { width: 40px; height: 40px; border-radius: 20px; }
+		#BtnPorcentaje { width: 70px; height: 40px; border-radius: 20px; }
+		#BtnPormilaje { width: 80px; height: 40px; border-radius: 20px; }
+		#BtnRaiz { width: 40px; height: 40px; border-radius: 20px; }
+		#BtnMultiplicarAsimetrico { width: 40px; height: 40px; border-radius: 20px; }
+	</style>
+</head>
+<body >
+	<center>
+		<h1 style="color: blue;">Pol Power Calculator Web Version 2.20</h1>
+		<div style="width: 98%;" >
+			<section id="Numeros1">
+				<div id="ParteNum1">
+					<h2>
+						<label id="TextoNum1" style="text-align: left;">Number 1</label>
+						<input id="BtnHidden1" onclick="EliminarPuntos1()" type="button" style="font-size: 3.5mm;" value="Hide Points Miles" title="Hide Points Miles" />
+						<input id="BtnPI1" onclick="MostrarPI1()" type="button" style="font-size: 3.5mm;" value="PI Num" title="PI Number" />
+						<input id="BtnEuler1" onclick="MostrarEuler1()" type="button" style="font-size: 3.5mm;" value="e Num" title="Euler Number" />
+					</h2>
+					<textarea id="Numero1" style="width: 98%; max-width: 98%; min-width: 98%; text-align: right;" ></textarea><br>
+					<p id="PropiedadesNumero1" style="border: solid 1px green;" >Not Number: 0</p>
+				</div>
+				<div id="Controles0" style="display: inline-block; background-color: orange;">
+					<label>With Num1</label><br>
+					<input id="BtnBinToDec" onclick="ConvierteBinarioADecimal()" type="button" style="margin: 2px; font-size: 3.5mm;" value="BinToDec" title="Convert Binary To Decimal" />
+					<input id="BtnOctToDec" onclick="ConvierteOctalADecimal()" type="button" style="margin: 2px; font-size: 3.5mm;" value="OctToDec" title="Convert Octal To Decimal" />
+					<input id="BtnHexToDec" onclick="ConvierteHexadecimalADecimal()" type="button" style="margin: 2px; font-size: 3.5mm;" value="HexToDec" title="Convert Hexadecimal To Decimal" />
+				</div>
+				<div id="Controles1" style="display: inline-block; background-color: limegreen;">
+					<label>With Num1 And Reiterations</label><br>
+					<input id="BtnDecToBin" onclick="ConvierteDecimalABinario()" type="button" style="margin: 2px; font-size: 3.5mm;" value="DecToBin" title="Convert Decimal To Binary" />
+					<input id="BtnDecToOct" onclick="ConvierteDecimalAOctal()" type="button" style="margin: 2px; font-size: 3.5mm;" value="DecToOct" title="Convert Decimal To Octal" />
+					<input id="BtnDecToHex" onclick="ConvierteDecimalAHexadecimal()" type="button" style="margin: 2px; font-size: 3.5mm;" value="DecToHex" title="Convert Decimal To Hexadecimal" />
+				</div>
+				<div id="ParteNum2">
+					<h2>
+						<label id="TextoNum2" style="text-align: left;">Number 2</label>
+						<input id="BtnHidden2" onclick="EliminarPuntos2()" type="button" style="font-size: 3.5mm;" value="Hide Points Miles" title="Hide Points Miles" />
+						<input id="BtnPI2" onclick="MostrarPI2()" type="button" style="font-size: 3.5mm;" value="PI Num" title="PI Number" />
+						<input id="BtnEuler2" onclick="MostrarEuler2()" type="button" style="font-size: 3.5mm;" value="e Num" title="Euler Number" />
+					</h2>
+					<textarea id="Numero2" style="width: 98%; max-width: 98%; min-width: 98%; text-align: right;" ></textarea><br>
+					<p id="PropiedadesNumero2" style="border: solid 1px green;" >Not Number: 0</p>
+				</div>
+			
+				<div id="Controles2" style="display: inline-block; background-color: orange;">
+					<label>With Num1 And Num2</label><br>
+					<input id="BtnSumar" onclick="Sumar()" type="button" style="font-size: 3.5mm;" value="+" title="Add" />
+					<input id="BtnRestar" onclick="Restar()" type="button" style="font-size: 3.5mm;" value="-" title="Subtract" />
+					<input id="BtnMultiplicarSimetrico" onclick="Multiplicar()" type="button" style="font-size: 3.5mm;" value="x" title="Multipy Simetric" />
+				</div>
+				<div id="Controles3" style="display: inline-block; background-color: limegreen;">
+					<label>With Num1 And Num2 And Reiterations</label><br>
+					<input id="BtnDividir" onclick="Dividir()" type="button" style="font-size: 3.5mm;" value="/" title="Divide" />
+					<input id="NumeroReiteraciones" type="text" maxlength="4" style="width: 55px; font-size: 3,5mm; text-align: right;" value="32" title="Re-iterations for Divide" />
+					<input id="BtnResiduo" onclick="ResiduoDivision()" type="button" style="font-size: 3mm;" value="MOD" title="Division Residue" />
+					<input id="BtnPow" onclick="Elevacion()" type="button" style="font-size: 3mm;" value="Pow" title="Empowerment" />
+					<input id="BtnLog" onclick="Logaritmo()" type="button" style="font-size: 3mm;" value="LOG" title="Logaritm" />
+					<br>
+					<input id="BtnPorcentaje" onclick="TraePorcentaje()" type="button" style="font-size: 3.5mm;" value="100%" title="Percentage of 100%" />
+					<input id="BtnPormilaje" onclick="TraePormilaje()" type="button" style="font-size: 3.5mm;" value="1.000%" title="Percentage of 1.000%" />
+					<br>					
+				</div>
+			</section>
+			<section id="Numeros2">
+				<div id="ParteNum3">
+					<h2>
+						<label id="TextoNum3" style="text-align: left;">Number 3</label>
+						<input id="BtnHidden3" onclick="EliminarPuntos3()" type="button" style="font-size: 3.5mm;" value="Hide Points Miles" title="Hide Points Miles" />
+						<input id="BtnPI3" onclick="MostrarPI3()" type="button" style="font-size: 3.5mm;" value="PI Num" title="PI Number" />
+						<input id="BtnEuler3" onclick="MostrarEuler3()" type="button" style="font-size: 3.5mm;" value="e Num" title="Euler Number" />
+					</h2>
+					<textarea id="Numero3" style="width: 98%; max-width: 98%; min-width: 98%; text-align: right;" ></textarea><br>
+					<p id="PropiedadesNumero3" style="border: solid 1px green;" >Not Number: 0</p>
+				</div>
+				<div id="Controles4" style="display: inline-block; background-color: orange;">
+					<label>With Num1 And Num2 And Num3</label><br>
+					<input id="BtnMultiplicarAsimetrico" onclick="MultiplicarAsimetrico()" type="button" style="font-size: 3.5mm;" value="x" title="Multipy Asimetric" />
+				</div>
+				<div id="Controles5" style="display: inline-block; background-color: limegreen;">
+					<label>With Num1 And Num2 And Num3 And Reiterations</label><br>
+					<input id="BtnPorUnidaje" onclick="TraePorunidaje()" type="button" style="font-size: 3.5mm;" value="1%" title="Perunitage of X%" />
+				</div>
+				<div id="ParteNumResultado">
+					<h2>
+						<label id="TextoNumResultado" style="text-align: left;">Result</label>
+						<input id="BtnCrearPuntosResult" onclick="CrearPuntosResult()" type="button" style="font-size: 3.5mm;" value="Create Point Miles" title="Create Point Miles" />
+					</h2>
+					<textarea id="Resultado" style="width: 98%; max-width: 98%; min-width: 98%; text-align: right;" readonly ></textarea><br>
+					<p id="PropiedadesResultado" style="border: solid 1px green;" >Not Number: 0</p>
+				</div>
+				<div id="Controles6" style="display: inline-block; background-color: blue;">
+					<label style="color: white;">Options For Result</label><br>
+					<input id="BtnSendTo1" onclick="SendToNumber1()" type="button" style="font-size: 3.5mm;" value="SendToNum1" title="Send To Number 1" />
+					<input id="BtnSendTo2" onclick="SendToNumber2()" type="button" style="font-size: 3.5mm;" value="SendToNum2" title="Send To Number 2" />
+					<input id="BtnSendTo3" onclick="SendToNumber3()" type="button" style="font-size: 3.5mm;" value="SendToNum3" title="Send To Number 3" />
+				</div>
+				<div id="ParteListado">
+					<h2>
+						<label id="TextoNumResultado" style="text-align: left;">History Results</label>
+						<input id="BtnClearResults" onclick="LimpiarResultados()" type="button" style="font-size: 3.5mm; " value="Clear Results" title="Clear List Results" />
+					</h2>
+					<textarea id="ListadoResultados" style="width: 98%; max-width: 98%; min-width: 98%; text-align: right; height: 120px;" readonly ></textarea><br>
+				</div>
+			</section>
+		</div>
+		<p style="font-size: 5mm; text-align: right;"><a href="mailto:polflorez@hotmail.com"  >polflorez@hotmail.com</a></p>
+	</center>
+	<script type="text/javascript">
+		var Tiempo = window.setInterval("ActualizarPropiedades()",1000);
+		
+		function ActualizarResultado(){
+			// Casilla Resultado
+			var Numero1 = document.getElementById("Resultado").value;
+			var Resultado1 = StringNullString;
+			var EsNum1 = IsNumber(Numero1);
+			var EsNumNegativo1 = IsNegativeAndNumber(Numero1);
+			if ( EsNumNegativo1 == true  ){
+				EsNum1 = true;
+			}
+			var EsBinario1 = IsBinaryNumber(Numero1);
+			var EsOctal1 = IsOctalNumber(Numero1);
+			var EsHexadecimal1 = IsHexadecimalNumber(Numero1);
+			if (EsNum1 == true && EsNumNegativo1 == false || EsHexadecimal1 == true){
+				var EsReal1 = IsRealNumber(Numero1); 
+				if (EsReal1 == true) {
+					var ParteEntera1 = GetIntegerPart(Numero1);
+					var ParteDecimal1 = GetDecimalPart(Numero1);
+					Resultado1 = "IsHexadecimal: " + EsHexadecimal1 + " IsOctal: " + EsOctal1 + " IsBinary: " + EsBinario1 + " IsNegative: " + EsNumNegativo1 + " Integer: " + ParteEntera1.length + " Decimals: " + ParteDecimal1.length;	
+				}else{
+					Resultado1 = "IsHexadecimal: " + EsHexadecimal1 + " IsOctal: " + EsOctal1 + " IsBinary: " + EsBinario1 + " IsNegative: " + EsNumNegativo1 + " Integer: " + Numero1.length ;	
+				}
+			}else{
+				if (EsNumNegativo1 == true ){
+					Numero1 = StringsRight(Numero1, Numero1.length - Uno);
+					var EsReal1 = IsRealNumber(Numero1); 
+					if (EsReal1 == true) {
+						var ParteEntera1 = GetIntegerPart(Numero1);
+						var ParteDecimal1 = GetDecimalPart(Numero1);
+						Resultado1 = "IsNegative: " + EsNumNegativo1 + " Integer Part: " + ParteEntera1.length + " Decimals Part: " + ParteDecimal1.length;	
+					}else{
+						Resultado1 = "IsNegative: " + EsNumNegativo1 + " Integer Part: " + Numero1.length ;	
+					}
+				}else{
+					Resultado1 = "Not Number: " + Numero1.length;
+				}
+			}
+			document.getElementById("PropiedadesResultado").innerHTML = Resultado1;
+		}
+		
+		function ActualizarPropiedades(){
+			// Primera Casilla
+			var Numero1 = document.getElementById("Numero1").value;
+			var Resultado1 = StringNullString;
+			var EsNum1 = IsNumber(Numero1);
+			var EsNumNegativo1 = IsNegativeAndNumber(Numero1);
+			if ( EsNumNegativo1 == true  ){
+				EsNum1 = true;
+			}
+			var EsBinario1 = IsBinaryNumber(Numero1);
+			var EsOctal1 = IsOctalNumber(Numero1);
+			var EsHexadecimal1 = IsHexadecimalNumber(Numero1);
+			if (EsNum1 == true && EsNumNegativo1 == false || EsHexadecimal1 == true){
+				var EsReal1 = IsRealNumber(Numero1); 
+				if (EsReal1 == true) {
+					var ParteEntera1 = GetIntegerPart(Numero1);
+					var ParteDecimal1 = GetDecimalPart(Numero1);
+					Resultado1 = "IsHexadecimal: " + EsHexadecimal1 + " IsOctal: " + EsOctal1 + " IsBinary: " + EsBinario1 + " IsNegative: " + EsNumNegativo1 + " Integer: " + ParteEntera1.length + " Decimals: " + ParteDecimal1.length;	
+				}else{
+					Resultado1 = "IsHexadecimal: " + EsHexadecimal1 + " IsOctal: " + EsOctal1 + " IsBinary: " + EsBinario1 + " IsNegative: " + EsNumNegativo1 + " Integer: " + Numero1.length ;	
+				}
+			}else{
+				if (EsNumNegativo1 == true ){
+					Numero1 = StringsRight(Numero1, Numero1.length - Uno);
+					var EsReal1 = IsRealNumber(Numero1); 
+					if (EsReal1 == true) {
+						var ParteEntera1 = GetIntegerPart(Numero1);
+						var ParteDecimal1 = GetDecimalPart(Numero1);
+						Resultado1 = "IsNegative: " + EsNumNegativo1 + " Integer: " + ParteEntera1.length + " Decimals: " + ParteDecimal1.length;	
+					}else{
+						Resultado1 = "IsNegative: " + EsNumNegativo1 + " Integer: " + Numero1.length;	
+					}
+				}else{
+					Resultado1 = "Not Number: " + Numero1.length;
+				}
+			}
+			document.getElementById("PropiedadesNumero1").innerHTML = Resultado1;
+			
+			// Segunda Casilla
+			var Numero2 = document.getElementById("Numero2").value;
+			var Resultado2 = StringNullString;
+			var EsNum2 = IsNumber(Numero2);
+			var EsNumNegativo2 = IsNegativeAndNumber(Numero2);
+			if ( EsNumNegativo2 == true  ){
+				EsNum2 = true;
+			}
+			if (EsNum2 == true && EsNumNegativo2 == false){
+				var EsReal2 = IsRealNumber(Numero2); 
+				if (EsReal2 == true) {
+					var ParteEntera2 = GetIntegerPart(Numero2);
+					var ParteDecimal2 = GetDecimalPart(Numero2);
+					Resultado2 = "IsNegative: " + EsNumNegativo2 + " Integer: " + ParteEntera2.length + " Decimals: " + ParteDecimal2.length;	
+				}else{
+					Resultado2 = "IsNegative: " + EsNumNegativo2 + " Integer: " + Numero2.length ;	
+				}
+			}else{
+				if (EsNumNegativo2 == true ){
+					Numero2 = StringsRight(Numero2, Numero2.length - Uno);
+					var EsReal2 = IsRealNumber(Numero2); 
+					if (EsReal2 == true) {
+						var ParteEntera2 = GetIntegerPart(Numero2);
+						var ParteDecimal2 = GetDecimalPart(Numero2);
+						Resultado2 = "IsNegative: " + EsNumNegativo2 + " Integer: " + ParteEntera2.length + " Decimals: " + ParteDecimal2.length;	
+					}else{
+						Resultado2 = "IsNegative: " + EsNumNegativo2 + " Integer: " + Numero2.length ;	
+					}
+				}else{
+					Resultado2 = "Not Number: " + Numero2.length;
+				}
+			}
+			document.getElementById("PropiedadesNumero2").innerHTML = Resultado2;
+			
+			// Tercera Casilla
+			var Numero3 = document.getElementById("Numero3").value;
+			var Resultado3 = StringNullString;
+			var EsNum3 = IsNumber(Numero3);
+			var EsNumNegativo3 = IsNegativeAndNumber(Numero3);
+			if ( EsNumNegativo3 == true  ){
+				EsNum3 = true;
+			}
+			
+			if (EsNum3 == true && EsNumNegativo3 == false){
+				var EsReal3 = IsRealNumber(Numero3); 
+				if (EsReal3 == true) {
+					var ParteEntera3 = GetIntegerPart(Numero3);
+					var ParteDecimal3 = GetDecimalPart(Numero3);
+					Resultado3 = "IsNegative: " + EsNumNegativo3 + " Integer: " + ParteEntera3.length + " Decimals: " + ParteDecimal3.length;	
+				}else{
+					Resultado3 = "IsNegative: " + EsNumNegativo3 + " Integer: " + Numero3.length ;	
+				}
+			}else{
+				if (EsNumNegativo3 == true ){
+					Numero3 = StringsRight(Numero3, Numero3.length - Uno);
+					var EsReal3 = IsRealNumber(Numero3); 
+					if (EsReal3 == true) {
+						var ParteEntera3 = GetIntegerPart(Numero3);
+						var ParteDecimal3 = GetDecimalPart(Numero3);
+						Resultado3 = "IsNegative: " + EsNumNegativo3 + " Integer: " + ParteEntera3.length + " Decimals: " + ParteDecimal3.length;	
+					}else{
+						Resultado3 = "IsNegative: " + EsNumNegativo3 + " Integer: " + Numero3.length ;	
+					}
+				}else{
+					Resultado3 = "Not Number: " + Numero3.length;
+				}
+			}
+			document.getElementById("PropiedadesNumero3").innerHTML = Resultado3;
+		}
+		
+		function SendToNumber1(){
+			document.getElementById("Numero1").value = document.getElementById("Resultado").value;
+		}
+		function SendToNumber2(){
+			document.getElementById("Numero2").value = document.getElementById("Resultado").value;
+		}
+		function SendToNumber3(){
+			document.getElementById("Numero3").value = document.getElementById("Resultado").value;
+		}
+		function Sumar(){
+			var Numero1 = document.getElementById("Numero1").value;
+			var Numero2 = document.getElementById("Numero2").value;
+			var Resultado = SumaSignos(Numero1,Numero2);
+			document.getElementById("Resultado").value = Resultado;
+			ActualizarResultado();
+			AddListadoResultados(Resultado + " = " + Numero1 + " + " + Numero2 );
+		}
+		function Restar(){
+			var Numero1 = document.getElementById("Numero1").value;
+			var Numero2 = document.getElementById("Numero2").value;
+			var Resultado = RestaSignos(Numero1,Numero2);
+			document.getElementById("Resultado").value = Resultado;
+			ActualizarResultado();
+			AddListadoResultados(Resultado + " = " + Numero1 + " - " + Numero2 );
+		}
+		function Multiplicar(){
+			var Numero1 = document.getElementById("Numero1").value;
+			var Numero2 = document.getElementById("Numero2").value;
+			var Resultado = MultiplicaSignos(Numero1,Numero2);
+			document.getElementById("Resultado").value = Resultado;
+			ActualizarResultado();
+			AddListadoResultados(Resultado + " = " + Numero1 + " · " + Numero2 );
+		}
+		function MultiplicarAsimetrico(){
+			var Numero1 = document.getElementById("Numero1").value;
+			var Numero2 = document.getElementById("Numero2").value;
+			var Numero3 = document.getElementById("Numero3").value;
+			var Resultado = MultiplicaSignosAsimetricos(Numero1,Numero2,Numero3);
+			var EsNegativa = IsNegativeAndNumber(Numero1);
+			document.getElementById("Resultado").value = Resultado;
+			ActualizarResultado();
+			if (EsNegativa == false ){
+				AddListadoResultados(Resultado + " = ((" + GetIntegerPart(Numero1) + " · " + Numero2 + ") + " + Numero3 + ")" );
+			}else{
+				AddListadoResultados(Resultado + " = (( -" + GetIntegerPart(ConvertPositive(Numero1)) + " · " + Numero2 + ") + " + Numero3 + ")" );
+			}
+		}
+		function Dividir(){
+			var Numero1 = document.getElementById("Numero1").value;
+			var Numero2 = document.getElementById("Numero2").value;
+			var Reiteraciones = document.getElementById("NumeroReiteraciones").value;
+			var Resultado = DivideSignos(Numero1, Numero2, Reiteraciones);
+			document.getElementById("Resultado").value = Resultado;
+			ActualizarResultado();
+			AddListadoResultados(Resultado + " = " + Numero1 + " / " + Numero2 );
+		}
+		function ResiduoDivision(){
+			var Numero1 = document.getElementById("Numero1").value;
+			var Numero2 = document.getElementById("Numero2").value;
+			var Reiteraciones = document.getElementById("NumeroReiteraciones").value;
+			var Resultado = MODSignos(Numero1,Numero2,Reiteraciones);
+			document.getElementById("Resultado").value = Resultado;
+			ActualizarResultado();
+			AddListadoResultados(Resultado + " = " + Numero1 + " MOD " + Numero2 );
+		}
+		function TraePorcentaje(){
+			var Numero1 = document.getElementById("Numero1").value;
+			var Numero2 = document.getElementById("Numero2").value;
+			var Reiteraciones = document.getElementById("NumeroReiteraciones").value;
+			var Resultado = Porcentaje(Numero1,Numero2,Reiteraciones);
+			document.getElementById("Resultado").value = Resultado;
+			ActualizarResultado();
+			AddListadoResultados(Resultado + " = ((" + Numero1 + " · 100) / " + Numero2 + ")" );
+		}
+		function TraePormilaje(){
+			var Numero1 = document.getElementById("Numero1").value;
+			var Numero2 = document.getElementById("Numero2").value;
+			var Reiteraciones = document.getElementById("NumeroReiteraciones").value;
+			var Resultado = Pormilaje(Numero1,Numero2,Reiteraciones);
+			document.getElementById("Resultado").value = Resultado;
+			ActualizarResultado();
+			AddListadoResultados(Resultado + " = ((" + Numero1 + " · 1000) / " + Numero2 + ")" );
+		}
+		function ConvierteDecimalABinario(){
+			var Numero1 = document.getElementById("Numero1").value;
+			var Reiteraciones = document.getElementById("NumeroReiteraciones").value;
+			var Resultado = ConvertIntegerToBinary(Numero1,Reiteraciones);
+			document.getElementById("Resultado").value = Resultado;
+			ActualizarResultado();
+			AddListadoResultados(Resultado + " Binary = " + Numero1 + " In Decimal" );
+		}
+		function ConvierteBinarioADecimal(){
+			var Numero1 = document.getElementById("Numero1").value;
+			var Resultado = ConvertBinaryToInteger(Numero1);
+			document.getElementById("Resultado").value = Resultado;
+			ActualizarResultado();
+			AddListadoResultados(Resultado + " Decimal = " + Numero1 + " In Binary" );
+		}
+		function ConvierteDecimalAOctal(){
+			var Numero1 = document.getElementById("Numero1").value;
+			var Reiteraciones = document.getElementById("NumeroReiteraciones").value;
+			var Resultado = ConvertIntegerToOctal(Numero1,Reiteraciones);
+			document.getElementById("Resultado").value = Resultado;
+			ActualizarResultado();
+			AddListadoResultados(Resultado + " Octal = " + Numero1 + " In Decimal" );
+		}
+		function ConvierteOctalADecimal(){
+			var Numero1 = document.getElementById("Numero1").value;
+			var Resultado = ConvertOctalToInteger(Numero1);
+			document.getElementById("Resultado").value = Resultado;
+			ActualizarResultado();
+			AddListadoResultados(Resultado + " Decimal = " + Numero1 + " In Octal" );
+		}
+		function ConvierteDecimalAHexadecimal(){
+			var Numero1 = document.getElementById("Numero1").value;
+			var Reiteraciones = document.getElementById("NumeroReiteraciones").value;
+			var Resultado = ConvertIntegerToHexadecimal(Numero1,Reiteraciones);
+			document.getElementById("Resultado").value = Resultado;
+			ActualizarResultado();
+			AddListadoResultados(Resultado + " Hexadecimal = " + Numero1 + " In Decimal" );
+		}
+		function ConvierteHexadecimalADecimal(){
+			var Numero1 = document.getElementById("Numero1").value;
+			var Resultado = ConvertHexadecimalToInteger(Numero1);
+			document.getElementById("Resultado").value = Resultado;
+			ActualizarResultado();
+			AddListadoResultados(Resultado + " Decimal = " + Numero1 + " In Hexadecimal" );
+		}
+		function Elevacion(){
+			var Numero1 = document.getElementById("Numero1").value;
+			var Numero2 = document.getElementById("Numero2").value;
+			var Reiteraciones = document.getElementById("NumeroReiteraciones").value;
+			var Resultado = ElevaSignos(Numero1,Numero2,Reiteraciones);
+			document.getElementById("Resultado").value = Resultado;
+			ActualizarResultado();
+			AddListadoResultados(Resultado + " = " + Numero1 + " ^ " + Numero2 );
+		}
+		function Logaritmo(){
+			var Numero1 = document.getElementById("Numero1").value;
+			var Numero2 = document.getElementById("Numero2").value;
+			var Reiteraciones = document.getElementById("NumeroReiteraciones").value;
+			var Resultado = LOGSignos(Numero1,Numero2,Reiteraciones);
+			document.getElementById("Resultado").value = Resultado;
+			ActualizarResultado();
+			AddListadoResultados(Resultado + " = NumLOG " + Numero1 + " NumBase " + Numero2 );
+		}
+		function TraePorunidaje(){
+			var Numero1 = document.getElementById("Numero1").value;
+			var Numero2 = document.getElementById("Numero2").value;
+			var Numero3 = document.getElementById("Numero3").value;
+			var Reiteraciones = document.getElementById("NumeroReiteraciones").value;
+			var Resultado = Perunitage(Numero1,Numero2,Numero3,Reiteraciones);
+			document.getElementById("Resultado").value = Resultado;
+			ActualizarResultado();
+			AddListadoResultados(Resultado + " = ((" + Numero1 + " · " + Numero3 + ") / " + Numero2 + ")" );
+		}
+		function CrearPuntosResult(){
+			var Numero = document.getElementById("Resultado").value;
+			var Resultado = CreatePointsMilesNumber(Numero);
+			document.getElementById("Resultado").value = Resultado;
+		}
+		function MostrarPI1(){
+			document.getElementById("Numero1").value = StringPI;
+		}
+		function MostrarPI2(){
+			document.getElementById("Numero2").value = StringPI;
+		}
+		function MostrarPI3(){
+			document.getElementById("Numero3").value = StringPI;
+		}
+		function MostrarEuler1(){
+			document.getElementById("Numero1").value = StringEuler;
+		}
+		function MostrarEuler2(){
+			document.getElementById("Numero2").value = StringEuler;
+		}
+		function MostrarEuler3(){
+			document.getElementById("Numero3").value = StringEuler;
+		}
+		function EliminarPuntos1(){
+			var Numero = document.getElementById("Numero1").value;
+			document.getElementById("Numero1").value = DeleteOrHidePoints(Numero); 
+		}
+		function EliminarPuntos2(){
+			var Numero = document.getElementById("Numero2").value;
+			document.getElementById("Numero2").value = DeleteOrHidePoints(Numero); 
+		}
+		function EliminarPuntos3(){
+			var Numero = document.getElementById("Numero3").value;
+			document.getElementById("Numero3").value = DeleteOrHidePoints(Numero); 
+		}
+		function EliminarPuntosResult(){
+			var Numero = document.getElementById("Resultado").value;
+			document.getElementById("Resultado").value = DeleteOrHidePoints(Numero); 
+		}
+		function LimpiarResultados(){
+			document.getElementById("ListadoResultados").value = StringNullString;
+		}
+		function AddListadoResultados(Texto){
+			var Textos = document.getElementById("ListadoResultados").value;
+			var Resultado = Texto + "\n" + Textos;
+			document.getElementById("ListadoResultados").value = Resultado;
+		}
+	</script>
+</body>
+</html>
