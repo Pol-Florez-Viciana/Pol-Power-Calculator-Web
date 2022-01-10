@@ -1,8 +1,8 @@
 // Modulo Pol-Calculator.js **********************************************************************************************
 // ***********************************************************************************************************************
 // ***********************************************************************************************************************
-// Día Creación 14/12/2021 - Hasta - 31/12/2021 ** Autor: Pol Flórez Viciana *********************************************
-// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 31/12/2021 ***************************************************************
+// Día Creación 14/12/2021 - Hasta - 10/01/2022 ** Autor: Pol Flórez Viciana *********************************************
+// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 10/01/2022 ***************************************************************
 // ***********************************************************************************************************************
 // Constantes de Uso Reiterado
 const StringNullString = ""; 
@@ -399,6 +399,56 @@ function ConvertIntegerToBinary(Texto,Reiteraciones){
 }
 
 //Principales Funciones Finales de Uso con Signos
+function FactorialSignos(Texto, Reiteraciones){
+	var Resultado = StringCero;
+	var EsNegativo = false;
+	var Reitera = Cero;
+	if (IsNumber(Reiteraciones) == true ){
+		if(IsMayor(StringTreintaiDos,Reiteraciones) == true ){
+			Reitera = TreintaiDos;	
+		}else{
+			Reitera = Reiteraciones;
+		}
+	}
+	var ElNumero = StringNullString;
+	if (IsNegativeAndNumber(Texto) == true ){
+		EsNegativo = true;
+		ElNumero = ConvertPositive(Texto);
+	}else{
+		if (IsNumber(Texto) == true ){
+			ElNumero = Texto;
+		}	
+	}
+	if (IsMayor(ElNumero, StringUno + StringCero + StringCero + StringCero) == false){
+		if (IsRealNumber(ElNumero) == false ){
+			Resultado = FactorialIntegers(ElNumero);
+		}else{
+			var ParteDecimales = GetDecimalPart(ElNumero);
+			var ParteEntera = GetIntegerPart(ElNumero);
+			var ParteEnteraMasUno = SumaReales(ParteEntera,StringUno);
+			var Factorial1 = FactorialIntegers(ParteEntera);
+			var Factorial2 = FactorialIntegers(ParteEnteraMasUno);
+			var Restacion = RestaReales(Factorial2,Factorial1);
+			var Limite = StringsCerosToRight(StringUno, ParteDecimales.length + Uno);
+			var LaParteDividida = DivideSignos(Restacion, Limite, Reitera);
+			if (IsRealNumber(LaParteDividida) == true ){
+				var Tempo = GetIntegerPart(LaParteDividida);
+				Limite = StringsCerosToRight(StringUno, Tempo.length );
+			}else{
+				Limite = StringUno;
+			}
+			var ParteResultado = DivideSignos(ParteDecimales,Limite,Reitera);
+			var PreResultado = MultiplicaReales(LaParteDividida, ParteResultado);
+			Resultado = SumaReales(Factorial1,PreResultado);
+		}
+	}	
+	if ( EsNegativo == false ){
+		return Resultado;	
+	}else{
+		return StringGuion + Resultado;
+	}
+		
+}
 function LOGSignos(Texto1,Texto2,Reiteraciones){
 	var EsNum1 = false;
 	var EsNum2 = false;
@@ -1072,7 +1122,7 @@ function MultiplicaReales(Texto1,Texto2){
 	var EsNum1 = IsNumber(Texto1);
 	var EsNum2 = IsNumber(Texto2);
 	var Resultado = StringCero;
-	if (EsNum1 == true && EsNum2 == true){
+	//if (EsNum1 == true && EsNum2 == true){
 		if (IsEquals(Texto1, StringCero ) == false && IsEquals(Texto2, StringCero ) == false ){
 			var Centralizacion = CentralizeNumbers(Texto1,Texto2);
 			if (parseInt(Centralizacion[Tres]) == Cero) {
@@ -1084,14 +1134,14 @@ function MultiplicaReales(Texto1,Texto2){
 		}else{
 			Resultado = StringCero;
 		}
-	}
+	//}
 	return FormatCeros(Resultado);
 }
 function RestaReales(Texto1,Texto2){
 	var EsNum1 = IsNumber(Texto1);
 	var EsNum2 = IsNumber(Texto2);
 	var Resultado = StringCero;
-	if (EsNum1 == true && EsNum2 == true){
+	//if (EsNum1 == true && EsNum2 == true){
 		var Centralizacion = CentralizeNumbers(Texto1,Texto2);
 		if (parseInt(Centralizacion[Tres]) == Cero) {
 			Resultado = RestaIntegers(Centralizacion[Cero],Centralizacion[Uno]);
@@ -1099,14 +1149,14 @@ function RestaReales(Texto1,Texto2){
 			var PreResultado = StringNullString + RestaIntegers(Centralizacion[Cero],Centralizacion[Uno]);
 			Resultado = StringsLeft(PreResultado, PreResultado.length - parseInt(Centralizacion[Tres])) + StringComa + StringsRight(PreResultado, parseInt(Centralizacion[Tres]));
 		}
-	}	
+	//}	
 	return FormatCeros(Resultado);
 }
 function SumaReales(Texto1,Texto2){
 	var EsNum1 = IsNumber(Texto1);
 	var EsNum2 = IsNumber(Texto2);
 	var Resultado = StringCero;
-	if (EsNum1 == true && EsNum2 == true){
+	//if (EsNum1 == true && EsNum2 == true){
 		var Centralizacion = CentralizeNumbers(Texto1,Texto2);
 		if (parseInt(Centralizacion[Tres]) == Cero) {
 			Resultado = SumaIntegers(Centralizacion[Cero],Centralizacion[Uno]);
@@ -1114,11 +1164,25 @@ function SumaReales(Texto1,Texto2){
 			var PreResultado = StringNullString + SumaIntegers(Centralizacion[Cero],Centralizacion[Uno]);
 			Resultado = StringsLeft(PreResultado, PreResultado.length - parseInt(Centralizacion[Tres])) + StringComa + StringsRight(PreResultado, parseInt(Centralizacion[Tres]));
 		}
-	}	
+	//}	
 	return FormatCeros(Resultado);
 }
 
 // Funciones Principales de Calculos con Enteros
+function FactorialIntegers(Texto){
+	var Resultado = StringCero;
+	var ElNumero = parseInt(Texto);
+	var Temporal = StringUno;
+	if ( IsMayor(Texto, StringCero + StringComa + StringNueve) == true && IsRealNumber(Texto) == false ){
+		var i;
+		Resultado = StringUno;
+		for ( i = Dos; i <= ElNumero; i++ ){
+			Resultado = MultiplicaReales(Temporal, StringNullString + i);
+			Temporal = Resultado;
+		}
+	}
+	return Resultado;
+}
 function ElevaIntegers(Texto1,Texto2){
 	var EsNum1 = IsNumber(Texto1);
 	var EsNum2 = IsNumber(Texto2);

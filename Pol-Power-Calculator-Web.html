@@ -40,6 +40,7 @@
 		#PropiedadesNumero3 { border-radius: 0px 0px 10px 10px; background-color: yellow; }
 		#PropiedadesResultado { border-radius: 0px 0px 10px 10px; background-color: yellow; }
 		#Resultado { font-size: 5mm; }
+		#BtnFactorial { width: 40px; height: 40px; border-radius: 20px; }
         #BtnSumar { width: 40px; height: 40px; border-radius: 20px; }
 		#BtnRestar { width: 40px; height: 40px; border-radius: 20px; }
 		#BtnMultiplicarSimetrico { width: 40px; height: 40px; border-radius: 20px; }
@@ -48,15 +49,13 @@
 		#BtnPow { width: 40px; height: 40px; border-radius: 20px; }
 		#BtnLog { width: 40px; height: 40px; border-radius: 20px; }
 		#BtnPorUnidaje { width: 40px; height: 40px; border-radius: 20px; }
-		#BtnPorcentaje { width: 70px; height: 40px; border-radius: 20px; }
-		#BtnPormilaje { width: 80px; height: 40px; border-radius: 20px; }
 		#BtnRaiz { width: 40px; height: 40px; border-radius: 20px; }
 		#BtnMultiplicarAsimetrico { width: 40px; height: 40px; border-radius: 20px; }
 	</style>
 </head>
 <body >
 	<center>
-		<h1 style="color: blue;">Pol Power Calculator Web Version 2.20</h1>
+		<h1 style="color: blue;">Pol Power Calculator Web Version 3.3</h1>
 		<div style="width: 98%;" >
 			<section id="Numeros1">
 				<div id="ParteNum1">
@@ -80,6 +79,8 @@
 					<input id="BtnDecToBin" onclick="ConvierteDecimalABinario()" type="button" style="margin: 2px; font-size: 3.5mm;" value="DecToBin" title="Convert Decimal To Binary" />
 					<input id="BtnDecToOct" onclick="ConvierteDecimalAOctal()" type="button" style="margin: 2px; font-size: 3.5mm;" value="DecToOct" title="Convert Decimal To Octal" />
 					<input id="BtnDecToHex" onclick="ConvierteDecimalAHexadecimal()" type="button" style="margin: 2px; font-size: 3.5mm;" value="DecToHex" title="Convert Decimal To Hexadecimal" />
+					<br><br>
+					<input id="BtnFactorial" onclick="Factorial()" type="button" style="margin: 2px; font-size: 3.5mm;" value="N!" title="Factorial" />
 				</div>
 				<div id="ParteNum2">
 					<h2>
@@ -105,7 +106,7 @@
 					<input id="BtnResiduo" onclick="ResiduoDivision()" type="button" style="font-size: 3mm;" value="MOD" title="Division Residue" />
 					<input id="BtnPow" onclick="Elevacion()" type="button" style="font-size: 3mm;" value="Pow" title="Empowerment" />
 					<input id="BtnLog" onclick="Logaritmo()" type="button" style="font-size: 3mm;" value="LOG" title="Logaritm" />
-					<br>
+					<br><br>
 					<input id="BtnPorcentaje" onclick="TraePorcentaje()" type="button" style="font-size: 3.5mm;" value="100%" title="Percentage of 100%" />
 					<input id="BtnPormilaje" onclick="TraePormilaje()" type="button" style="font-size: 3.5mm;" value="1.000%" title="Percentage of 1.000%" />
 					<br>					
@@ -460,6 +461,14 @@
 			document.getElementById("Resultado").value = Resultado;
 			ActualizarResultado();
 			AddListadoResultados(Resultado + " = ((" + Numero1 + " · " + Numero3 + ") / " + Numero2 + ")" );
+		}
+		function Factorial(){
+			var Numero1 = document.getElementById("Numero1").value;
+			var Reiteraciones = document.getElementById("NumeroReiteraciones").value;
+			var Resultado = FactorialSignos(Numero1, Reiteraciones);
+			document.getElementById("Resultado").value = Resultado;
+			ActualizarResultado();
+			AddListadoResultados(Resultado + " = " + Numero1 + "!" );
 		}
 		function CrearPuntosResult(){
 			var Numero = document.getElementById("Resultado").value;
