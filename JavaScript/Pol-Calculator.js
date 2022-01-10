@@ -1026,8 +1026,8 @@ function DivideNotacion(Texto1,Texto2,Reiteraciones){
 
 // Funciones Derivadas de las Principales Sobre Enteros Para Tratar con Decimales
 function DivideReales(Texto1,Texto2,Reiteraciones){
-	var EsNum1 = IsNumber(Texto1);
-	var EsNum2 = IsNumber(Texto2);
+	var EsNum1 = StringNullString;
+	var EsNum2 = StringNullString;
 	var Resultado = StringCero;
 	var Reitera = Reiteraciones;
 	var SubResultado = StringCero;
@@ -1035,7 +1035,7 @@ function DivideReales(Texto1,Texto2,Reiteraciones){
 		if (parseInt(Reitera) < 32 ) {
 			Reitera = 32;	
 		}
-		if (EsNum1 == true && EsNum2 == true){
+		//if (IsNumber(Texto1) == true && IsNumber(Texto2) == true){
 			if (IsEquals(Texto1, Texto2) == false ){
 				if ( IsEquals(Texto1, StringCero) == false && IsEquals(Texto2, StringCero) == false ){
 					var Centralizacion = CentralizeNumbers(Texto1,Texto2);
@@ -1113,16 +1113,14 @@ function DivideReales(Texto1,Texto2,Reiteraciones){
 			}else{
 				SubResultado = StringUno;
 			}		
-		}	
+		//}	
 	//}
 	return FormatCeros(SubResultado);
 }
 
 function MultiplicaReales(Texto1,Texto2){
-	var EsNum1 = IsNumber(Texto1);
-	var EsNum2 = IsNumber(Texto2);
 	var Resultado = StringCero;
-	//if (EsNum1 == true && EsNum2 == true){
+	//if (IsNumber(Texto1) == true && IsNumber(Texto2) == true){
 		if (IsEquals(Texto1, StringCero ) == false && IsEquals(Texto2, StringCero ) == false ){
 			var Centralizacion = CentralizeNumbers(Texto1,Texto2);
 			if (parseInt(Centralizacion[Tres]) == Cero) {
@@ -1138,10 +1136,8 @@ function MultiplicaReales(Texto1,Texto2){
 	return FormatCeros(Resultado);
 }
 function RestaReales(Texto1,Texto2){
-	var EsNum1 = IsNumber(Texto1);
-	var EsNum2 = IsNumber(Texto2);
 	var Resultado = StringCero;
-	//if (EsNum1 == true && EsNum2 == true){
+	//if (IsNumber(Texto1) == true && IsNumber(Texto2) == true){
 		var Centralizacion = CentralizeNumbers(Texto1,Texto2);
 		if (parseInt(Centralizacion[Tres]) == Cero) {
 			Resultado = RestaIntegers(Centralizacion[Cero],Centralizacion[Uno]);
@@ -1153,8 +1149,6 @@ function RestaReales(Texto1,Texto2){
 	return FormatCeros(Resultado);
 }
 function SumaReales(Texto1,Texto2){
-	var EsNum1 = IsNumber(Texto1);
-	var EsNum2 = IsNumber(Texto2);
 	var Resultado = StringCero;
 	//if (EsNum1 == true && EsNum2 == true){
 		var Centralizacion = CentralizeNumbers(Texto1,Texto2);
@@ -1184,10 +1178,8 @@ function FactorialIntegers(Texto){
 	return Resultado;
 }
 function ElevaIntegers(Texto1,Texto2){
-	var EsNum1 = IsNumber(Texto1);
-	var EsNum2 = IsNumber(Texto2);
 	var Resultado = StringCero;
-	if (EsNum1 == true && EsNum2 == true){
+	if (IsNumber(Texto1) == true && IsNumber(Texto2) == true){
 		if (IsEquals(Texto1, StringCero) == false && IsEquals(Texto2, StringCero) == false){
 			var EsReal2 = IsRealNumber(Texto2);
 			if (EsReal2 == false){
@@ -1209,13 +1201,9 @@ function ElevaIntegers(Texto1,Texto2){
 	return Resultado;
 }
 function MultiplicaIntegers(Texto1,Texto2){
-	var EsNum1 = IsNumber(Texto1);
-	var EsNum2 = IsNumber(Texto2);
-	var EsReal1 = IsRealNumber(Texto1);
-	var EsReal2 = IsRealNumber(Texto2);
 	var ResultadosSuma = [];
 	var Resultado = StringCero;
-	//if (EsNum1 == true && EsNum2 == true && EsReal1 == false && EsReal2 == false ){
+	//if (IsNumber(Texto1) == true && IsNumber(Texto2) == true && IsRealNumber(Texto1) == false && IsRealNumber(Texto2) == false ){
 		var Centralizacion = CentralizeNumbers(Texto1,Texto2)
 		var Num1 = StringNullString + Centralizacion[0];
 		var Num2 = StringNullString + Centralizacion[1];
@@ -1306,12 +1294,8 @@ function MultiplicaIntegers(Texto1,Texto2){
 	}
 }
 function RestaIntegers(Texto1,Texto2){
-	var EsNum1 = IsNumber(Texto1);
-	var EsNum2 = IsNumber(Texto2);
-	var EsReal1 = IsRealNumber(Texto1);
-	var EsReal2 = IsRealNumber(Texto2);
 	var Resultado = StringNullString;
-	//if (EsNum1 == true && EsNum2 == true && EsReal1 == false && EsReal2 == false ){
+	//if (IsNumber(Texto1) == true && IsNumber(Texto2) == true && IsRealNumber(Texto1) == false && IsRealNumber(Texto2) == false ){
 		var Centralizacion = CentralizeNumbers(Texto1,Texto2)
 		var Num1 = StringNullString + Centralizacion[0];
 		var Num2 = StringNullString + Centralizacion[1];
