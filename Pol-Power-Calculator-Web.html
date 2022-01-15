@@ -55,7 +55,7 @@
 </head>
 <body >
 	<center>
-		<h1 style="color: blue;">Pol Power Calculator Web Version 3.4</h1>
+		<h1 style="color: blue;">Pol Power Calculator Web Version 3.7</h1>
 		<div style="width: 98%;" >
 			<section id="Numeros1">
 				<div id="ParteNum1">
@@ -514,7 +514,12 @@
 		}
 		function AddListadoResultados(Texto){
 			var Textos = document.getElementById("ListadoResultados").value;
-			var Resultado = Texto + "\n" + Textos;
+			var Resultado = "";
+			if( Textos == ""){
+				Resultado = Texto;
+			}else{
+				Resultado = Textos + "\n" + Texto;
+			}
 			document.getElementById("ListadoResultados").value = Resultado;
 		}
 	</script>
