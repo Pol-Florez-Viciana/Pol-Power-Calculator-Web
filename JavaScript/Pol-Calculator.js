@@ -1,8 +1,8 @@
 // Modulo Pol-Calculator.js **********************************************************************************************
 // ***********************************************************************************************************************
 // ***********************************************************************************************************************
-// Día Creación 14/12/2021 - Hasta - 10/01/2022 ** Autor: Pol Flórez Viciana *********************************************
-// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 10/01/2022 ***************************************************************
+// Día Creación 14/12/2021 - Hasta - 25/01/2022 ** Autor: Pol Flórez Viciana *********************************************
+// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 25/01/2022 ***************************************************************
 // ***********************************************************************************************************************
 // Constantes de Uso Reiterado
 const StringNullString = ""; 
@@ -454,6 +454,8 @@ function LOGSignos(Texto1,Texto2,Reiteraciones){
 	var EsNum2 = false;
 	var EsNegativo1 = false;
 	var EsNegativo2 = false;
+	var EsIrresoluble = false;
+	var MultiplicarPrimerResultado = false;
 	var Reitera = StringCero;
 	var Resultado = StringCero;
 	if (IsNumber(Reiteraciones) == true ){
@@ -486,53 +488,97 @@ function LOGSignos(Texto1,Texto2,Reiteraciones){
 				Num2 = StringNullString + FormatCeros(Texto2);
 			}
 		}
-		
-		if (EsNum1 == true && EsNum2 == true ){
-			var SubResultado = StringNullString;
-			if (IsMayor(Num2, StringUno) == true ){
-				if (IsMayor(Num1,Num2) == true && IsEquals(Num1,Num2) == false ){
-					var PrimerParametro = StringCero;
-					var Temporal = Num1;
-					while (IsMayor(Temporal,Num2) == true ){
-						Temporal = DivideSignos(Temporal,Num2,Reitera);
-						PrimerParametro = SumaReales(PrimerParametro,StringUno);
-					}
-					var PreResultado1 = ElevaIntegers(Num2,PrimerParametro);
-					var PreResultado2 = StringNullString;	
-					if (IsEquals(Num1,PreResultado1) == true){
-						SubResultado = PrimerParametro;
-					}else{
-						var SegundoParametro = SumaReales(PrimerParametro,StringUno);
-						PreResultado2 = ElevaIntegers(Num2,SegundoParametro);	
-						var Resta1 = RestaSignos(PreResultado2,PreResultado1);
-						var Resta2 = RestaSignos(PreResultado2,Num1);
-						var TempoDivision = DivideSignos(Resta2,Resta1,Reitera);
-						var Resta3 = RestaSignos(StringUno,TempoDivision);
-						SubResultado = SumaSignos(PrimerParametro,Resta3);
-					}	
-				}else{
-					SubResultado = DivideSignos(Num1, Num2, Reitera);
-				}	
-			}else{
-				if (IsMayor(Num2, StringUno) == true ){
-					SubResultado = DivideSignos(Num1, Num2, Reitera);
-				}else{	
+		if ( IsEquals(Num2,StringUno) == false){
+			if (EsNum1 == true && EsNum2 == true ){
+				var SubResultado = StringNullString;
+				if (IsMayor(Num2, StringCero) == true ){
+					//if (IsMayor(Num1,Num2) == true && IsEquals(Num1,Num2) == false ){
+						var PrimerParametro = StringCero;
+						var Temporal = Num1;
+						if (IsMayor(Num2, StringUno) == true ){
+							while (IsMayor(Temporal,Num2) == true ){
+								Temporal = DivideSignos(Temporal,Num2,Reitera);
+								PrimerParametro = SumaReales(PrimerParametro,StringUno);
+							}
+						}else{
+							if (IsMayor(Num2, Num1) == true ){
+								while (IsMayor(Num2, Temporal) == true ){
+									Temporal = DivideSignos(Temporal, Num2, Reitera);
+									PrimerParametro = SumaReales(PrimerParametro,StringUno);
+								}
+								MultiplicarPrimerResultado = true;
+							}else{
+								EsIrresoluble = true;	
+							}	
+						}
+						if (EsIrresoluble == false){	
+							var PreResultado1 = ElevaIntegers(Num2,PrimerParametro);
+							var PreResultado2 = StringNullString;	
+							if (IsEquals(Num1,PreResultado1) == true){
+								SubResultado = PrimerParametro;
+							}else{
+								if (IsMayor(PrimerParametro, StringCero + StringComa + StringNueve ) == true){
+									var SegundoParametro = SumaReales(PrimerParametro,StringUno);
+									PreResultado2 = ElevaIntegers(Num2,SegundoParametro);
+									if (MultiplicarPrimerResultado == true ){		
+										var Resta1 = RestaSignos(PreResultado1,PreResultado2);
+										var Resta2 = RestaSignos(Num1,PreResultado2);
+										var TempoDivision = DivideSignos(Resta2,Resta1,Reitera);
+										var Resta3 = DivideSignos(TempoDivision,Num2,Reitera);
+										var SubResta3 = SumaSignos(StringUno,Resta3);
+										SubResultado = SumaSignos(PrimerParametro,SubResta3);
+									}else{
+										var Resta1 = RestaSignos(PreResultado2,PreResultado1);
+										var Resta2 = RestaSignos(PreResultado2,Num1);
+										var TempoDivision = DivideSignos(Resta2,Resta1,Reitera);
+										var Resta3 = RestaSignos(StringUno,TempoDivision);
+										SubResultado = SumaSignos(PrimerParametro,Resta3);
+									}	
+								}else{
+									SubResultado = DivideSignos(Num1,Num2,Reitera);
+								}
+							}
+						}		
+				//	//}else{
+				//	//	SubResultado = DivideSignos(Num1, Num2, Reitera);
+				//	//}	
+				//}else{
+				//	if (IsMayor(Num2, StringUno) == true ){
+				//		SubResultado = DivideSignos(Num1, Num2, Reitera);
+				//	}else{	
+				//		SubResultado = StringUno;
+				//	}		
+				}
+				if (EsIrresoluble == true ){
 					SubResultado = StringUno;
-				}		
+				}
+				if(EsNegativo1 == true && EsNegativo2 == true ){
+					Resultado = StringNullString + SubResultado;
+				}
+				if(EsNegativo1 == false && EsNegativo2 == false ){
+					Resultado = StringNullString + SubResultado;
+				}
+				if(EsNegativo1 == false && EsNegativo2 == true ){
+					Resultado = StringNullString + StringGuion + SubResultado;
+				}
+				if(EsNegativo1 == true && EsNegativo2 == false ){
+					Resultado = StringNullString + StringGuion + SubResultado;
+				}
+			}
+		}else{
+			if(EsNegativo1 == false && EsNegativo2 == false ){
+				Resultado = StringNullString + StringUno;
 			}
 			if(EsNegativo1 == true && EsNegativo2 == true ){
-				Resultado = StringNullString + SubResultado;
-			}
-			if(EsNegativo1 == false && EsNegativo2 == false ){
-				Resultado = StringNullString + SubResultado;
+				Resultado = StringNullString + StringUno;
 			}
 			if(EsNegativo1 == false && EsNegativo2 == true ){
-				Resultado = StringNullString + StringGuion + SubResultado;
+				Resultado = StringNullString + StringGuion + StringUno;
 			}
 			if(EsNegativo1 == true && EsNegativo2 == false ){
-				Resultado = StringNullString + StringGuion + SubResultado;
-			}
-		}
+				Resultado = StringNullString + StringGuion + StringUno;
+			}	
+		}	
 		
 	}
 	return Resultado;	
@@ -586,11 +632,14 @@ function ElevaSignos(Texto1,Texto2,Reiteraciones){
 					var ParteEnteraMas1 = SumaSignos(ParteEntera, StringUno);
 					var PreResultado2 =	ElevaIntegers(Num1,ParteEnteraMas1);
 					var Diferencia = RestaSignos(PreResultado2,PreResultado1);
+					if (IsNegativeAndNumber(Diferencia) == true){
+						Diferencia = ConvertPositive(Diferencia);
+					}
 					var Base10 = StringsCerosToRight(StringUno, ParteDecimal.length);
 					var ResultadoDivision = DivideSignos(Diferencia,Base10,Reitera);
 					var DecimalResultDivision = GetDecimalPart(ResultadoDivision);
-					Base10 = StringsCerosToRight(StringUno, Dos);
-					var ResultadoenDecimales = DivideSignos(ParteDecimal, Base10,Reitera);
+					Base10 = StringsCerosToRight( StringUno, Dos);
+					var ResultadoenDecimales = DivideSignos(ParteDecimal, Base10, Reitera);
 					var Multiplo = MultiplicaSignos(ResultadoDivision,ResultadoenDecimales);
 					SubResultado = SumaSignos(PreResultado1,Multiplo);
 				}else{
