@@ -1,8 +1,8 @@
 // Modulo Pol-Calculator.js **********************************************************************************************
 // ***********************************************************************************************************************
 // ***********************************************************************************************************************
-// Día Creación 14/12/2021 - Hasta - 25/01/2022 ** Autor: Pol Flórez Viciana *********************************************
-// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 25/01/2022 ***************************************************************
+// Día Creación 14/12/2021 - Hasta - 10/02/2022 ** Autor: Pol Flórez Viciana *********************************************
+// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 10/02/2022 ***************************************************************
 // ***********************************************************************************************************************
 // Constantes de Uso Reiterado
 const StringNullString = ""; 
@@ -399,6 +399,48 @@ function ConvertIntegerToBinary(Texto,Reiteraciones){
 }
 
 //Principales Funciones Finales de Uso con Signos
+function ModLogPow(Texto1,Texto2,Texto3,Reiteraciones){
+	var Restacion = StringCero;
+	if(IsNegativeAndNumber(Texto1) == true || IsNumber(Texto1) == true){
+		if(IsNegativeAndNumber(Texto2) == true || IsNumber(Texto2) == true){
+			if(IsNegativeAndNumber(Texto3) == true || IsNumber(Texto3) == true){
+				if(IsNegativeAndNumber(Texto3) == true){
+					var SubTexto3 = StringGuion + GetIntegerPart(ConvertPositive(Texto3));
+					var Elevacion = ElevaSignos(Texto2,SubTexto3,Reiteraciones);
+					Restacion = RestaSignos(Texto1,Elevacion);
+				}else{
+					if(IsNumber(Texto3) == true ){
+						var SubTexto3 = GetIntegerPart(Texto3);
+						var Elevacion = ElevaSignos(Texto2,SubTexto3,Reiteraciones);
+						Restacion = RestaSignos(Texto1,Elevacion);
+					}
+				}
+			}
+		}
+	}	
+	return Restacion;	
+}
+function PowAsimetric(Texto1,Texto2,Texto3,Reiteraciones){
+	var Sumacion = StringCero;
+	if(IsNegativeAndNumber(Texto1) == true || IsNumber(Texto1) == true){
+		if(IsNegativeAndNumber(Texto2) == true || IsNumber(Texto2) == true){
+			if(IsNegativeAndNumber(Texto3) == true || IsNumber(Texto3) == true){
+				if(IsNegativeAndNumber(Texto2) == true){
+					var SubTexto2 = StringGuion + GetIntegerPart(ConvertPositive(Texto2));
+					var Elevacion = ElevaSignos(Texto1,SubTexto2,Reiteraciones);
+					Sumacion = SumaSignos(Elevacion,Texto3);
+				}else{
+					if(IsNumber(Texto2) == true ){
+						var SubTexto2 = GetIntegerPart(Texto2);
+						var Elevacion = ElevaSignos(Texto1,SubTexto2,Reiteraciones);
+						Sumacion = SumaSignos(Elevacion,Texto3);
+					}
+				}
+			}
+		}	
+	}	
+	return Sumacion;	
+}
 function FactorialSignos(Texto, Reiteraciones){
 	var Resultado = StringCero;
 	var EsNegativo = false;
@@ -770,168 +812,179 @@ function MultiplicaSignosAsimetricos(Texto1,Texto2,Texto3){
 }
 
 function MODSignos(Texto1,Texto2,Reiteraciones){
-	var EsNum1 = false;
-	var EsNum2 = false;
-	var EsNegativoNum1 = false;
-	var EsNegativoNum2 = false;
-	var Num1 = StringNullString;
-	var Num2 = StringNullString;
-	var Reitera = Cero;
-	var Resultado = StringNullString;
-	//if (IsNumber(Reiteraciones) == true ){
-		var R1 = IsMayor(StringTreintaiDos,Reiteraciones);
-		if(R1 == true ){
-			Reitera = TreintaiDos;	
-		}else{
-			Reitera = Reiteraciones;
-		}
-		if (IsNegativeAndNumber(Texto1) == true ){
-			EsNegativoNum1 = true;
-			EsNum1 = true;
-			Num1 = ConvertPositive(Texto1);
-		}else{
-			if (IsNumber(Texto1) == true ){
-				EsNum1 = true;
-				Num1 = StringNullString + Texto1;
-			}
-		}
-		if (IsNegativeAndNumber(Texto2) == true ){
-			EsNegativoNum2 = true;
-			EsNum2 = true;
-			Num2 = ConvertPositive(Texto2);
-		}else{
-			if (IsNumber(Texto2) == true ){
-				EsNum2 = true;
-				Num2 = StringNullString + Texto2;
-			}		
-		}
-		if (EsNum1 == true && EsNum2 == true){
-			var SubResultado = DivideSignos(Num1,Num2, Reitera);
-			var PreResultado = StringNullString;
-			if (IsMayor(StringUno, SubResultado) == false){
-				var AnteResultado = MultiplicaSignos(Num2, GetIntegerPart(SubResultado));
-				PreResultado = RestaSignos(Num1, AnteResultado);
+	var Resultado = StringCero;
+	if(IsNegativeAndNumber(Texto1) == true || IsNumber(Texto1) == true ){
+		if(IsNegativeAndNumber(Texto2) == true || IsNumber(Texto2) == true ){
+			var EsNum1 = false;
+			var EsNum2 = false;
+			var EsNegativoNum1 = false;
+			var EsNegativoNum2 = false;
+			var Num1 = StringNullString;
+			var Num2 = StringNullString;
+			var Reitera = Cero;
+			var R1 = IsMayor(StringTreintaiDos,Reiteraciones);
+			if(R1 == true ){
+				Reitera = TreintaiDos;	
 			}else{
-				PreResultado = Num1;
+				Reitera = Reiteraciones;
 			}
-			if (EsNegativoNum1 == true && EsNegativoNum2 == true){
-				Resultado = PreResultado;
+			if (IsNegativeAndNumber(Texto1) == true ){
+				EsNegativoNum1 = true;
+				EsNum1 = true;
+				Num1 = ConvertPositive(Texto1);
+			}else{
+				if (IsNumber(Texto1) == true ){
+					EsNum1 = true;
+					Num1 = StringNullString + Texto1;
+				}
 			}
-			if (EsNegativoNum1 == false && EsNegativoNum2 == false){
-				Resultado = PreResultado;
+			if (IsNegativeAndNumber(Texto2) == true ){
+				EsNegativoNum2 = true;
+				EsNum2 = true;
+				Num2 = ConvertPositive(Texto2);
+			}else{
+				if (IsNumber(Texto2) == true ){
+					EsNum2 = true;
+					Num2 = StringNullString + Texto2;
+				}		
 			}
-			if (EsNegativoNum1 == false && EsNegativoNum2 == true){
-				Resultado = StringGuion + PreResultado;
+			if (EsNum1 == true && EsNum2 == true){
+				var SubResultado = DivideSignos(Num1,Num2, Reitera);
+				var PreResultado = StringNullString;
+				if (IsMayor(StringUno, SubResultado) == false){
+					var AnteResultado = MultiplicaSignos(Num2, GetIntegerPart(SubResultado));
+					PreResultado = RestaSignos(Num1, AnteResultado);
+				}else{
+					PreResultado = Num1;
+				}
+				if (EsNegativoNum1 == true && EsNegativoNum2 == true){
+					Resultado = PreResultado;
+				}
+				if (EsNegativoNum1 == false && EsNegativoNum2 == false){
+					Resultado = PreResultado;
+				}
+				if (EsNegativoNum1 == false && EsNegativoNum2 == true){
+					Resultado = StringGuion + PreResultado;
+				}
+				if (EsNegativoNum1 == true && EsNegativoNum2 == false){
+					Resultado = StringGuion + PreResultado;
+				}	
 			}
-			if (EsNegativoNum1 == true && EsNegativoNum2 == false){
-				Resultado = StringGuion + PreResultado;
-			}	
-		}	
-		return FormatCeros(Resultado);
-	//}
+		}
+	}	
+	return FormatCeros(Resultado);
 } 
 function RestaSignos(Texto1, Texto2){
-	var EsNum1 = false;
-	var EsNum2 = false;
-	var EsNegativoNum1 = false;
-	var EsNegativoNum2 = false;
-	var Num1 = StringNullString;
-	var Num2 = StringNullString;
-	var Resultado = StringNullString;
-	if (IsNegativeAndNumber(Texto1) == true ){
-		EsNegativoNum1 = true;
-		EsNum1 = true;
-		Num1 = ConvertPositive(Texto1);
-	}else{
-		if (IsNumber(Texto1) == true ){
-			EsNum1 = true;
-			Num1 = StringNullString + Texto1;
-		}
-	}
-	if (IsNegativeAndNumber(Texto2) == true ){
-		EsNegativoNum2 = true;
-		EsNum2 = true;
-		Num2 = ConvertPositive(Texto2);
-	}else{
-		if (IsNumber(Texto2) == true ){
-			EsNum2 = true;
-			Num2 = StringNullString + Texto2;
-		}		
-	}
-	if (EsNum1 == true && EsNum2 == true){
-		if (EsNegativoNum1 == true && EsNegativoNum2 == true){
-			var PreResultado = RestaReales(Num1,Num2);
-			if (IsNegative(PreResultado) == true ){
-				Resultado = ConvertPositive(PreResultado);
+	var Resultado = StringCero;
+	if(IsNegativeAndNumber(Texto1) == true || IsNumber(Texto1) == true ){
+		if(IsNegativeAndNumber(Texto2) == true || IsNumber(Texto2) == true ){
+			var EsNum1 = false;
+			var EsNum2 = false;
+			var EsNegativoNum1 = false;
+			var EsNegativoNum2 = false;
+			var Num1 = StringNullString;
+			var Num2 = StringNullString;
+			
+			if (IsNegativeAndNumber(Texto1) == true ){
+				EsNegativoNum1 = true;
+				EsNum1 = true;
+				Num1 = ConvertPositive(Texto1);
 			}else{
-				Resultado = StringGuion + PreResultado;
-			}	
-		}
-		if (EsNegativoNum1 == false && EsNegativoNum2 == false){
-			var PreResultado = RestaReales(Num1,Num2);
-			Resultado = PreResultado;
-		}
-		if (EsNegativoNum1 == false && EsNegativoNum2 == true){
-			var PreResultado = SumaReales(Num1,Num2);
-			Resultado = PreResultado;
-		}
-		if (EsNegativoNum1 == true && EsNegativoNum2 == false){
-			var PreResultado = RestaReales(Num1,Num2);
-			if (IsNegative(PreResultado) == true ){
-				Resultado = ConvertPositive(PreResultado);
+				if (IsNumber(Texto1) == true ){
+					EsNum1 = true;
+					Num1 = StringNullString + Texto1;
+				}
+			}
+			if (IsNegativeAndNumber(Texto2) == true ){
+				EsNegativoNum2 = true;
+				EsNum2 = true;
+				Num2 = ConvertPositive(Texto2);
 			}else{
-				Resultado = StringGuion + PreResultado;
+				if (IsNumber(Texto2) == true ){
+					EsNum2 = true;
+					Num2 = StringNullString + Texto2;
+				}		
+			}
+			if (EsNum1 == true && EsNum2 == true){
+				if (EsNegativoNum1 == true && EsNegativoNum2 == true){
+					var PreResultado = RestaReales(Num1,Num2);
+					if (IsNegative(PreResultado) == true ){
+						Resultado = ConvertPositive(PreResultado);
+					}else{
+						Resultado = StringGuion + PreResultado;
+					}	
+				}
+				if (EsNegativoNum1 == false && EsNegativoNum2 == false){
+					var PreResultado = RestaReales(Num1,Num2);
+					Resultado = PreResultado;
+				}
+				if (EsNegativoNum1 == false && EsNegativoNum2 == true){
+					var PreResultado = SumaReales(Num1,Num2);
+					Resultado = PreResultado;
+				}
+				if (EsNegativoNum1 == true && EsNegativoNum2 == false){
+					var PreResultado = RestaReales(Num1,Num2);
+					if (IsNegative(PreResultado) == true ){
+						Resultado = ConvertPositive(PreResultado);
+					}else{
+						Resultado = StringGuion + PreResultado;
+					}
+				}	
 			}
 		}	
 	}	
 	return FormatCeros(Resultado);
 }
 function SumaSignos(Texto1, Texto2){
-	var EsNum1 = false;
-	var EsNum2 = false;
-	var EsNegativoNum1 = false;
-	var EsNegativoNum2 = false;
-	var Num1 = StringNullString;
-	var Num2 = StringNullString;
-	var Resultado = StringNullString;
-	if (IsNegativeAndNumber(Texto1) == true ){
-		EsNegativoNum1 = true;
-		EsNum1 = true;
-		Num1 = ConvertPositive(Texto1);
-	}else{
-		if (IsNumber(Texto1) == true ){
-			EsNum1 = true;
-			Num1 = StringNullString + Texto1;
+	var Resultado = StringCero;
+	if(IsNegativeAndNumber(Texto1) == true || IsNumber(Texto1) == true ){
+		if(IsNegativeAndNumber(Texto2) == true || IsNumber(Texto2) == true ){
+			var EsNum1 = false;
+			var EsNum2 = false;
+			var EsNegativoNum1 = false;
+			var EsNegativoNum2 = false;
+			var Num1 = StringNullString;
+			var Num2 = StringNullString;
+			if (IsNegativeAndNumber(Texto1) == true ){
+				EsNegativoNum1 = true;
+				EsNum1 = true;
+				Num1 = ConvertPositive(Texto1);
+			}else{
+				if (IsNumber(Texto1) == true ){
+					EsNum1 = true;
+					Num1 = StringNullString + Texto1;
+				}
+			}
+			if (IsNegativeAndNumber(Texto2) == true ){
+				EsNegativoNum2 = true;
+				EsNum2 = true;
+				Num2 = ConvertPositive(Texto2);
+			}else{
+				if (IsNumber(Texto2) == true ){
+					EsNum2 = true;
+					Num2 = StringNullString + Texto2;
+				}		
+			}
+			if (EsNum1 == true && EsNum2 == true){
+				if (EsNegativoNum1 == true && EsNegativoNum2 == true){
+					var PreResultado = SumaReales(Num1,Num2);
+					Resultado = StringGuion + PreResultado;
+				}
+				if (EsNegativoNum1 == false && EsNegativoNum2 == false){
+					var PreResultado = SumaReales(Num1,Num2);
+					Resultado = PreResultado;
+				}
+				if (EsNegativoNum1 == false && EsNegativoNum2 == true){
+					var PreResultado = RestaReales(Num1,Num2);
+					Resultado = PreResultado;
+				}
+				if (EsNegativoNum1 == true && EsNegativoNum2 == false){
+					var PreResultado = RestaReales(Num1,Num2);
+					Resultado = PreResultado;
+				}	
+			}
 		}
-	}
-	if (IsNegativeAndNumber(Texto2) == true ){
-		EsNegativoNum2 = true;
-		EsNum2 = true;
-		Num2 = ConvertPositive(Texto2);
-	}else{
-		if (IsNumber(Texto2) == true ){
-			EsNum2 = true;
-			Num2 = StringNullString + Texto2;
-		}		
-	}
-	if (EsNum1 == true && EsNum2 == true){
-		if (EsNegativoNum1 == true && EsNegativoNum2 == true){
-			var PreResultado = SumaReales(Num1,Num2);
-			Resultado = StringGuion + PreResultado;
-		}
-		if (EsNegativoNum1 == false && EsNegativoNum2 == false){
-			var PreResultado = SumaReales(Num1,Num2);
-			Resultado = PreResultado;
-		}
-		if (EsNegativoNum1 == false && EsNegativoNum2 == true){
-			var PreResultado = RestaReales(Num1,Num2);
-			Resultado = PreResultado;
-		}
-		if (EsNegativoNum1 == true && EsNegativoNum2 == false){
-			var PreResultado = RestaReales(Num1,Num2);
-			Resultado = PreResultado;
-		}	
-	}	
+	}		
 	return Resultado;
 }
 function MultiplicaSignos(Texto1, Texto2){

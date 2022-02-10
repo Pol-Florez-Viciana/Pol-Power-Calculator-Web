@@ -43,19 +43,16 @@
 		#BtnFactorial { width: 40px; height: 40px; border-radius: 20px; }
         #BtnSumar { width: 40px; height: 40px; border-radius: 20px; }
 		#BtnRestar { width: 40px; height: 40px; border-radius: 20px; }
-		#BtnMultiplicarSimetrico { width: 40px; height: 40px; border-radius: 20px; }
 		#BtnDividir { width: 40px; height: 40px; border-radius: 20px; }	
 		#BtnResiduo { width: 40px; height: 40px; border-radius: 20px; }
-		#BtnPow { width: 40px; height: 40px; border-radius: 20px; }
 		#BtnLog { width: 40px; height: 40px; border-radius: 20px; }
 		#BtnPorUnidaje { width: 40px; height: 40px; border-radius: 20px; }
 		#BtnRaiz { width: 40px; height: 40px; border-radius: 20px; }
-		#BtnMultiplicarAsimetrico { width: 40px; height: 40px; border-radius: 20px; }
 	</style>
 </head>
 <body >
 	<center>
-		<h1 style="color: blue;">Pol Power Calculator Web Version 3.13</h1>
+		<h1 style="color: blue;">Pol Power Calculator Web Version 3.20</h1>
 		<div style="width: 98%;" >
 			<section id="Numeros1">
 				<div id="ParteNum1">
@@ -97,14 +94,14 @@
 					<label>With Num1 And Num2</label><br>
 					<input id="BtnSumar" onclick="Sumar()" type="button" style="font-size: 3.5mm;" value="+" title="Add" />
 					<input id="BtnRestar" onclick="Restar()" type="button" style="font-size: 3.5mm;" value="-" title="Subtract" />
-					<input id="BtnMultiplicarSimetrico" onclick="Multiplicar()" type="button" style="font-size: 3.5mm;" value="x" title="Multipy Simetric" />
+					<input id="BtnMultiplicarSimetrico" onclick="Multiplicar()" type="button" style="font-size: 3.5mm;" value="X Simetric" title="Multipy Simetric" />
 				</div>
 				<div id="Controles3" style="display: inline-block; background-color: limegreen;">
 					<label>With Num1 And Num2 And Reiterations</label><br>
 					<input id="BtnDividir" onclick="Dividir()" type="button" style="font-size: 3.5mm;" value="/" title="Divide" />
 					<input id="NumeroReiteraciones" type="text" maxlength="4" style="width: 55px; font-size: 3,5mm; text-align: right;" value="32" title="Re-iterations for Divide" />
 					<input id="BtnResiduo" onclick="ResiduoDivision()" type="button" style="font-size: 3mm;" value="MOD" title="Division Residue" />
-					<input id="BtnPow" onclick="Elevacion()" type="button" style="font-size: 3mm;" value="Pow" title="Empowerment" />
+					<input id="BtnPow" onclick="Elevacion()" type="button" style="font-size: 3mm;" value="Pow Simetric" title="Empowerment" />
 					<input id="BtnLog" onclick="Logaritmo()" type="button" style="font-size: 3mm;" value="LOG" title="Logaritm" />
 					<br><br>
 					<input id="BtnPorcentaje" onclick="TraePorcentaje()" type="button" style="font-size: 3.5mm;" value="100%" title="Percentage of 100%" />
@@ -125,11 +122,13 @@
 				</div>
 				<div id="Controles4" style="display: inline-block; background-color: orange;">
 					<label>With Num1 And Num2 And Num3</label><br>
-					<input id="BtnMultiplicarAsimetrico" onclick="MultiplicarAsimetrico()" type="button" style="font-size: 3.5mm;" value="x" title="Multipy Asimetric" />
+					<input id="BtnMultiplicarAsimetrico" onclick="MultiplicarAsimetrico()" type="button" style="font-size: 3.5mm;" value="X Asimetric" title="Multipy Asimetric" />
 				</div>
 				<div id="Controles5" style="display: inline-block; background-color: limegreen;">
 					<label>With Num1 And Num2 And Num3 And Reiterations</label><br>
 					<input id="BtnPorUnidaje" onclick="TraePorunidaje()" type="button" style="font-size: 3.5mm;" value="1%" title="Perunitage of X%" />
+					<input id="BtnModLogPow" onclick="ModLogPowAsimetrico()" type="button" style="font-size: 3.5mm;" value="Mod.Log.Pow." title="ModLogPow Function" />
+					<input id="BtnPowAsimetrico" onclick="PowAsimetrico()" type="button" style="font-size: 3.5mm;" value="Pow Asimetric" title="Pow Asimetric" />
 				</div>
 				<div id="ParteNumResultado">
 					<h2>
@@ -469,6 +468,26 @@
 			document.getElementById("Resultado").value = Resultado;
 			ActualizarResultado();
 			AddListadoResultados(Resultado + " = " + Numero1 + "!" );
+		}
+		function ModLogPowAsimetrico(){
+			var Numero1 = document.getElementById("Numero1").value;
+			var Numero2 = document.getElementById("Numero2").value;
+			var Numero3 = document.getElementById("Numero3").value;
+			var Reiteraciones = document.getElementById("NumeroReiteraciones").value;
+			var Resultado = ModLogPow(Numero1, Numero2,Numero3, Reiteraciones);
+			document.getElementById("Resultado").value = Resultado;
+			ActualizarResultado();
+			AddListadoResultados(Resultado + " = " + Numero1 + " - ( " + Numero2 + " ^ ConvertInteger(" + Numero3 + ") )" );
+		}
+		function PowAsimetrico(){
+			var Numero1 = document.getElementById("Numero1").value;
+			var Numero2 = document.getElementById("Numero2").value;
+			var Numero3 = document.getElementById("Numero3").value;
+			var Reiteraciones = document.getElementById("NumeroReiteraciones").value;
+			var Resultado = PowAsimetric(Numero1, Numero2,Numero3, Reiteraciones);
+			document.getElementById("Resultado").value = Resultado;
+			ActualizarResultado();
+			AddListadoResultados(Resultado + " = ( " + Numero1 + " ^ ConvertInteger(" + Numero2 + ") ) + " + Numero3 );
 		}
 		function CrearPuntosResult(){
 			var Numero = document.getElementById("Resultado").value;
