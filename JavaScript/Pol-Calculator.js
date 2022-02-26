@@ -1126,6 +1126,15 @@ function DivideNotacion(Texto1,Texto2,Reiteraciones){
 	return Resultado;	
 }
 
+// Funcion con Elevaciones y Raíces Cuadradas
+function PitagorasTheory(Texto1, Texto2, Reiterations, LongDecimales){
+	var Resultado = StringCero;
+	var ElCuadrado1 = ElevaSignos(Texto1,StringDos, StringNullString + TreintaiDos);
+	var ElCuadrado2 = ElevaSignos(Texto2,StringDos, StringNullString + TreintaiDos);
+	var SumaCuadrados = SumaSignos(ElCuadrado1,ElCuadrado2);
+	Resultado = RootYSignos(SumaCuadrados,StringDos, StringNullString + Reiterations, StringNullString + LongDecimales);
+	return Resultado;	
+}
 // Funcion Para Conseguir Big Numbers en la Raíz de Base Seleccionable
 function RootYSignos(Texto1, Texto2, Reiterations, LongDecimales){
 	var Resultado = StringCero;

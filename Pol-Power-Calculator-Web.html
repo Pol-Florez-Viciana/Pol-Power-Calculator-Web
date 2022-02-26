@@ -52,7 +52,7 @@
 </head>
 <body >
 	<center>
-		<h1 style="color: blue;">Pol Power Calculator Web Version 4.0</h1>
+		<h1 style="color: blue;">Pol Power Calculator Web Version 4.1</h1>
 		<div style="width: 98%;" >
 			<section id="Numeros1">
 				<div id="ParteNum1">
@@ -112,6 +112,7 @@
 					<label style="color: white;" >With Num1 And Num2 And Reiterations And Long Decimals</label><br>
 					<input id="NumeroLongDecimales" type="text" maxlength="4" style="width: 55px; font-size: 4mm; text-align: right;" value="0" title="Long Decimals" />
 					<input id="BtnRaiz" onclick="RaizY()" type="button" style="font-size: 4mm;" value="Root Y" title="Root Square, Cubic, Etc..." />
+					<input id="BtnPitagoras" onclick="TeoriaPitagoras()" type="button" style="font-size: 4mm;" value="Pitagoras Theory" title="Pitagoras Theory..." />
 				</div>
 			</section>
 			<section id="Numeros2">
@@ -483,6 +484,16 @@
 			document.getElementById("Resultado").value = Resultado;
 			ActualizarResultado();
 			AddListadoResultados(Resultado + " = Root " + Numero1 + " Base Integer(" + Numero2 + ")" );
+		}
+		function TeoriaPitagoras(){
+			var Numero1 = document.getElementById("Numero1").value;
+			var Numero2 = document.getElementById("Numero2").value;
+			var Reiteraciones = document.getElementById("NumeroReiteraciones").value;
+			var LongitudDecimal = document.getElementById("NumeroLongDecimales").value;
+			var Resultado = PitagorasTheory(Numero1, Numero2, Reiteraciones, LongitudDecimal);
+			document.getElementById("Resultado").value = Resultado;
+			ActualizarResultado();
+			AddListadoResultados(Resultado + " = Rootsquare ((" + Numero1 + "^2) + (" + Numero2 + "^2))" );
 		}
 		function ModLogPowAsimetrico(){
 			var Numero1 = document.getElementById("Numero1").value;
