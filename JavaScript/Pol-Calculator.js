@@ -1,8 +1,8 @@
 // Modulo Pol-Calculator.js **********************************************************************************************
 // ***********************************************************************************************************************
 // ***********************************************************************************************************************
-// Día Creación 14/12/2021 - Hasta - 10/02/2022 ** Autor: Pol Flórez Viciana *********************************************
-// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 10/02/2022 ***************************************************************
+// Día Creación 14/12/2021 - Hasta - 26/02/2022 ** Autor: Pol Flórez Viciana *********************************************
+// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 26/02/2022 ***************************************************************
 // ***********************************************************************************************************************
 // Constantes de Uso Reiterado
 const StringNullString = ""; 
@@ -1126,7 +1126,192 @@ function DivideNotacion(Texto1,Texto2,Reiteraciones){
 	return Resultado;	
 }
 
+// Funcion Para Conseguir Big Numbers en la Raíz de Base Seleccionable
+function RootYSignos(Texto1, Texto2, Reiterations, LongDecimales){
+	var Resultado = StringCero;
+	var Reitera = parseInt(Reiterations);
+	var LongiDecimales = parseInt(LongDecimales);
+	var Num1 = StringCero;
+	var Num2 = StringCero;
+	if (IsNumber(Texto1) == true || IsNegativeAndNumber(Texto1) == true ){
+		if (IsNumber(Texto2) == true || IsNegativeAndNumber(Texto2) == true ){
+			if (parseInt(Reitera) < 32 ) {
+				Reitera = 32;	
+			}
+			if (parseInt(LongiDecimales) < 0 ){
+				LongiDecimales = 0;	
+			}
+			if ( IsNegativeAndNumber(Texto2) == true ){
+				if ( IsRealNumber(Texto2) == true ){
+					Num2 = StringNullString + ConvertPositive(Texto2);
+					Num2 = StringNullString + GetIntegerPart(Num2);
+				}else{
+					Num2 = StringNullString + ConvertPositive(Texto2);
+				}	
+			}else{
+				if (IsRealNumber(Texto2) == true ){
+					Num2 = StringNullString + GetIntegerPart(Texto2);
+				}else{
+					Num2 = StringNullString + Texto2;
+				}
+			}       
+			if (IsNegativeAndNumber(Texto1) == true ){
+				Num1 = StringNullString + ConvertPositive(Texto1);
+				EsNegativo = true;	
+			}else{
+				Num1 = StringNullString + Texto1;
+				EsNegativo = false;
+			}
+			if (IsMayor(Num1,StringCero) == true && IsMayor(Num2,StringCero) == true ){
+				if (IsMayor(Num2, StringDiez) == false ){
+					var SubNumero1 = StringCero;
+					var Longitud1 = Cero;
+					var SubLongitud1 = Cero;
+					var ParteEntera1 = StringCero;
+					var Llevada = Cero;
+					if (IsRealNumber(Num1) == true ){
+						ParteEntera1 = StringNullString + GetIntegerPart(Num1);
+						Longitud1 = ParteEntera1.length;
+					}else{
+						ParteEntera1 = StringNullString + Num1;
+						Longitud1 = ParteEntera1.length;
+					}
+					if (Longitud1 >= 5){
+						if (IsPar(StringNullString + Longitud1) == true ){
+							SubLongitud1 = Longitud1 - 1;
+							Llevada = SubLongitud1 / 2;
+						}else{
+							SubLongitud1 = Longitud1 - 2;
+							Llevada = SubLongitud1 / 2;
+						}
+						Llevada = GetIntegerPart(Llevada);
+						var Dieces = StringsCerosToRight(StringUno, SubLongitud1);
+						SubNumero1 = DivideSignos(Texto1, Dieces, StringNullString + Reitera);
+						var SubResultado = RaizYReal(SubNumero1, Texto2, StringNullString + Reitera, StringNullString + LongiDecimales);
+						Dieces = StringsCerosToRight(StringUno, Llevada);
+						Resultado = MultiplicaSignos(SubResultado, Dieces);
+					}else{
+						Resultado = RaizYReal(Texto1, Texto2, StringNullString + Reitera, StringNullString + LongiDecimales);
+					}
+				}		
+			}	
+		}
+	}
+	return Resultado;
+}
+function IsPar(Texto1){
+	var Resultado = false;
+	if (IsNegativeAndNumber(Texto1) == true || IsNumber(Texto1) == true ){
+		var ElNumero = StringsRight(Texto1,Uno);
+		if (ElNumero == "0"){
+			if (Texto1.length > 1){
+				Resultado = true 
+			}
+		}
+		if (ElNumero == "2"){
+			Resultado = true;
+		}
+		if (ElNumero == "4"){
+			Resultado = true;
+		}
+		if (ElNumero == "6"){
+			Resultado = true;
+		}
+		if (ElNumero == "8"){
+			Resultado = true;
+		}
+	}
+	return Resultado;	
+}
 // Funciones Derivadas de las Principales Sobre Enteros Para Tratar con Decimales
+function RaizYReal(Texto1, Texto2, Reiterations, LongDecimales){
+	var Resultado = StringCero;
+	var SubResultado = StringCero;
+	var Reitera = parseInt(Reiterations);
+	var LongiDecimales = parseInt(LongDecimales);
+	var Num1 = StringCero;
+	var Num2 = StringCero;
+	var EsNegativo = false;
+	if (IsNumber(Texto1) == true || IsNegativeAndNumber(Texto1) == true ){
+		if (IsNumber(Texto2) == true || IsNegativeAndNumber(Texto2) == true ){
+			if (parseInt(Reitera) < 32 ) {
+				Reitera = 32;	
+			}
+			if (parseInt(LongiDecimales) < 0 ){
+				LongiDecimales = 0;	
+			}
+			if ( IsNegativeAndNumber(Texto2) == true ){
+				if ( IsRealNumber(Texto2) == true ){
+					Num2 = StringNullString + ConvertPositive(Texto2);
+					Num2 = StringNullString + GetIntegerPart(Num2);
+				}else{
+					Num2 = StringNullString + ConvertPositive(Texto2);
+				}	
+			}else{
+				if (IsRealNumber(Texto2) == true ){
+					Num2 = StringNullString + GetIntegerPart(Texto2);
+				}else{
+					Num2 = StringNullString + Texto2;
+				}
+			}       
+			if (IsNegativeAndNumber(Texto1) == true ){
+				Num1 = StringNullString + ConvertPositive(Texto1);
+				EsNegativo = true;	
+			}else{
+				Num1 = StringNullString + Texto1;
+				EsNegativo = false;
+			}
+			if (IsMayor(Num1,StringCero) == true && IsMayor(Num2,StringCero) == true ){
+				var CuentaNum1 = StringCero;
+				var Salte = false;
+				var ElevacionesCuentaNum1 = StringCero;
+				while ( Salte == false ){
+					CuentaNum1 = SumaSignos(CuentaNum1,StringUno);	
+					ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + TreintaiDos);
+					if( IsMayor(Num1, ElevacionesCuentaNum1) == false){
+						Salte = true;
+					}
+				}
+				var LaResta = RestaSignos(Num2,StringUno);
+				ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + TreintaiDos);
+				var SumadeR = SumaSignos(Num1,ElevacionesCuentaNum1);
+				var LaElevacionMenor = ElevaSignos(CuentaNum1, LaResta, StringNullString + TreintaiDos);
+				var DivisiondeR = DivideSignos(SumadeR,	LaElevacionMenor, StringNullString + Reitera);
+				SubResultado = StringNullString + DivideSignos(DivisiondeR, StringDos, StringNullString + Reitera);
+				ElevacionesCuentaNum1 = ElevaSignos(SubResultado, Num2, StringNullString + TreintaiDos);
+				if (IsEquals(Num1, ElevacionesCuentaNum1) == false ){
+					if (parseInt(LongiDecimales) != 0 ){
+						SubResultado = GetIntegerPart(SubResultado);
+						var i;
+						for ( i = 1; i <= parseInt(LongiDecimales) + Uno; i++){
+							var LosNumDecimales = StringsCerosToRight(StringCero + StringComa, i) + StringUno;
+							while ( IsMayor(Num1, ElevacionesCuentaNum1) == true ){
+								SubResultado = SumaSignos(SubResultado,LosNumDecimales);
+								ElevacionesCuentaNum1 = ElevaSignos(SubResultado, Num2, StringNullString + TreintaiDos);	
+							}
+							while ( IsMayor(Num1, ElevacionesCuentaNum1) == false ){
+								SubResultado = RestaSignos(SubResultado,LosNumDecimales);
+								ElevacionesCuentaNum1 = ElevaSignos(SubResultado, Num2, StringNullString + TreintaiDos);
+							}
+						}
+						Resultado = SubResultado;
+					}else{
+						Resultado = SubResultado;
+					}
+				}else{
+					Resultado = SubResultado;	
+				}	
+			}
+		}	
+	}
+	
+	if (EsNegativo == false){
+		return Resultado;	
+	}else{
+		return StringGuion + Resultado;
+	}
+	
+}
 function DivideReales(Texto1,Texto2,Reiteraciones){
 	var EsNum1 = StringNullString;
 	var EsNum2 = StringNullString;
