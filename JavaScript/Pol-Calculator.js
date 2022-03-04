@@ -550,7 +550,8 @@ function LOGSignos(Texto1,Texto2,Reiteraciones){
 								}
 								MultiplicarPrimerResultado = true;
 							}else{
-								EsIrresoluble = true;	
+								EsIrresoluble = true;
+								PrimerParametro = StringUno;	
 							}	
 						}
 						if (EsIrresoluble == false){	
@@ -580,20 +581,20 @@ function LOGSignos(Texto1,Texto2,Reiteraciones){
 									SubResultado = DivideSignos(Num1,Num2,Reitera);
 								}
 							}
-						}		
-				//	//}else{
-				//	//	SubResultado = DivideSignos(Num1, Num2, Reitera);
-				//	//}	
-				//}else{
-				//	if (IsMayor(Num2, StringUno) == true ){
-				//		SubResultado = DivideSignos(Num1, Num2, Reitera);
-				//	}else{	
-				//		SubResultado = StringUno;
-				//	}		
+						}else{
+							var PreResultado1 = ElevaIntegers(Num2,PrimerParametro);
+							var SegundoParametro = SumaReales(PrimerParametro,StringUno);
+							var PreResultado2 = ElevaIntegers(Num2,SegundoParametro);;
+							var Resta1 = RestaSignos(PreResultado2,PreResultado1);
+							var Resta2 = RestaSignos(PreResultado2,Num1);
+							var TempoDivision = DivideSignos(Resta2,Resta1,Reitera);
+							var Resta3 = RestaSignos(StringUno,TempoDivision);
+							SubResultado = RestaSignos(StringUno,Resta3, Reitera);
+						}				
 				}
-				if (EsIrresoluble == true ){
-					SubResultado = StringUno;
-				}
+				//if (EsIrresoluble == true ){
+				//	SubResultado = StringUno;
+				//}
 				if(EsNegativo1 == true && EsNegativo2 == true ){
 					Resultado = StringNullString + SubResultado;
 				}
@@ -1891,25 +1892,47 @@ function CentralizeNumbers(Texto1,Texto2){
 			}	
 		}else{
 			if (EsReal1 == false && EsReal2 == true ){
-				var CopiaEntero1 = CopiaTexto1;  
+				var CopiaEntero1 = CopiaTexto1;
 				var CopiaDecimal1 = StringNullString;
 				var CopiaEntero2 = GetIntegerPart(CopiaTexto2);  
 				var CopiaDecimal2 = GetDecimalPart(CopiaTexto2);
-				if (CopiaEntero1.length > CopiaEntero2.length){
+				if (CopiaEntero1.length >= CopiaEntero2.length){
 					R1 = StringNullString + CopiaEntero1;
 					R2 = StringNullString + StringsCerosToLeft(CopiaEntero2, CopiaEntero1.length);
 					MaximoEntero = CopiaEntero1.length;
-				}else{					
+				}else{				
 					R1 = StringNullString + StringsCerosToLeft(CopiaEntero1, CopiaEntero2.length);
 					R2 = StringNullString + CopiaEntero2;
 					MaximoEntero = CopiaEntero2.length;
 				}
-				R1 = R1 + StringsCerosToRight(CopiaDecimal1, CopiaDecimal2.length);
-				R2 = R2 + StringsCerosToRight(CopiaDecimal2, CopiaDecimal2.length);
-				MaximoDecimal = CopiaDecimal2.length;
+				if (CopiaDecimal1.length >= CopiaDecimal2.length){
+					R1 = R1 + CopiaDecimal1;
+					R2 = R2 + StringsCerosToRight(CopiaDecimal2, CopiaDecimal1.length);
+					MaximoDecimal = CopiaDecimal1.length;
+				}else{
+					R1 = R1 + StringsCerosToRight(CopiaDecimal1, CopiaDecimal2.length);
+					R2 = R2 + CopiaDecimal2;
+					MaximoDecimal = CopiaDecimal2.length;
+				}
+				//var CopiaEntero1 = CopiaTexto1;  
+				//var CopiaDecimal1 = StringNullString;
+				//var CopiaEntero2 = GetIntegerPart(CopiaTexto2);  
+				//var CopiaDecimal2 = GetDecimalPart(CopiaTexto2);
+				//if (CopiaEntero1.length > CopiaEntero2.length){
+				//	R1 = StringNullString + CopiaEntero1;
+				//	R2 = StringNullString + StringsCerosToLeft(CopiaEntero2, CopiaEntero1.length);
+				//	MaximoEntero = CopiaEntero1.length;
+				//}else{					
+				//	R1 = StringNullString + StringsCerosToLeft(CopiaEntero1, CopiaEntero2.length);
+				//	R2 = StringNullString + CopiaEntero2;
+				//	MaximoEntero = CopiaEntero2.length;
+				//}
+				//R1 = R1 + StringsCerosToRight(CopiaDecimal1, CopiaDecimal2.length);
+				//R2 = R2 + StringsCerosToRight(CopiaDecimal2, CopiaDecimal2.length);
+				//MaximoDecimal = CopiaDecimal2.length;
 			}else{
 				if (EsReal1 == true && EsReal2 == false ){
-					var CopiaEntero1 = GetIntegerPart(CopiaTexto1);  
+					var CopiaEntero1 = GetIntegerPart(CopiaTexto1);
 					var CopiaDecimal1 = GetDecimalPart(CopiaTexto1);
 					var CopiaEntero2 = CopiaTexto2;  
 					var CopiaDecimal2 = StringNullString;
@@ -1922,9 +1945,32 @@ function CentralizeNumbers(Texto1,Texto2){
 						R2 = StringNullString + CopiaEntero2;
 						MaximoEntero = CopiaEntero2.length;
 					}
-					R1 = R1 + CopiaDecimal1;
-					R2 = R2 + StringsCerosToRight(CopiaDecimal2, CopiaDecimal1.length);
-					MaximoDecimal = CopiaDecimal1.length;
+					if (CopiaDecimal1.length >= CopiaDecimal2.length){
+						R1 = R1 + CopiaDecimal1;
+						R2 = R2 + StringsCerosToRight(CopiaDecimal2, CopiaDecimal1.length);
+						MaximoDecimal = CopiaDecimal1.length;
+					}else{
+						R1 = R1 + StringsCerosToRight(CopiaDecimal1, CopiaDecimal2.length);
+						R2 = R2 + CopiaDecimal2;
+						MaximoDecimal = CopiaDecimal2.length;
+					}
+					
+					//var CopiaEntero1 = GetIntegerPart(CopiaTexto1);  
+					//var CopiaDecimal1 = GetDecimalPart(CopiaTexto1);
+					//var CopiaEntero2 = CopiaTexto2;  
+					//var CopiaDecimal2 = StringNullString;
+					//if (CopiaEntero1.length >= CopiaEntero2.length){
+					//	R1 = StringNullString + StringsCerosToLeft(CopiaEntero1, CopiaEntero1.length);;
+					//	R2 = StringNullString + StringsCerosToLeft(CopiaEntero2, CopiaEntero2.length);
+					//	MaximoEntero = CopiaEntero2.length;
+					//}else{				
+					//	R1 = StringNullString + StringsCerosToLeft(CopiaEntero1, CopiaEntero2.length);
+					//	R2 = StringNullString + CopiaEntero2;
+					//	MaximoEntero = CopiaEntero1.length;
+					//}
+					//R1 = R1 + StringsCerosToRight(CopiaEntero1, CopiaDecimal2.length);
+					//R2 = R2 + StringsCerosToRight(CopiaEntero2, CopiaDecimal1.length);
+					//MaximoDecimal = CopiaDecimal1.length;
 				}else{
 					if (CopiaTexto1.length >= CopiaTexto2.length){
 						R1 = StringNullString + CopiaTexto1;
