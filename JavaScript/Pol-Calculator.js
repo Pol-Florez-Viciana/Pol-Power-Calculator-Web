@@ -567,8 +567,9 @@ function LOGSignos(Texto1,Texto2,Reiteraciones){
 										var Resta1 = RestaSignos(PreResultado1,PreResultado2);
 										var Resta2 = RestaSignos(Num1,PreResultado2);
 										var TempoDivision = DivideSignos(Resta2,Resta1,Reitera);
-										var Resta3 = DivideSignos(TempoDivision,Num2,Reitera);
-										var SubResta3 = SumaSignos(StringUno,Resta3);
+										//var Resta3 = DivideSignos(TempoDivision,Num2,Reitera);
+										var SubResta3 = RestaSignos(StringUno,TempoDivision);
+										//SubResultado = SumaSignos(PrimerParametro,SubResta3);
 										SubResultado = SumaSignos(PrimerParametro,SubResta3);
 									}else{
 										var Resta1 = RestaSignos(PreResultado2,PreResultado1);
@@ -582,14 +583,15 @@ function LOGSignos(Texto1,Texto2,Reiteraciones){
 								}
 							}
 						}else{
-							var PreResultado1 = ElevaIntegers(Num2,PrimerParametro);
-							var SegundoParametro = SumaReales(PrimerParametro,StringUno);
-							var PreResultado2 = ElevaIntegers(Num2,SegundoParametro);;
-							var Resta1 = RestaSignos(PreResultado2,PreResultado1);
-							var Resta2 = RestaSignos(PreResultado2,Num1);
-							var TempoDivision = DivideSignos(Resta2,Resta1,Reitera);
-							var Resta3 = RestaSignos(StringUno,TempoDivision);
-							SubResultado = RestaSignos(StringUno,Resta3, Reitera);
+							//var PreResultado1 = ElevaIntegers(Num2,PrimerParametro);
+							//var SegundoParametro = SumaReales(PrimerParametro,StringUno);
+							//var PreResultado2 = ElevaIntegers(Num2,SegundoParametro);;
+							//var Resta1 = RestaSignos(PreResultado2,PreResultado1);
+							//var Resta2 = RestaSignos(PreResultado2,Num1);
+							//var TempoDivision = DivideSignos(Resta2,Resta1,Reitera);
+							//var Resta3 = RestaSignos(StringUno,TempoDivision);
+							//SubResultado = RestaSignos(StringUno,Resta3, Reitera);
+							SubResultado = StringUno;
 						}				
 				}
 				//if (EsIrresoluble == true ){
@@ -684,7 +686,11 @@ function ElevaSignos(Texto1,Texto2,Reiteraciones){
 					Base10 = StringsCerosToRight( StringUno, Dos);
 					var ResultadoenDecimales = DivideSignos(ParteDecimal, Base10, Reitera);
 					var Multiplo = MultiplicaSignos(ResultadoDivision,ResultadoenDecimales);
-					SubResultado = SumaSignos(PreResultado1,Multiplo);
+					if (IsMayor(Num1, StringUno) == true ){
+						SubResultado = SumaSignos(PreResultado1,Multiplo);
+					}else{
+						SubResultado = RestaSignos(PreResultado1,Multiplo);
+					}
 				}else{
 					SubResultado = MultiplicaReales(Num1,Num2);	
 				}				
