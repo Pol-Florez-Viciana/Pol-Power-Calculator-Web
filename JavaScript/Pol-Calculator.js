@@ -539,7 +539,8 @@ function LOGSignos(Texto1,Texto2,Reiteraciones){
 						var Temporal = Num1;
 						if (IsMayor(Num2, StringUno) == true ){
 							while (IsMayor(Temporal,Num2) == true ){
-								Temporal = DivideSignos(Temporal,Num2,Reitera);
+								var NewTemporal = DivideSignos(Temporal,Num2,Reitera);
+								Temporal = GetIntegerPart(NewTemporal);
 								PrimerParametro = SumaReales(PrimerParametro,StringUno);
 							}
 						}else{
