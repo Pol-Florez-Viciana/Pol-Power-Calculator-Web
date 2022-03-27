@@ -45,28 +45,57 @@ const TreintaiDos = 32;
 
 // Funciones de Redondeo 
 function RoundToUp(Texto){
-	var Resultado = StringNullString;
-	if ( IsRealNumber(Texto) == true ){
-		var Largada = GetDecimalPart(Texto);
-		var Longitud = Largada.length + Uno;
-		var NumeroSuma = StringsCerosToRight(StringCero + StringComa , parseInt(Longitud)) + StringUno;
-		Resultado = SumaSignos(Texto,NumeroSuma);
-	}else{
-		Resultado = SumaSignos(Texto, StringUno);
+	var Resultado = StringCero;
+	if (IsNegativeAndNumber(Texto) == true || IsNumber(Texto) == true){
+		var Num1 = Texto;
+		var EsNegativo = false;
+		if ( IsNegativeAndNumber(Texto) == true){
+			Num1 = ConvertPositive(Texto);
+			EsNegativo = true;
+		}
+		if (IsRealNumber(Num1) == true ){
+			var Largada = GetDecimalPart(Num1);
+			var Longitud = Largada.length + Uno;
+			var NumeroSuma = StringsCerosToRight(StringCero + StringComa , parseInt(Longitud)) + StringUno;
+			Resultado = SumaSignos(Num1,NumeroSuma);
+		}else{
+			Resultado = SumaSignos(Num1, StringUno);
+		}
 	}
-	return Resultado;
+	if (EsNegativo == false){
+		return Resultado;
+	}else{
+		return StringGuion + Resultado;
+	}	
+	
 }
 function RoundToDown(Texto){
-	var Resultado = StringNullString;
-	if ( IsRealNumber(Texto) == true ){
-		var Largada = GetDecimalPart(Texto);
-		var Longitud = Largada.length + Uno;
-		var NumeroResta = StringsCerosToRight(StringCero + StringComa , parseInt(Longitud)) + StringUno;
-		Resultado = RestaSignos(Texto,NumeroResta);
-	}else{
-		Resultado = RestaSignos(Texto, StringUno);
+	var Resultado = StringCero;
+	if (IsNegativeAndNumber(Texto) == true || IsNumber(Texto) == true){
+		var Num1 = Texto;
+		var EsNegativo = false;
+		if ( IsNegativeAndNumber(Texto) == true){
+			Num1 = ConvertPositive(Texto);
+			EsNegativo = true;
+		}
+		if (IsRealNumber(Num1) == true ){
+			var Largada = GetDecimalPart(Num1);
+			var Longitud = Largada.length + Uno;
+			var NumeroResta = StringsCerosToRight(StringCero + StringComa , parseInt(Longitud)) + StringUno;
+			Resultado = RestaSignos(Num1,NumeroResta);
+		}else{
+			Resultado = RestaSignos(Num1, StringUno);
+		}
 	}
-	return Resultado;
+	if (EsNegativo == false){
+		return Resultado;
+	}else{
+		if(IsNegativeAndNumber(Resultado) == false){
+			return StringGuion + Resultado;
+		}else{
+			return Resultado;
+		}
+	}	
 }
 // Funciones de Formateo de Puntos
 function CreatePointsMilesNumber(Texto){
