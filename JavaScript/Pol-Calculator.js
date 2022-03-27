@@ -1,8 +1,8 @@
 // Modulo Pol-Calculator.js **********************************************************************************************
 // ***********************************************************************************************************************
 // ***********************************************************************************************************************
-// Día Creación 14/12/2021 - Hasta - 26/02/2022 ** Autor: Pol Flórez Viciana *********************************************
-// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 26/02/2022 ***************************************************************
+// Día Creación 14/12/2021 - Hasta - 27/03/2022 ** Autor: Pol Flórez Viciana *********************************************
+// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 27/03/2022 ***************************************************************
 // ***********************************************************************************************************************
 // Constantes de Uso Reiterado
 const StringNullString = ""; 
@@ -43,6 +43,31 @@ const Diez = 10;
 const DieziSeis = 16;
 const TreintaiDos = 32;
 
+// Funciones de Redondeo 
+function RoundToUp(Texto){
+	var Resultado = StringNullString;
+	if ( IsRealNumber(Texto) == true ){
+		var Largada = GetDecimalPart(Texto);
+		var Longitud = Largada.length + Uno;
+		var NumeroSuma = StringsCerosToRight(StringCero + StringComa , parseInt(Longitud)) + StringUno;
+		Resultado = SumaSignos(Texto,NumeroSuma);
+	}else{
+		Resultado = SumaSignos(Texto, StringUno);
+	}
+	return Resultado;
+}
+function RoundToDown(Texto){
+	var Resultado = StringNullString;
+	if ( IsRealNumber(Texto) == true ){
+		var Largada = GetDecimalPart(Texto);
+		var Longitud = Largada.length + Uno;
+		var NumeroResta = StringsCerosToRight(StringCero + StringComa , parseInt(Longitud)) + StringUno;
+		Resultado = RestaSignos(Texto,NumeroResta);
+	}else{
+		Resultado = RestaSignos(Texto, StringUno);
+	}
+	return Resultado;
+}
 // Funciones de Formateo de Puntos
 function CreatePointsMilesNumber(Texto){
 	var EsNum = false;

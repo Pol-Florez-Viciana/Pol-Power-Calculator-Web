@@ -52,7 +52,7 @@
 </head>
 <body >
 	<center>
-		<h1 style="color: blue;">Pol Power Calculator Web Version 4.8</h1>
+		<h1 style="color: blue;">Pol Power Calculator Web Version 4.9</h1>
 		<div style="width: 98%;" >
 			<section id="Numeros1">
 				<div id="ParteNum1">
@@ -61,6 +61,8 @@
 						<input id="BtnHidden1" onclick="EliminarPuntos1()" type="button" style="font-size: 3.5mm;" value="Hide Points Miles" title="Hide Points Miles" />
 						<input id="BtnPI1" onclick="MostrarPI1()" type="button" style="font-size: 3.5mm;" value="PI Num" title="PI Number" />
 						<input id="BtnEuler1" onclick="MostrarEuler1()" type="button" style="font-size: 3.5mm;" value="e Num" title="Euler Number" />
+						<input id="BtnRoundToUp1" onclick="RedondeaArriba1()" type="button" style="font-size: 3.5mm;" value="Round To Up" title="Rounded To Up" />
+						<input id="BtnRoundToDown1" onclick="RedondeaAbajo1()" type="button" style="font-size: 3.5mm;" value="Round To Down" title="Rounded To Down" />
 					</h2>
 					<textarea id="Numero1" style="width: 98%; max-width: 98%; min-width: 98%; text-align: right;" ></textarea><br>
 					<p id="PropiedadesNumero1" style="border: solid 1px green;" >Not Number: 0</p>
@@ -85,6 +87,8 @@
 						<input id="BtnHidden2" onclick="EliminarPuntos2()" type="button" style="font-size: 3.5mm;" value="Hide Points Miles" title="Hide Points Miles" />
 						<input id="BtnPI2" onclick="MostrarPI2()" type="button" style="font-size: 3.5mm;" value="PI Num" title="PI Number" />
 						<input id="BtnEuler2" onclick="MostrarEuler2()" type="button" style="font-size: 3.5mm;" value="e Num" title="Euler Number" />
+						<input id="BtnRoundToUp2" onclick="RedondeaArriba2()" type="button" style="font-size: 3.5mm;" value="Round To Up" title="Rounded To Up" />
+						<input id="BtnRoundToDown2" onclick="RedondeaAbajo2()" type="button" style="font-size: 3.5mm;" value="Round To Down" title="Rounded To Down" />
 					</h2>
 					<textarea id="Numero2" style="width: 98%; max-width: 98%; min-width: 98%; text-align: right;" ></textarea><br>
 					<p id="PropiedadesNumero2" style="border: solid 1px green;" >Not Number: 0</p>
@@ -122,6 +126,8 @@
 						<input id="BtnHidden3" onclick="EliminarPuntos3()" type="button" style="font-size: 3.5mm;" value="Hide Points Miles" title="Hide Points Miles" />
 						<input id="BtnPI3" onclick="MostrarPI3()" type="button" style="font-size: 3.5mm;" value="PI Num" title="PI Number" />
 						<input id="BtnEuler3" onclick="MostrarEuler3()" type="button" style="font-size: 3.5mm;" value="e Num" title="Euler Number" />
+						<input id="BtnRoundToUp3" onclick="RedondeaArriba3()" type="button" style="font-size: 3.5mm;" value="Round To Up" title="Rounded To Up" />
+						<input id="BtnRoundToDown3" onclick="RedondeaAbajo3()" type="button" style="font-size: 3.5mm;" value="Round To Down" title="Rounded To Down" />
 					</h2>
 					<textarea id="Numero3" style="width: 98%; max-width: 98%; min-width: 98%; text-align: right;" ></textarea><br>
 					<p id="PropiedadesNumero3" style="border: solid 1px green;" >Not Number: 0</p>
@@ -319,6 +325,36 @@
 		}
 		function SendToNumber3(){
 			document.getElementById("Numero3").value = document.getElementById("Resultado").value;
+		}
+		function RedondeaArriba1(){
+			var Numero1 = document.getElementById("Numero1").value
+			var Resultado = RoundToUp(Numero1);
+			document.getElementById("Numero1").value = Resultado;
+		}
+		function RedondeaAbajo1(){
+			var Numero1 = document.getElementById("Numero1").value
+			var Resultado = RoundToDown(Numero1);
+			document.getElementById("Numero1").value = Resultado;
+		}
+		function RedondeaArriba2(){
+			var Numero1 = document.getElementById("Numero2").value
+			var Resultado = RoundToUp(Numero1);
+			document.getElementById("Numero2").value = Resultado;
+		}
+		function RedondeaAbajo2(){
+			var Numero1 = document.getElementById("Numero2").value
+			var Resultado = RoundToDown(Numero1);
+			document.getElementById("Numero2").value = Resultado;
+		}
+		function RedondeaArriba3(){
+			var Numero1 = document.getElementById("Numero3").value
+			var Resultado = RoundToUp(Numero1);
+			document.getElementById("Numero3").value = Resultado;
+		}
+		function RedondeaAbajo3(){
+			var Numero1 = document.getElementById("Numero3").value
+			var Resultado = RoundToDown(Numero1);
+			document.getElementById("Numero3").value = Resultado;
 		}
 		function Sumar(){
 			var Numero1 = document.getElementById("Numero1").value;
