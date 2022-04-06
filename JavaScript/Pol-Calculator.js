@@ -1103,6 +1103,7 @@ function DivideSignos(Texto1,Texto2,Reiteraciones){
 	var Num2 = StringNullString;
 	var Resultado = StringCero;
 	var Reitera = Cero;
+	if(IsEquals(Texto1,StringCero) == false || IsEquals(Texto2,StringCero) == false ){
 	//if (IsNumber(Reiteraciones) == true ){
 		var R1 = IsMayor(StringTreintaiDos,Reiteraciones);
 		if(R1 == true ){
@@ -1155,6 +1156,7 @@ function DivideSignos(Texto1,Texto2,Reiteraciones){
 			}	
 		}
 	//}
+	}
 	return Resultado;	
 }
 
