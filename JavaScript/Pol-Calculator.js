@@ -1260,10 +1260,14 @@ function RootYSignos(Texto1, Texto2, Reiterations, LongDecimales){
 							Llevada = SubLongitud1 / 2;
 						}
 						Llevada = parseInt(Llevada);
-						var Dieces = StringsCerosToRight(StringUno, Longitud1);
+						var Dieces = StringsCerosToRight(StringUno, SubLongitud1);
 						SubNumero1 = DivideSignos(Texto1, Dieces, StringNullString + Reitera);
 						var SubResultado = RaizYReal(SubNumero1, Texto2, StringNullString + Reitera, StringNullString + LongiDecimales);
-						Dieces = StringsCerosToRight(StringUno, Llevada - Uno);
+						if(Llevada == Cero){	
+							Dieces = StringUno + StringCero;
+						}else{	
+							Dieces = StringsCerosToRight(StringUno, Llevada + Uno);
+						}
 						Resultado = MultiplicaSignos(SubResultado, Dieces);
 					}else{
 						Resultado = RaizYReal(Texto1, Texto2, StringNullString + Reitera, StringNullString + LongiDecimales);
