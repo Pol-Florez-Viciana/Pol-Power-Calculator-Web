@@ -1,8 +1,8 @@
 // Modulo Pol-Calculator.js **********************************************************************************************
 // ***********************************************************************************************************************
 // ***********************************************************************************************************************
-// Día Creación 14/12/2021 - Hasta - 27/03/2022 ** Autor: Pol Flórez Viciana *********************************************
-// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 27/03/2022 ***************************************************************
+// Día Creación 14/12/2021 - Hasta - 08/05/2022 ** Autor: Pol Flórez Viciana *********************************************
+// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 08/05/2022 ***************************************************************
 // ***********************************************************************************************************************
 // Constantes de Uso Reiterado
 const StringNullString = ""; 
@@ -1259,14 +1259,14 @@ function RootYSignos(Texto1, Texto2, Reiterations, LongDecimales){
 							SubLongitud1 = Longitud1 - 2;
 							Llevada = SubLongitud1 / 2;
 						}
-						Llevada = GetIntegerPart(Llevada);
-						var Dieces = StringsCerosToRight(StringUno, SubLongitud1);
-						SubNumero1 = DivideSignos(Texto1, Dieces, StringNullString + Reitera);
-						var SubResultado = RaizYReal(SubNumero1, Texto2, StringNullString + Reitera, StringNullString + LongiDecimales);
-						Dieces = StringsCerosToRight(StringUno, Llevada);
+						Llevada = parseInt(Llevada);
+						var Dieces = StringsCerosToRight(StringUno, Longitud1);
+						SubNumero1 = DivideSignos(Num1, Dieces, StringNullString + Reitera);
+						var SubResultado = RaizYReal(SubNumero1, Num2, StringNullString + Reitera, StringNullString + LongiDecimales);
+						Dieces = StringsCerosToRight(StringUno, Llevada - Uno);
 						Resultado = MultiplicaSignos(SubResultado, Dieces);
 					}else{
-						Resultado = RaizYReal(Texto1, Texto2, StringNullString + Reitera, StringNullString + LongiDecimales);
+						Resultado = RaizYReal(Num1, Num2, StringNullString + Reitera, StringNullString + LongiDecimales);
 					}
 				}		
 			}	
