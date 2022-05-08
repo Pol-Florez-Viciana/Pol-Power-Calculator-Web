@@ -1261,12 +1261,12 @@ function RootYSignos(Texto1, Texto2, Reiterations, LongDecimales){
 						}
 						Llevada = parseInt(Llevada);
 						var Dieces = StringsCerosToRight(StringUno, Longitud1);
-						SubNumero1 = DivideSignos(Num1, Dieces, StringNullString + Reitera);
-						var SubResultado = RaizYReal(SubNumero1, Num2, StringNullString + Reitera, StringNullString + LongiDecimales);
+						SubNumero1 = DivideSignos(Texto1, Dieces, StringNullString + Reitera);
+						var SubResultado = RaizYReal(SubNumero1, Texto2, StringNullString + Reitera, StringNullString + LongiDecimales);
 						Dieces = StringsCerosToRight(StringUno, Llevada - Uno);
 						Resultado = MultiplicaSignos(SubResultado, Dieces);
 					}else{
-						Resultado = RaizYReal(Num1, Num2, StringNullString + Reitera, StringNullString + LongiDecimales);
+						Resultado = RaizYReal(Texto1, Texto2, StringNullString + Reitera, StringNullString + LongiDecimales);
 					}
 				}		
 			}	
@@ -1364,10 +1364,14 @@ function RaizYReal(Texto1, Texto2, Reiterations, LongDecimales){
 								SubResultado = SumaSignos(SubResultado,LosNumDecimales);
 								ElevacionesCuentaNum1 = ElevaSignos(SubResultado, Num2, StringNullString + TreintaiDos);	
 							}
-							while ( IsMayor(Num1, ElevacionesCuentaNum1) == false ){
-								SubResultado = RestaSignos(SubResultado,LosNumDecimales);
-								ElevacionesCuentaNum1 = ElevaSignos(SubResultado, Num2, StringNullString + TreintaiDos);
-							}
+							if (IsEquals(Num1, ElevacionesCuentaNum1) == true ){
+								// No Más Sumas Ni Restas
+							}else{
+								while ( IsMayor(Num1, ElevacionesCuentaNum1) == false ){
+									SubResultado = RestaSignos(SubResultado,LosNumDecimales);
+									ElevacionesCuentaNum1 = ElevaSignos(SubResultado, Num2, StringNullString + TreintaiDos);
+								}
+							}	
 						}
 						Resultado = SubResultado;
 					}else{
