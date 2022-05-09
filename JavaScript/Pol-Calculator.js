@@ -1253,21 +1253,17 @@ function RootYSignos(Texto1, Texto2, Reiterations, LongDecimales){
 					}
 					if (Longitud1 >= 5){
 						if (IsPar(StringNullString + Longitud1) == true ){
-							SubLongitud1 = Longitud1 - 1;
-							Llevada = SubLongitud1 / 2;
+							SubLongitud1 = Longitud1 - Tres;
+							Llevada = (SubLongitud1 / parseInt(Num2));
 						}else{
-							SubLongitud1 = Longitud1 - 2;
-							Llevada = SubLongitud1 / 2;
+							SubLongitud1 = Longitud1 - Cuatro;
+							Llevada = (SubLongitud1 / parseInt(Num2));
 						}
 						Llevada = parseInt(Llevada);
 						var Dieces = StringsCerosToRight(StringUno, SubLongitud1);
 						SubNumero1 = DivideSignos(Texto1, Dieces, StringNullString + Reitera);
 						var SubResultado = RaizYReal(SubNumero1, Texto2, StringNullString + Reitera, StringNullString + LongiDecimales);
-						if(Llevada == Cero){	
-							Dieces = StringUno + StringCero;
-						}else{	
-							Dieces = StringsCerosToRight(StringUno, Llevada + Uno);
-						}
+						Dieces = StringsCerosToRight(StringUno, Llevada + Uno );
 						Resultado = MultiplicaSignos(SubResultado, Dieces);
 					}else{
 						Resultado = RaizYReal(Texto1, Texto2, StringNullString + Reitera, StringNullString + LongiDecimales);
@@ -1352,34 +1348,31 @@ function RaizYReal(Texto1, Texto2, Reiterations, LongDecimales){
 					}
 				}
 				var LaResta = RestaSignos(Num2,StringUno);
-				ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + TreintaiDos);
+				ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + Reitera);
 				var SumadeR = SumaSignos(Num1,ElevacionesCuentaNum1);
-				var LaElevacionMenor = ElevaSignos(CuentaNum1, LaResta, StringNullString + TreintaiDos);
-				var DivisiondeR = DivideSignos(SumadeR,	LaElevacionMenor, StringNullString + Reitera);
-				SubResultado = StringNullString + DivideSignos(DivisiondeR, StringDos, StringNullString + Reitera);
-				ElevacionesCuentaNum1 = ElevaSignos(SubResultado, Num2, StringNullString + TreintaiDos);
+				var LaElevacionMenor = ElevaSignos(CuentaNum1, LaResta, StringNullString + Reitera);
+				var DivisiondeR =  MultiplicaSignos(LaElevacionMenor, StringDos);
+				SubResultado = DivideSignos( SumadeR, DivisiondeR, StringNullString + Reitera);
+				ElevacionesCuentaNum1 = ElevaSignos(SubResultado, Num2, StringNullString + Reitera);
 				if (IsEquals(Num1, ElevacionesCuentaNum1) == false ){
 					if (parseInt(LongiDecimales) != 0 ){
 						SubResultado = GetIntegerPart(SubResultado);
 						var i;
 						for ( i = 1; i <= parseInt(LongiDecimales) + Uno; i++){
-							var LosNumDecimales = StringsCerosToRight(StringCero + StringComa, i) + StringUno;
-							while ( IsMayor(Num1, ElevacionesCuentaNum1) == true ){
+							var LosNumDecimales = StringsCerosToRight(StringCero + StringComa, i + Uno) + StringUno;
+							while ( IsMayor(ElevacionesCuentaNum1, Num1) == false ){
 								SubResultado = SumaSignos(SubResultado,LosNumDecimales);
-								ElevacionesCuentaNum1 = ElevaSignos(SubResultado, Num2, StringNullString + TreintaiDos);	
+								ElevacionesCuentaNum1 = ElevaSignos(SubResultado, Num2, StringNullString + Reitera );	
 							}
-							if (IsEquals(Num1, ElevacionesCuentaNum1) == true ){
-								// No Más Sumas Ni Restas
-							}else{
-								while ( IsMayor(Num1, ElevacionesCuentaNum1) == false ){
-									SubResultado = RestaSignos(SubResultado,LosNumDecimales);
-									ElevacionesCuentaNum1 = ElevaSignos(SubResultado, Num2, StringNullString + TreintaiDos);
-								}
-							}	
+							while ( IsMayor(ElevacionesCuentaNum1, Num1) == true ){
+								SubResultado = RestaSignos(SubResultado,LosNumDecimales);
+								ElevacionesCuentaNum1 = ElevaSignos(SubResultado, Num2, StringNullString + Reitera);
+							}
+									
 						}
-						Resultado = SubResultado;
+						Resultado = SubResultado; // DivideSignos(SubResultado, LaResta, StringNullString + Reitera);
 					}else{
-						Resultado = SubResultado;
+						Resultado = SubResultado; // DivideSignos(SubResultado, LaResta, StringNullString + Reitera);
 					}
 				}else{
 					Resultado = SubResultado;	
