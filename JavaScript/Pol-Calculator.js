@@ -1,8 +1,8 @@
 // Modulo Pol-Calculator.js **********************************************************************************************
 // ***********************************************************************************************************************
 // ***********************************************************************************************************************
-// Día Creación 14/12/2021 - Hasta - 08/05/2022 ** Autor: Pol Flórez Viciana *********************************************
-// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 08/05/2022 ***************************************************************
+// Día Creación 14/12/2021 - Hasta - 10/05/2022 ** Autor: Pol Flórez Viciana *********************************************
+// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 10/05/2022 ***************************************************************
 // ***********************************************************************************************************************
 // Constantes de Uso Reiterado
 const StringNullString = ""; 
@@ -1251,12 +1251,12 @@ function RootYSignos(Texto1, Texto2, Reiterations, LongDecimales){
 						ParteEntera1 = StringNullString + Num1;
 						Longitud1 = ParteEntera1.length;
 					}
-					if (Longitud1 >= 5){
+					if (Longitud1 >= Diez){
 						if (IsPar(StringNullString + Longitud1) == true ){
-							SubLongitud1 = Longitud1 - Tres;
+							SubLongitud1 = Longitud1 - Nueve;
 							Llevada = (SubLongitud1 / parseInt(Num2));
 						}else{
-							SubLongitud1 = Longitud1 - Cuatro;
+							SubLongitud1 = Longitud1 - Ocho;
 							Llevada = (SubLongitud1 / parseInt(Num2));
 						}
 						Llevada = parseInt(Llevada);
@@ -1343,15 +1343,16 @@ function RaizYReal(Texto1, Texto2, Reiterations, LongDecimales){
 				while ( Salte == false ){
 					CuentaNum1 = SumaSignos(CuentaNum1,StringUno);	
 					ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + TreintaiDos);
-					if( IsMayor(Num1, ElevacionesCuentaNum1) == false){
+					if( IsMayor(Num1, ElevacionesCuentaNum1) == false || IsEquals(Num1, ElevacionesCuentaNum1) == true){
 						Salte = true;
 					}
 				}
+				
 				var LaResta = RestaSignos(Num2,StringUno);
 				ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + Reitera);
 				var SumadeR = SumaSignos(Num1,ElevacionesCuentaNum1);
 				var LaElevacionMenor = ElevaSignos(CuentaNum1, LaResta, StringNullString + Reitera);
-				var DivisiondeR =  MultiplicaSignos(LaElevacionMenor, StringDos);
+				var DivisiondeR = MultiplicaSignos(LaElevacionMenor, StringDos);
 				SubResultado = DivideSignos( SumadeR, DivisiondeR, StringNullString + Reitera);
 				ElevacionesCuentaNum1 = ElevaSignos(SubResultado, Num2, StringNullString + Reitera);
 				if (IsEquals(Num1, ElevacionesCuentaNum1) == false ){
