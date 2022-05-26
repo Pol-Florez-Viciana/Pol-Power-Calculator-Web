@@ -52,7 +52,7 @@
 </head>
 <body >
 	<center>
-		<h1 style="color: blue;">Pol Power Calculator Web Version 4.26</h1>
+		<h1 style="color: blue;">Pol Power Calculator Web Version 6.0</h1>
 		<div style="width: 98%;" >
 			<section id="Numeros1">
 				<div id="ParteNum1">
@@ -108,6 +108,8 @@
 					<input id="BtnPow" onclick="Elevacion()" type="button" style="font-size: 4mm;" value="Pow Simetric" title="Empowerment" />
 					<input id="BtnLog" onclick="Logaritmo()" type="button" style="font-size: 3mm;" value="LOG" title="Logaritm" />
 					<br><br>
+					<input id="BtnReversePow" onclick="ReversoElevacion()" type="button" style="font-size: 4mm;" value="Reverse Pow Simetric" title="Reverse Empowerment" />
+					<br><br>
 					<input id="BtnPorcentaje" onclick="TraePorcentaje()" type="button" style="font-size: 4mm;" value="100%" title="Percentage of 100%" />
 					<input id="BtnPormilaje" onclick="TraePormilaje()" type="button" style="font-size: 4mm;" value="1.000%" title="Percentage of 1.000%" />
 					<br>					
@@ -141,6 +143,9 @@
 					<input id="BtnPorUnidaje" onclick="TraePorunidaje()" type="button" style="font-size: 4mm;" value="1%" title="Perunitage of X%" />
 					<input id="BtnModLogPow" onclick="ModLogPowAsimetrico()" type="button" style="font-size: 4mm;" value="Mod.Log.Pow." title="ModLogPow Function" />
 					<input id="BtnPowAsimetrico" onclick="PowAsimetrico()" type="button" style="font-size: 4mm;" value="Pow Asimetric" title="Pow Asimetric" />
+					<br><br>
+					<input id="BtnModLogPowReverse" onclick="ModLogPowAsimetricoReverse()" type="button" style="font-size: 4mm;" value="Mod.Log.Reverse.Pow." title="Mod Log Reverse Pow Function" />
+					<input id="BtnPowAsimetricoReverse" onclick="PowAsimetricoReverse()" type="button" style="font-size: 4mm;" value="Reverse Pow Asimetric" title="Reverse Pow Asimetric" />
 				</div>
 				<div id="ParteNumResultado">
 					<h2>
@@ -484,6 +489,15 @@
 			ActualizarResultado();
 			AddListadoResultados(Resultado + " = " + Numero1 + " ^ " + Numero2 );
 		}
+		function ReversoElevacion(){
+			var Numero1 = document.getElementById("Numero1").value;
+			var Numero2 = document.getElementById("Numero2").value;
+			var Reiteraciones = document.getElementById("NumeroReiteraciones").value;
+			var Resultado = PowReverse(Numero1,Numero2,Reiteraciones);
+			document.getElementById("Resultado").value = Resultado;
+			ActualizarResultado();
+			AddListadoResultados(Resultado + " = ( 1 / " + Numero1 + " ) ^ " + Numero2 );
+		}
 		function Logaritmo(){
 			var Numero1 = document.getElementById("Numero1").value;
 			var Numero2 = document.getElementById("Numero2").value;
@@ -541,6 +555,16 @@
 			ActualizarResultado();
 			AddListadoResultados(Resultado + " = " + Numero1 + " - ( " + Numero2 + " ^ Integer(" + Numero3 + ") )" );
 		}
+		function ModLogPowAsimetricoReverse(){
+			var Numero1 = document.getElementById("Numero1").value;
+			var Numero2 = document.getElementById("Numero2").value;
+			var Numero3 = document.getElementById("Numero3").value;
+			var Reiteraciones = document.getElementById("NumeroReiteraciones").value;
+			var Resultado = ModLogPowReverse(Numero1, Numero2,Numero3, Reiteraciones);
+			document.getElementById("Resultado").value = Resultado;
+			ActualizarResultado();
+			AddListadoResultados(Resultado + " = " + Numero1 + " - (( 1 / " + Numero2 + " ) ^ Integer(" + Numero3 + ") )" );
+		}
 		function PowAsimetrico(){
 			var Numero1 = document.getElementById("Numero1").value;
 			var Numero2 = document.getElementById("Numero2").value;
@@ -550,6 +574,16 @@
 			document.getElementById("Resultado").value = Resultado;
 			ActualizarResultado();
 			AddListadoResultados(Resultado + " = ( " + Numero1 + " ^ Integer(" + Numero2 + ") ) + " + Numero3 );
+		}
+		function PowAsimetricoReverse(){
+			var Numero1 = document.getElementById("Numero1").value;
+			var Numero2 = document.getElementById("Numero2").value;
+			var Numero3 = document.getElementById("Numero3").value;
+			var Reiteraciones = document.getElementById("NumeroReiteraciones").value;
+			var Resultado = PowAsimetricReverse(Numero1, Numero2,Numero3, Reiteraciones);
+			document.getElementById("Resultado").value = Resultado;
+			ActualizarResultado();
+			AddListadoResultados(Resultado + " = (( 1 / " + Numero1 + " ) ^ Integer(" + Numero2 + ") ) + " + Numero3 );
 		}
 		function CrearPuntosResult(){
 			var Numero = document.getElementById("Resultado").value;

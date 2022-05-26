@@ -453,6 +453,24 @@ function ConvertIntegerToBinary(Texto,Reiteraciones){
 }
 
 //Principales Funciones Finales de Uso con Signos
+function ModLogPowReverse(Texto1,Texto2,Texto3,Reiterations){
+	var Resultado = StringCero;
+	var DivisionDeR = DivideSignos(StringUno,Texto2,Reiterations);
+	Resultado = ModLogPow(Texto1,DivisionDeR,Texto3,Reiterations);
+	return Resultado;
+}
+function PowReverse(Texto1,Texto2,Reiterations){
+	var Resultado = StringCero;
+	var DivisionDeR = DivideSignos(StringUno,Texto1,Reiterations);
+	Resultado = ElevaSignos(DivisionDeR,Texto2,Reiterations);
+	return Resultado;
+}
+function PowAsimetricReverse(Texto1,Texto2,Texto3,Reiterations){
+	var Resultado = StringCero;
+	var DivisionDeR = DivideSignos(StringUno,Texto1,Reiterations);
+	Resultado = PowAsimetric(DivisionDeR,Texto2,Texto3,Reiterations);
+	return Resultado;
+}
 function ModLogPow(Texto1,Texto2,Texto3,Reiteraciones){
 	var Restacion = StringCero;
 	if(IsNegativeAndNumber(Texto1) == true || IsNumber(Texto1) == true){
