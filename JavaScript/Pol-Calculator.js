@@ -1378,18 +1378,22 @@ function RaizYReal(Texto1, Texto2, Reiterations, LongDecimales){
 				if (IsEquals(Num1, ElevacionesCuentaNum1) == false ){
 					if (parseInt(LongiDecimales) != 0 ){
 						SubResultado = GetIntegerPart(SubResultado);
+						ElevacionesCuentaNum1 = ElevaSignos(SubResultado, Num2, StringNullString + Reitera);
 						var i;
 						for ( i = 1; i <= parseInt(LongiDecimales) + Uno; i++){
-							var LosNumDecimales = StringsCerosToRight(StringCero + StringComa, i + Uno) + StringUno;
-							while ( IsMayor(ElevacionesCuentaNum1, Num1) == false ){
-								SubResultado = SumaSignos(SubResultado,LosNumDecimales);
-								ElevacionesCuentaNum1 = ElevaSignos(SubResultado, Num2, StringNullString + Reitera );	
-							}
-							while ( IsMayor(ElevacionesCuentaNum1, Num1) == true ){
-								SubResultado = RestaSignos(SubResultado,LosNumDecimales);
-								ElevacionesCuentaNum1 = ElevaSignos(SubResultado, Num2, StringNullString + Reitera);
-							}
-									
+							if (IsEquals(Num1, ElevacionesCuentaNum1) == false ){
+								var LosNumDecimales = StringsCerosToRight(StringCero + StringComa, i + Uno) + StringUno;
+								while ( IsMayor(ElevacionesCuentaNum1, Num1) == false ){
+									SubResultado = SumaSignos(SubResultado,LosNumDecimales);
+									ElevacionesCuentaNum1 = ElevaSignos(SubResultado, Num2, StringNullString + Reitera );	
+								}
+								while ( IsMayor(ElevacionesCuentaNum1, Num1) == true ){
+									SubResultado = RestaSignos(SubResultado,LosNumDecimales);
+									ElevacionesCuentaNum1 = ElevaSignos(SubResultado, Num2, StringNullString + Reitera);
+								}
+							}else{
+								break;
+							}		
 						}
 						Resultado = SubResultado; // DivideSignos(SubResultado, LaResta, StringNullString + Reitera);
 					}else{
