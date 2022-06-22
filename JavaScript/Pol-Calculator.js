@@ -1374,7 +1374,7 @@ function RaizYReal(Texto1, Texto2, Reiterations, LongDecimales){
 				var LaElevacionMenor = ElevaSignos(CuentaNum1, LaResta, StringNullString + Reitera);
 				var DivisiondeR = MultiplicaSignos(LaElevacionMenor, StringDos);
 				SubResultado = DivideSignos( SumadeR, DivisiondeR, StringNullString + Reitera);
-				ElevacionesCuentaNum1 = ElevaSignos(SubResultado, Num2, StringNullString + Reitera);
+				//ElevacionesCuentaNum1 = ElevaSignos(SubResultado, Num2, StringNullString + Reitera);
 				if (IsEquals(Num1, ElevacionesCuentaNum1) == false ){
 					if (parseInt(LongiDecimales) != 0 ){
 						SubResultado = GetIntegerPart(SubResultado);
