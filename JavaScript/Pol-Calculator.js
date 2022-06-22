@@ -1,8 +1,8 @@
 // Modulo Pol-Calculator.js **********************************************************************************************
 // ***********************************************************************************************************************
 // ***********************************************************************************************************************
-// Día Creación 14/12/2021 - Hasta - 10/05/2022 ** Autor: Pol Flórez Viciana *********************************************
-// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 10/05/2022 ***************************************************************
+// Día Creación 14/12/2021 - Hasta - 22/05/2022 ** Autor: Pol Flórez Viciana *********************************************
+// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 22/05/2022 ***************************************************************
 // ***********************************************************************************************************************
 // Constantes de Uso Reiterado
 const StringNullString = ""; 
@@ -1237,13 +1237,14 @@ function RootYSignos(Texto1, Texto2, Reiterations, LongDecimales){
 			if ( IsNegativeAndNumber(Texto2) == true ){
 				if ( IsRealNumber(Texto2) == true ){
 					Num2 = StringNullString + ConvertPositive(Texto2);
-					Num2 = StringNullString + GetIntegerPart(Num2);
+					//Num2 = StringNullString + GetIntegerPart(Num2);
 				}else{
 					Num2 = StringNullString + ConvertPositive(Texto2);
 				}	
 			}else{
 				if (IsRealNumber(Texto2) == true ){
-					Num2 = StringNullString + GetIntegerPart(Texto2);
+					//Num2 = StringNullString + GetIntegerPart(Texto2);
+					Num2 = StringNullString + Texto2;
 				}else{
 					Num2 = StringNullString + Texto2;
 				}
@@ -1336,13 +1337,14 @@ function RaizYReal(Texto1, Texto2, Reiterations, LongDecimales){
 			if ( IsNegativeAndNumber(Texto2) == true ){
 				if ( IsRealNumber(Texto2) == true ){
 					Num2 = StringNullString + ConvertPositive(Texto2);
-					Num2 = StringNullString + GetIntegerPart(Num2);
+					//Num2 = StringNullString + GetIntegerPart(Num2);
 				}else{
 					Num2 = StringNullString + ConvertPositive(Texto2);
 				}	
 			}else{
 				if (IsRealNumber(Texto2) == true ){
-					Num2 = StringNullString + GetIntegerPart(Texto2);
+					//Num2 = StringNullString + GetIntegerPart(Texto2);
+					Num2 = StringNullString + Texto2;
 				}else{
 					Num2 = StringNullString + Texto2;
 				}
