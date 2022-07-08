@@ -667,9 +667,11 @@ function LOGSignos(Texto1,Texto2,Reiteraciones){
 							SubResultado = StringUno;
 						}				
 				}
-				//if (EsIrresoluble == true ){
-				//	SubResultado = StringUno;
-				//}
+				if (IsRealNumber(SubResultado) == true ){
+					if (GetDecimalPart(SubResultado) >= Reitera - Dos){
+						SubResultado = FormatNumberDecimalsLenght(SubResultado, Reitera - Dos);
+					}	
+				}
 				if(EsNegativo1 == true && EsNegativo2 == true ){
 					Resultado = StringNullString + SubResultado;
 				}
