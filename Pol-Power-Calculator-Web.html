@@ -52,7 +52,7 @@
 </head>
 <body >
 	<center>
-		<h1 style="color: blue;">Pol Power Calculator Web Version 8.1</h1>
+		<h1 style="color: blue;">Pol Power Calculator Web Version 8.2</h1>
 		<div style="width: 98%;" >
 			<section id="Numeros1">
 				<div id="ParteNum1">
@@ -553,7 +553,7 @@
 			var Resultado = ModLogPow(Numero1, Numero2,Numero3, Reiteraciones);
 			document.getElementById("Resultado").value = Resultado;
 			ActualizarResultado();
-			AddListadoResultados(Resultado + " = " + Numero1 + " - ( " + Numero2 + " ^ Integer(" + Numero3 + ") )" );
+			AddListadoResultados(Resultado + " = " + Numero1 + " - ( " + Numero2 + " ^ " + Numero3 + " )" );
 		}
 		function ModLogPowAsimetricoReverse(){
 			var Numero1 = document.getElementById("Numero1").value;
@@ -563,7 +563,7 @@
 			var Resultado = ModLogPowReverse(Numero1, Numero2,Numero3, Reiteraciones);
 			document.getElementById("Resultado").value = Resultado;
 			ActualizarResultado();
-			AddListadoResultados(Resultado + " = " + Numero1 + " - (( 1 / " + Numero2 + " ) ^ Integer(" + Numero3 + ") )" );
+			AddListadoResultados(Resultado + " = " + Numero1 + " - (( 1 / " + Numero2 + " ) ^ " + Numero3 + " )" );
 		}
 		function PowAsimetrico(){
 			var Numero1 = document.getElementById("Numero1").value;
@@ -573,7 +573,7 @@
 			var Resultado = PowAsimetric(Numero1, Numero2,Numero3, Reiteraciones);
 			document.getElementById("Resultado").value = Resultado;
 			ActualizarResultado();
-			AddListadoResultados(Resultado + " = ( " + Numero1 + " ^ Integer(" + Numero2 + ") ) + " + Numero3 );
+			AddListadoResultados(Resultado + " = ( " + Numero1 + " ^ " + Numero2 + " ) + " + Numero3 );
 		}
 		function PowAsimetricoReverse(){
 			var Numero1 = document.getElementById("Numero1").value;
@@ -583,7 +583,7 @@
 			var Resultado = PowAsimetricReverse(Numero1, Numero2,Numero3, Reiteraciones);
 			document.getElementById("Resultado").value = Resultado;
 			ActualizarResultado();
-			AddListadoResultados(Resultado + " = (( 1 / " + Numero1 + " ) ^ Integer(" + Numero2 + ") ) + " + Numero3 );
+			AddListadoResultados(Resultado + " = (( 1 / " + Numero1 + " ) ^ " + Numero2 + " ) + " + Numero3 );
 		}
 		function CrearPuntosResult(){
 			var Numero = document.getElementById("Resultado").value;
@@ -633,7 +633,7 @@
 			if( Textos == ""){
 				Resultado = Texto;
 			}else{
-				Resultado = Textos + "\n" + Texto;
+				Resultado = Texto + "\n" + Textos;
 			}
 			document.getElementById("ListadoResultados").value = Resultado;
 		}

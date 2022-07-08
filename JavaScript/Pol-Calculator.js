@@ -1,8 +1,8 @@
 // Modulo Pol-Calculator.js **********************************************************************************************
 // ***********************************************************************************************************************
 // ***********************************************************************************************************************
-// Día Creación 14/12/2021 - Hasta - 02/07/2022 ** Autor: Pol Flórez Viciana *********************************************
-// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 02/07/2022 ***************************************************************
+// Día Creación 14/12/2021 - Hasta - 08/07/2022 ** Autor: Pol Flórez Viciana *********************************************
+// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 08/07/2022 ***************************************************************
 // ***********************************************************************************************************************
 // Constantes de Uso Reiterado
 const StringNullString = ""; 
@@ -477,13 +477,13 @@ function ModLogPow(Texto1,Texto2,Texto3,Reiteraciones){
 		if(IsNegativeAndNumber(Texto2) == true || IsNumber(Texto2) == true){
 			if(IsNegativeAndNumber(Texto3) == true || IsNumber(Texto3) == true){
 				if(IsNegativeAndNumber(Texto3) == true){
-					var SubTexto3 = StringGuion + GetIntegerPart(ConvertPositive(Texto3));
-					var Elevacion = ElevaSignos(Texto2,SubTexto3,Reiteraciones);
+					//var SubTexto3 = StringGuion + GetIntegerPart(ConvertPositive(Texto3));
+					var Elevacion = ElevaSignos(Texto2,Texto3,Reiteraciones);
 					Restacion = RestaSignos(Texto1,Elevacion);
 				}else{
 					if(IsNumber(Texto3) == true ){
-						var SubTexto3 = GetIntegerPart(Texto3);
-						var Elevacion = ElevaSignos(Texto2,SubTexto3,Reiteraciones);
+						//var SubTexto3 = GetIntegerPart(Texto3);
+						var Elevacion = ElevaSignos(Texto2,Texto3,Reiteraciones);
 						Restacion = RestaSignos(Texto1,Elevacion);
 					}
 				}
@@ -498,13 +498,13 @@ function PowAsimetric(Texto1,Texto2,Texto3,Reiteraciones){
 		if(IsNegativeAndNumber(Texto2) == true || IsNumber(Texto2) == true){
 			if(IsNegativeAndNumber(Texto3) == true || IsNumber(Texto3) == true){
 				if(IsNegativeAndNumber(Texto2) == true){
-					var SubTexto2 = StringGuion + GetIntegerPart(ConvertPositive(Texto2));
-					var Elevacion = ElevaSignos(Texto1,SubTexto2,Reiteraciones);
+					//var SubTexto2 = StringGuion + GetIntegerPart(ConvertPositive(Texto2));
+					var Elevacion = ElevaSignos(Texto1,Texto2,Reiteraciones);
 					Sumacion = SumaSignos(Elevacion,Texto3);
 				}else{
 					if(IsNumber(Texto2) == true ){
-						var SubTexto2 = GetIntegerPart(Texto2);
-						var Elevacion = ElevaSignos(Texto1,SubTexto2,Reiteraciones);
+						//var SubTexto2 = GetIntegerPart(Texto2);
+						var Elevacion = ElevaSignos(Texto1,Texto2,Reiteraciones);
 						Sumacion = SumaSignos(Elevacion,Texto3);
 					}
 				}
