@@ -1226,6 +1226,7 @@ function RootYSignos(Texto1, Texto2, Reiterations, LongDecimales){
 	var Resultado = StringCero;
 	var Reitera = parseInt(Reiterations);
 	var LongiDecimales = parseInt(LongDecimales);
+	var EsBaseNegativo = false;
 	var Num1 = StringCero;
 	var Num2 = StringCero;
 	if (IsNumber(Texto1) == true || IsNegativeAndNumber(Texto1) == true ){
@@ -1237,6 +1238,7 @@ function RootYSignos(Texto1, Texto2, Reiterations, LongDecimales){
 				LongiDecimales = 0;	
 			}
 			if ( IsNegativeAndNumber(Texto2) == true ){
+				EsBaseNegativo = true;
 				if ( IsRealNumber(Texto2) == true ){
 					Num2 = StringNullString + ConvertPositive(Texto2);
 					//Num2 = StringNullString + GetIntegerPart(Num2);
@@ -1293,7 +1295,26 @@ function RootYSignos(Texto1, Texto2, Reiterations, LongDecimales){
 			}	
 		}
 	}
-	return Resultado;
+	if (EsNegativo == true && EsBaseNegativo == true ){
+		return ConvertPositive(Resultado);
+	}
+	if (EsNegativo == false && EsBaseNegativo == true ){
+		if (IsNegativeAndNumber(Resultado) == false ){
+			return StringGuion + Resultado;
+		}else{
+			return Resultado;
+		}	
+	}	
+	if (EsNegativo == true && EsBaseNegativo == false ){
+		if (IsNegativeAndNumber(Resultado) == false ){
+			return StringGuion + Resultado;
+		}else{
+			return Resultado;
+		}
+	}
+	if (EsNegativo == false && EsBaseNegativo == false ){
+		return ConvertPositive(Resultado);
+	}
 }
 function IsPar(Texto1){
 	var Resultado = false;
