@@ -1390,41 +1390,53 @@ function RaizYReal(Texto1, Texto2, Reiterations, LongDecimales){
 						Salte = true;
 					}
 				}
-				//var RestoNum2 = GetIntegerPart(Num2);
-				var LaResta = RestaSignos(Num2,StringUno);
-				ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + Reitera);
-				var SumadeR = SumaSignos(Num1,ElevacionesCuentaNum1);
-				var LaElevacionMenor = ElevaSignos(CuentaNum1, LaResta, StringNullString + Reitera);
-				var DivisiondeR = MultiplicaSignos(LaElevacionMenor, StringDos);
-				SubResultado = DivideSignos( SumadeR, DivisiondeR, StringNullString + Reitera);
-				//ElevacionesCuentaNum1 = ElevaSignos(SubResultado, Num2, StringNullString + Reitera);
-				if (IsEquals(Num1, ElevacionesCuentaNum1) == false ){
-					if (parseInt(LongiDecimales) != 0 ){
-						SubResultado = GetIntegerPart(SubResultado);
-						ElevacionesCuentaNum1 = ElevaSignos(SubResultado, Num2, StringNullString + Reitera);
-						var i;
-						for ( i = 1; i <= parseInt(LongiDecimales) + Uno; i++){
-							if (IsEquals(Num1, ElevacionesCuentaNum1) == false ){
-								var LosNumDecimales = StringsCerosToRight(StringCero + StringComa, i + Uno) + StringUno;
-								while ( IsMayor(ElevacionesCuentaNum1, Num1) == false ){
-									SubResultado = SumaSignos(SubResultado,LosNumDecimales);
-									ElevacionesCuentaNum1 = ElevaSignos(SubResultado, Num2, StringNullString + Reitera );	
-								}
-								while ( IsMayor(ElevacionesCuentaNum1, Num1) == true ){
-									SubResultado = RestaSignos(SubResultado,LosNumDecimales);
-									ElevacionesCuentaNum1 = ElevaSignos(SubResultado, Num2, StringNullString + Reitera);
-								}
-							}else{
-								break;
-							}		
-						}
-						Resultado = SubResultado; // DivideSignos(SubResultado, LaResta, StringNullString + Reitera);
+				if ( IsMayor(StringUno, Num2) == true ){	
+					if (IsMayor(Num1,Num2) == false || IsEquals(Num1,Num2) == true ){
+						var LaResta = RestaSignos(Num2,StringUno);
+						ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + Reitera);
+						var SumadeR = SumaSignos(Num1,ElevacionesCuentaNum1);
+						var LaElevacionMenor = ElevaSignos(CuentaNum1, LaResta, StringNullString + Reitera);
+						var DivisiondeR = MultiplicaSignos(LaElevacionMenor, StringDos);
+						SubResultado = DivideSignos( SumadeR, DivisiondeR, StringNullString + Reitera);
 					}else{
-						Resultado = SubResultado; // DivideSignos(SubResultado, LaResta, StringNullString + Reitera);
-					}
+						SubResultado = DivideSignos(Num1,Num2,StringNullString + Reitera);
+					}	
 				}else{
-					Resultado = SubResultado;	
+					var LaResta = RestaSignos(Num2,StringUno);
+					ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + Reitera);
+					var SumadeR = SumaSignos(Num1,ElevacionesCuentaNum1);
+					var LaElevacionMenor = ElevaSignos(CuentaNum1, LaResta, StringNullString + Reitera);
+					var DivisiondeR = MultiplicaSignos(LaElevacionMenor, StringDos);
+					SubResultado = DivideSignos( SumadeR, DivisiondeR, StringNullString + Reitera);
 				}	
+				ElevacionesCuentaNum1 = ElevaSignos(SubResultado, Num2, StringNullString + Reitera);				
+					if (IsEquals(Num1, ElevacionesCuentaNum1) == false ){
+						if (parseInt(LongiDecimales) != 0 ){
+							SubResultado = GetIntegerPart(SubResultado);
+							var i;
+							for ( i = 1; i <= parseInt(LongiDecimales) + Uno; i++){
+								if (IsEquals(Num1, ElevacionesCuentaNum1) == false ){
+									var LosNumDecimales = StringsCerosToRight(StringCero + StringComa, i + Uno) + StringUno;
+									while ( IsMayor(ElevacionesCuentaNum1, Num1) == false ){
+										SubResultado = SumaSignos(SubResultado,LosNumDecimales);
+										ElevacionesCuentaNum1 = ElevaSignos(SubResultado, Num2, StringNullString + Reitera );	
+									}
+									while ( IsMayor(ElevacionesCuentaNum1, Num1) == true ){
+										SubResultado = RestaSignos(SubResultado,LosNumDecimales);
+										ElevacionesCuentaNum1 = ElevaSignos(SubResultado, Num2, StringNullString + Reitera);
+									}
+								}else{
+									break;
+								}		
+							}
+							Resultado = SubResultado; // DivideSignos(SubResultado, LaResta, StringNullString + Reitera);
+						}else{
+							Resultado = SubResultado; // DivideSignos(SubResultado, LaResta, StringNullString + Reitera);
+						}
+					}else{
+						Resultado = SubResultado;	
+					}
+					
 			}
 		}	
 	}
