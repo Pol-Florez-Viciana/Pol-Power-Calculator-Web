@@ -1613,10 +1613,9 @@ function ElevaIntegers(Texto1,Texto2, Reiterations){
 						var i;
 						for ( i = Dos; i < parseInt(Texto2); i++ ){
 							Resultado = MultiplicaReales(Resultado,Texto1);
-							if(IsMayor(Resultado, StringUno) == false ){
-								//var LongitudResultado = GetDecimalPart(Resultado);
+							//if(IsMayor(Resultado, StringUno) == false ){
 								Resultado = FormatNumberDecimalsLenght(Resultado, parseInt(Reiterations) - Dos);
-							}
+							//}
 						}
 					}else{
 						Resultado = Texto1;
