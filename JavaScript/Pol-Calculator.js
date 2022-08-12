@@ -1,8 +1,8 @@
 // Modulo Pol-Calculator.js **********************************************************************************************
 // ***********************************************************************************************************************
 // ***********************************************************************************************************************
-// Día Creación 14/12/2021 - Hasta - 08/07/2022 ** Autor: Pol Flórez Viciana *********************************************
-// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 08/07/2022 ***************************************************************
+// Día Creación 14/12/2021 - Hasta - 12/08/2022 ** Autor: Pol Flórez Viciana *********************************************
+// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 12/08/2022 ***************************************************************
 // ***********************************************************************************************************************
 // Constantes de Uso Reiterado
 const StringNullString = ""; 
@@ -1614,7 +1614,7 @@ function ElevaIntegers(Texto1,Texto2, Reiterations){
 						for ( i = Dos; i < parseInt(Texto2); i++ ){
 							Resultado = MultiplicaReales(Resultado,Texto1);
 							//if(IsMayor(Resultado, StringUno) == false ){
-								Resultado = FormatNumberDecimalsLenght(Resultado, parseInt(Reiterations) - Dos);
+								Resultado = FormatNumberDecimalsLenght(Resultado, parseInt(Reiterations));
 							//}
 						}
 					}else{
@@ -1624,6 +1624,7 @@ function ElevaIntegers(Texto1,Texto2, Reiterations){
 			}
 		}	
 	}
+	Resultado = FormatNumberDecimalsLenght(Resultado, parseInt(Reiterations) - Dos);
 	return Resultado;
 }
 function MultiplicaIntegers(Texto1,Texto2){
