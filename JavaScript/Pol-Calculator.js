@@ -1624,8 +1624,8 @@ function ElevaIntegers(Texto1,Texto2, Reiterations){
 			}
 		}	
 	}
-	Resultado = FormatNumberDecimalsLenght(Resultado, parseInt(Reiterations) - Dos);
-	return Resultado;
+	Resultado = FormatNumberDecimalsLenght(Resultado, parseInt(Reiterations) - Tres);
+	return FormatCeros(Resultado);
 }
 function MultiplicaIntegers(Texto1,Texto2){
 	var ResultadosSuma = [];
