@@ -640,15 +640,18 @@ function LOGSignos(Texto1,Texto2,Reiteraciones){
 										var Resta1 = RestaSignos(PreResultado1,PreResultado2);
 										var Resta2 = RestaSignos(Num1,PreResultado2);
 										var TempoDivision = DivideSignos(Resta2,Resta1,Reitera);
-										//var Resta3 = DivideSignos(TempoDivision,Num2,Reitera);
 										var SubResta3 = RestaSignos(StringUno,TempoDivision);
-										//SubResultado = SumaSignos(PrimerParametro,SubResta3);
 										SubResultado = SumaSignos(PrimerParametro,SubResta3);
 									}else{
 										var Resta1 = RestaSignos(PreResultado2,PreResultado1);
 										var Resta2 = RestaSignos(PreResultado2,Num1);
 										var TempoDivision = DivideSignos(Resta2,Resta1,Reitera);
 										var Resta3 = RestaSignos(StringUno,TempoDivision);
+										if (IsRealNumber(Num2) == true ){
+											var Digitos = StringNullString + GetRightNumber(Num2);
+											var LimiteStr = StringCero + StringComa + StringsCerosToLeft(Digitos, Digitos.length + Uno);
+											Resta3 = RestaSignos(Resta3,LimiteStr);
+										}	
 										SubResultado = SumaSignos(PrimerParametro,Resta3);
 									}	
 								}else{
@@ -656,14 +659,6 @@ function LOGSignos(Texto1,Texto2,Reiteraciones){
 								}
 							}
 						}else{
-							//var PreResultado1 = ElevaIntegers(Num2,PrimerParametro);
-							//var SegundoParametro = SumaReales(PrimerParametro,StringUno);
-							//var PreResultado2 = ElevaIntegers(Num2,SegundoParametro);;
-							//var Resta1 = RestaSignos(PreResultado2,PreResultado1);
-							//var Resta2 = RestaSignos(PreResultado2,Num1);
-							//var TempoDivision = DivideSignos(Resta2,Resta1,Reitera);
-							//var Resta3 = RestaSignos(StringUno,TempoDivision);
-							//SubResultado = RestaSignos(StringUno,Resta3, Reitera);
 							SubResultado = StringUno;
 						}				
 				}
