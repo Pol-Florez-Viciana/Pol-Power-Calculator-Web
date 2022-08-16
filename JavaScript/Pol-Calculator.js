@@ -646,13 +646,11 @@ function LOGSignos(Texto1,Texto2,Reiteraciones){
 										var Resta1 = RestaSignos(PreResultado2,PreResultado1);
 										var Resta2 = RestaSignos(PreResultado2,Num1);
 										var TempoDivision = DivideSignos(Resta2,Resta1,Reitera);
-										//if(IsMayor(Num2,StringDos) == false ){
+										if(IsMayor(Num2,StringDos) == false ){
 											if (IsRealNumber(Num2) == true ){
-												//var Digitos = StringNullString + GetRightNumber(Num2);
-												//var LimiteStr = StringCero + StringComa + StringsCerosToLeft(Digitos, Digitos.length + Uno);
 												TempoDivision = DivideSignos(TempoDivision,Num2, Reitera);
 											}
-										//}
+										}
 										var Resta3 = RestaSignos(StringUno,TempoDivision);	
 										SubResultado = SumaSignos(PrimerParametro,Resta3);
 									}	
