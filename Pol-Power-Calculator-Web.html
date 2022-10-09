@@ -52,7 +52,7 @@
 </head>
 <body >
 	<center>
-		<h1 style="color: blue;">Pol Power Calculator Web Version 10.4</h1>
+		<h1 style="color: blue;">Pol Power Calculator Web Version 11.1</h1>
 		<div style="width: 98%;" >
 			<section id="Numeros1">
 				<div id="ParteNum1">
@@ -79,6 +79,7 @@
 					<input id="BtnDecToOct" onclick="ConvierteDecimalAOctal()" type="button" style="margin: 2px; font-size: 4mm;" value="DecToOct" title="Convert Decimal To Octal" />
 					<input id="BtnDecToHex" onclick="ConvierteDecimalAHexadecimal()" type="button" style="margin: 2px; font-size: 4mm;" value="DecToHex" title="Convert Decimal To Hexadecimal" />
 					<br><br>
+					<input id="BtnPrimo" onclick="EsunNumeroPrimo()" type="button" style="margin: 2px; font-size: 4mm;" value="Prime Number" title="Is Prime Number" />
 					<input id="BtnFactorial" onclick="Factorial()" type="button" style="margin: 2px; font-size: 4mm;" value="N!" title="Factorial" />
 				</div>
 				<div id="ParteNum2">
@@ -584,6 +585,15 @@
 			document.getElementById("Resultado").value = Resultado;
 			ActualizarResultado();
 			AddListadoResultados(Resultado + " = (( 1 / " + Numero1 + " ) ^ " + Numero2 + " ) + " + Numero3 );
+		}
+		function EsunNumeroPrimo(){
+			var Numero1 = document.getElementById("Numero1").value;
+			var Reiteraciones = document.getElementById("NumeroReiteraciones").value;
+			var Resultado = IsPrimeNumber(Numero1, Reiteraciones);
+			//alert(Resultado);
+			document.getElementById("Resultado").value = Resultado;
+			ActualizarResultado();
+			AddListadoResultados(Resultado + " = " + Numero1 + " Is Prime Number");
 		}
 		function CrearPuntosResult(){
 			var Numero = document.getElementById("Resultado").value;

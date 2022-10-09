@@ -1,8 +1,8 @@
 // Modulo Pol-Calculator.js **********************************************************************************************
 // ***********************************************************************************************************************
 // ***********************************************************************************************************************
-// Día Creación 14/12/2021 - Hasta - 16/08/2022 ** Autor: Pol Flórez Viciana *********************************************
-// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 16/08/2022 ***************************************************************
+// Día Creación 14/12/2021 - Hasta - 09/10/2022 ** Autor: Pol Flórez Viciana *********************************************
+// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 09/10/2022 ***************************************************************
 // ***********************************************************************************************************************
 // Constantes de Uso Reiterado
 const StringNullString = ""; 
@@ -42,6 +42,29 @@ const Nueve = 9;
 const Diez = 10;
 const DieziSeis = 16;
 const TreintaiDos = 32;
+
+// Funciones Avanzadas de Otro Tipo
+function IsPrimeNumber(Texto, Reiterations){
+	var Retorno1 = true;
+	var x = Cero;
+	if (IsRealNumber(Texto) == false && IsNegativeAndNumber(Texto) == false && IsNumber(Texto) == true ){
+		if (IsEquals(Texto, StringCero) == true  || IsEquals(Texto, StringUno) == true || IsEquals(Texto, StringCuatro) == true) { 
+			Retorno1 = false; 
+		}else{
+			var NumeroTemp = StringNullString + DivideSignos(Texto, StringDos, Reiterations);
+			var Temporal = parseInt(GetIntegerPart(NumeroTemp));
+			for ( x = Dos; x < parseInt(Temporal); x++) {
+				if ( IsEquals( MODSignos(Texto, StringNullString + x, Reiterations),StringCero) == true ) { 
+					Retorno1 = false;
+					break;	
+				}
+			}
+		}
+	}else{
+		Retorno1 = false;
+	}
+	return Retorno1;	
+}
 
 // Funciones de Redondeo 
 function RoundToUp(Texto){
