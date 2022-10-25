@@ -805,7 +805,11 @@ function ElevaSignos(Texto1,Texto2,Reiteraciones){
 			}	
 		}else{
 			if ( EsNum1 == true && EsNum2 == true && IsEquals(Num1, StringUno) == true){
-				Resultado = StringUno;
+				if ( EsNegativo1 == false && EsNegativo2 == false || EsNegativo1 == true && EsNegativo2 == true ){
+					Resultado = StringUno;
+				}else{
+					Resultado = StringGuion + StringUno;
+				}	
 			}	
 		}	
 		
