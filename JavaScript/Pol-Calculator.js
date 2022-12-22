@@ -476,6 +476,105 @@ function ConvertIntegerToBinary(Texto,Reiteraciones){
 }
 
 //Principales Funciones Finales de Uso con Signos
+function FactorialSumas(Texto1,Reiterations){
+	var EsNegativo1 = false;
+	var Resultado = StringCero;
+	var Reitera = Reiterations;
+	if (IsMayor(Texto1, "100000") == false ) {
+		if (Reiterations < 32 ){ Reitera = 32; }
+		if (IsNegativeAndNumber(Texto1) == true ){
+			EsNegativo1 = true;
+			Texto1 = ConvertPositive(Texto1);
+			if (IsEquals(Texto1,StringCero) == true ){
+				EsNegativo1 = false;
+			}else{
+				if (IsRealNumber(Texto1) == true ){
+					var Decimales = GetDecimalPart(Texto1);
+					var Factor1 = FactorialSumasEnteras(GetIntegerPart(Texto1));
+					var Factor2 = FactorialSumasEnteras(SumaSignos(GetIntegerPart(Texto1), StringUno));
+					var Diferencia = RestaReales(Factor2,Factor1);
+					var Limite = StringsCerosToRight(StringUno, Decimales.length + Uno);
+					var ParteDecimal = MultiplicaSignos(Decimales, DivideSignos(Diferencia,Limite, Reitera));
+					Resultado = SumaReales(Factor1,ParteDecimal);
+				}else{
+					Resultado = FactorialSumasEnteras(Texto1);
+				}
+			}
+		}else{
+			if (IsNumber(Texto1) == true ){
+				if (IsRealNumber(Texto1) == true ){
+					var Decimales = GetDecimalPart(Texto1);
+					var Factor1 = FactorialSumasEnteras(GetIntegerPart(Texto1));
+					var Factor2 = FactorialSumasEnteras(SumaSignos(GetIntegerPart(Texto1), StringUno));
+					var Diferencia = RestaReales(Factor2,Factor1);
+					var Limite = StringsCerosToRight(StringUno, Decimales.length + Uno);
+					var ParteDecimal = MultiplicaSignos(Decimales, DivideSignos(Diferencia,Limite,Reitera));
+					Resultado = SumaReales(Factor1,ParteDecimal);
+				}else{
+					Resultado = FactorialSumasEnteras(Texto1);
+				}
+			}	
+		}
+			
+		if ( EsNegativo1 == false ){
+			return Resultado;
+		}else{
+			return StringGuion + Resultado;
+		}
+	}else{
+		return StringCero;
+	}	
+}
+
+function FactorialSumasEnteras(Texto1){
+	var EsNegativo1 = false;
+	var Resultado = StringCero;
+	if (IsNegativeAndNumber(Texto1) == true ){
+		EsNegativo1 = true;
+		Texto1 = ConvertPositive(Texto1);
+		if (IsEquals(Texto1,StringCero) == true ){
+			EsNegativo1 = false;
+		}else{
+			var i = 0;
+			if (IsRealNumber(Texto1) == true ){
+				Texto1 = GetIntegerPart(Texto1);
+				for ( i = 0; i <= parseInt(Texto1); i++){
+					Resultado = SumaReales(Resultado, StringNullString + i);
+				}
+			}else{
+				for ( i = 0 ; i <= parseInt(Texto1); i++){
+					Resultado = SumaReales(Resultado, StringNullString + i);
+				}
+			}
+		}
+	}else{
+		if (IsNumber(Texto1) == true ){
+			if (IsEquals(Texto1,StringCero) == true ){
+				EsNegativo1 = false;
+			}else{
+				var i = 0;
+				if (IsRealNumber(Texto1) == true ){
+					Texto1 = GetIntegerPart(Texto1);
+					
+					for ( i = 0 ; i <= parseInt(Texto1); i++){
+						Resultado = SumaReales(Resultado, StringNullString + i);
+					}
+				}else{
+					for ( i = 0 ; i <= parseInt(Texto1); i++){
+						Resultado = SumaReales(Resultado, StringNullString + i);
+					}
+				}
+			}
+		}	
+	}
+		
+	if ( EsNegativo1 == false ){
+		return Resultado;
+	}else{
+		return StringGuion + Resultado;
+	}
+}
+
 function ModLogPowReverse(Texto1,Texto2,Texto3,Reiterations){
 	var Resultado = StringCero;
 	var DivisionDeR = DivideSignos(StringUno,Texto2,Reiterations);
@@ -816,6 +915,7 @@ function ElevaSignos(Texto1,Texto2,Reiteraciones){
 	}
 	return Resultado;	
 }
+
 function Perunitage(Texto1,Texto2,Texto3,Reiteraciones){
 	var Num1 = Texto1;
 	var Num2 = Texto2;
@@ -834,6 +934,7 @@ function Perunitage(Texto1,Texto2,Texto3,Reiteraciones){
 	}
 	return Resultado;
 }
+
 function Porcentaje(Texto1,Texto2,Reiteraciones){
 	var Num1 = Texto1;
 	var Num2 = Texto2;
@@ -851,6 +952,7 @@ function Porcentaje(Texto1,Texto2,Reiteraciones){
 	}
 	return Resultado;
 }
+
 function Pormilaje(Texto1,Texto2,Reiteraciones){
 	var Num1 = Texto1;
 	var Num2 = Texto2;
@@ -868,6 +970,7 @@ function Pormilaje(Texto1,Texto2,Reiteraciones){
 	}
 	return Resultado;
 }
+
 function MultiplicaSignosAsimetricos(Texto1,Texto2,Texto3){
 	var EsNum1 = false;
 	var EsNum2 = false;

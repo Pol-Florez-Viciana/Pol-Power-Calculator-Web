@@ -42,6 +42,7 @@
 		#PropiedadesResultado { border-radius: 0px 0px 10px 10px; background-color: yellow; }
 		#Resultado { font-size: 5mm; }
 		#BtnFactorial { width: 40px; height: 40px; border-radius: 20px; }
+		#BtnFactorialdeSumas { width: 40px; height: 40px; border-radius: 20px; }
         #BtnSumar { width: 40px; height: 40px; border-radius: 20px; }
 		#BtnRestar { width: 40px; height: 40px; border-radius: 20px; }
 		#BtnDividir { width: 40px; height: 40px; border-radius: 20px; }	
@@ -52,7 +53,7 @@
 </head>
 <body >
 	<center>
-		<h1 style="color: blue;">Pol Power Calculator Web Version 11.2</h1>
+		<h1 style="color: blue;">Pol Power Calculator Web Version 12.0</h1>
 		<div style="width: 98%;" >
 			<section id="Numeros1">
 				<div id="ParteNum1">
@@ -81,6 +82,7 @@
 					<br><br>
 					<input id="BtnPrimo" onclick="EsunNumeroPrimo()" type="button" style="margin: 2px; font-size: 4mm;" value="Prime Number" title="Is Prime Number" />
 					<input id="BtnFactorial" onclick="Factorial()" type="button" style="margin: 2px; font-size: 4mm;" value="N!" title="Factorial" />
+					<input id="BtnFactorialdeSumas" onclick="FactorialdeSumas()" type="button" style="margin: 2px; font-size: 4mm;" value="N!S" title="Factorial of Sum" />
 				</div>
 				<div id="ParteNum2">
 					<h2>
@@ -525,6 +527,14 @@
 			document.getElementById("Resultado").value = Resultado;
 			ActualizarResultado();
 			AddListadoResultados(Resultado + " = " + Numero1 + "!" );
+		}
+		function FactorialdeSumas(){
+			var Numero1 = document.getElementById("Numero1").value;
+			var Reiteraciones = document.getElementById("NumeroReiteraciones").value;
+			var Resultado = FactorialSumas(Numero1, Reiteraciones);
+			document.getElementById("Resultado").value = Resultado;
+			ActualizarResultado();
+			AddListadoResultados(Resultado + " = " + Numero1 + "!S" );
 		}
 		function RaizY(){
 			var Numero1 = document.getElementById("Numero1").value;
