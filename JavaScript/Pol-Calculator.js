@@ -477,10 +477,18 @@ function ConvertIntegerToBinary(Texto,Reiteraciones){
 
 //Principales Funciones Finales de Uso con Signos
 function FactorialSumas(Texto1,Reiterations){
+	var ComTexto1 = Texto1;
+	if (IsNegativeAndNumber(Texto1) == true ){
+		ComTexto1 = ConvertPositive(Texto1);
+	}else{
+		if (IsNumber(Texto1) == false ){
+			ComTexto1 = StringCero;
+		}	
+	}
 	var EsNegativo1 = false;
 	var Resultado = StringCero;
 	var Reitera = Reiterations;
-	if (IsMayor(Texto1, "500000") == false ) {
+	if (IsMayor(ComTexto1, "500000") == false ) {
 		if (Reiterations < 32 ){ Reitera = 32; }
 		if (IsNegativeAndNumber(Texto1) == true ){
 			EsNegativo1 = true;
