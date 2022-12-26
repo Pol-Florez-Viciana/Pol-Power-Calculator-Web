@@ -480,7 +480,7 @@ function FactorialSumas(Texto1,Reiterations){
 	var EsNegativo1 = false;
 	var Resultado = StringCero;
 	var Reitera = Reiterations;
-	if (IsMayor(Texto1, "100000") == false ) {
+	if (IsMayor(Texto1, "500000") == false ) {
 		if (Reiterations < 32 ){ Reitera = 32; }
 		if (IsNegativeAndNumber(Texto1) == true ){
 			EsNegativo1 = true;
