@@ -476,6 +476,185 @@ function ConvertIntegerToBinary(Texto,Reiteraciones){
 }
 
 //Principales Funciones Finales de Uso con Signos
+
+function Coseno(Texto1, Reiteraciones, LongitudDecimal ){
+	var Resultado = StringCero;
+	var Angulo = Texto1;
+	if (IsNegativeAndNumber(Texto1) == true ){
+		Angulo = ConvertPositive(Texto1);
+	}else{
+		if (IsNumber(Texto1) == false ){
+			Angulo = StringCero;
+		}	
+	}
+	if (IsEquals(Angulo, StringCero) == false){
+		if (IsMayor(Angulo, "360") == false ) {
+			var Reitera = Reiteraciones;
+			var LongiDecimal = LongitudDecimal;
+			
+			if (IsMayor(LongitudDecimal, StringOcho) == false){
+				LongiDecimal = StringOcho;
+			}
+			if (IsMayor(Reiteraciones, StringTres + StringDos) == false ){
+				Reitera = StringTres + StringDos;
+			}
+		
+			Angulo = SumaSignos(Angulo, "90");
+			if (IsMayor(Angulo, "360") == true){
+				Angulo = RestaSignos(Angulo, "360");
+			}
+			Resultado = Seno(Angulo, Reiteraciones, LongitudDecimal);
+		}
+	}else{
+		Resultado = StringUno;
+	}	
+	return FormatCeros(Resultado);
+}	
+	
+function Seno(Texto1, Reiteraciones, LongitudDecimal ){
+	var Resultado = StringCero;
+	var Angulo = Texto1;
+	if (IsNegativeAndNumber(Texto1) == true ){
+		Angulo = ConvertPositive(Texto1);
+	}else{
+		if (IsNumber(Texto1) == false ){
+			Angulo = StringCero;
+		}	
+	}
+	
+	if (IsMayor(Angulo, "360") == false ) {
+		var Reitera = Reiteraciones;
+		var LongiDecimal = LongitudDecimal;
+		
+		if (IsMayor(LongitudDecimal, StringOcho) == false){
+			LongiDecimal = StringOcho;
+		}
+		if (IsMayor(Reiteraciones, StringTres + StringDos) == false ){
+			Reitera = StringTres + StringDos;
+		}
+		
+		var Numero1 = StringUno;
+		var Numero2 = StringUno;
+		var Numero3 = StringCero;
+		var ElevacionA = StringUno;
+		var ElevacionB = StringUno;
+		var ElevacionC = StringDos;
+		//alert(Numero1);
+		Numero3 = RootYSignos(ElevacionC, StringDos, Reitera, LongiDecimal);
+		
+		// Para 30
+		if (IsEquals(Angulo, StringTres + StringCero) == true){
+			Resultado = StringCero + StringComa + StringCinco;
+		}
+		
+		// De 0 a 30 
+		if (IsMayor(Angulo, StringCero) == true && IsMayor( StringTres + StringCero, Angulo) == true ){
+			var RestoAngulo = DivideSignos(StringUno, "60", StringNullString + Reitera );
+			Numero1 = MultiplicaSignos(Angulo, RestoAngulo);
+			ElevacionA = ElevaSignos(Numero1, StringDos, StringNullString + Reitera);
+			ElevacionC = SumaSignos(ElevacionA, ElevacionB);
+			Numero3 = RootYSignos(ElevacionC, StringDos, StringNullString + Reitera , StringNullString + LongiDecimal);
+			Resultado = DivideSignos(Numero1, Numero3, StringNullString + Reitera );	
+		}
+		
+		// Para 45
+		if (IsEquals(Angulo, StringCuatro + StringCinco) == true){
+			Numero3 = RootYSignos(ElevacionC, StringDos, StringNullString + Reitera , StringNullString + LongiDecimal);
+			Resultado = DivideSignos(Numero1, Numero3, StringNullString + Reitera );		
+		}
+		
+		// De 30 a 45 
+		if (IsMayor(Angulo, StringTres + StringCero) == true && IsMayor( StringCuatro + StringCinco, Angulo) == true ){
+			var RestoAngulo = DivideSignos(StringUno, "45", StringNullString + Reitera );
+			Numero1 = MultiplicaSignos(Angulo, RestoAngulo);
+			ElevacionA = ElevaSignos(Numero1, StringDos, StringNullString + Reitera);
+			ElevacionC = SumaSignos(ElevacionA, ElevacionB);
+			Numero3 = RootYSignos(ElevacionC, StringDos, StringNullString + Reitera , StringNullString + LongiDecimal);
+			Resultado = DivideSignos(Numero1, Numero3, StringNullString + Reitera );	
+		}
+		
+		// Para 60
+		if (IsEquals(Angulo, StringSeis + StringCero) == true){
+			Numero1 = StringTres;
+			Numero2 = StringSeis;
+			ElevacionA = StringNueve;
+			ElevacionB = StringTres + StringSeis;
+			ElevacionC = SumaSignos(ElevacionA, ElevacionB);
+			Numero3 = RootYSignos(ElevacionC, StringDos, StringNullString + Reitera , StringNullString + LongiDecimal);
+			Resultado = DivideSignos(Numero2, Numero3, StringNullString + Reitera );		
+		}
+		
+		// De 45 a 60 
+		if (IsMayor(Angulo, StringCuatro + StringCinco) == true && IsMayor( StringSeis + StringCero, Angulo) == true ){
+			var RestoAngulo = DivideSignos(StringUno, "30", StringNullString + Reitera );
+			Numero1 = MultiplicaSignos(Angulo, RestoAngulo);
+			ElevacionA = ElevaSignos(Numero1, StringDos, StringNullString + Reitera);
+			ElevacionC = SumaSignos(ElevacionA, ElevacionB);
+			Numero3 = RootYSignos(ElevacionC, StringDos, StringNullString + Reitera , StringNullString + LongiDecimal);
+			Resultado = DivideSignos(Numero1, Numero3, StringNullString + Reitera );	
+		}
+		
+		// Para 90
+		if (IsEquals(Angulo, StringNueve + StringCero) == true){
+			Resultado = StringUno;	
+		}
+		
+		// De 60 a 90 
+		if (IsMayor(Angulo, StringSeis + StringCero) == true && IsMayor( StringNueve + StringCero, Angulo) == true ){
+			var RestoAngulo = DivideSignos(StringUno, "30", StringNullString + Reitera );
+			Numero1 = MultiplicaSignos(Angulo, RestoAngulo);
+			ElevacionA = ElevaSignos(Numero1, StringDos, StringNullString + Reitera);
+			ElevacionC = SumaSignos(ElevacionA, ElevacionB);
+			Numero3 = RootYSignos(ElevacionC, StringDos, StringNullString + Reitera , StringNullString + LongiDecimal);
+			Resultado = DivideSignos(Numero1, Numero3, StringNullString + Reitera );	
+		}
+		
+		// Para 180
+		if (IsEquals(Angulo, StringUno + StringOcho + StringCero) == true){
+			Resultado = StringCero;	
+		}
+		
+		// De 90 a 180 
+		if (IsMayor(Angulo, StringNueve + StringCero) == true && IsMayor( StringUno + StringOcho + StringCero, Angulo) == true ){
+			Angulo = RestaSignos(Angulo, "180");
+			if (IsNegative(Angulo) == true){
+				Angulo = ConvertPositive(Angulo);
+			}
+			Resultado = Seno(Angulo, StringNullString + Reitera, StringNullString + LongiDecimal);	
+		}
+		
+		// Para 270
+		if (IsEquals(Angulo, StringDos + StringSiete + StringCero) == true){
+			Resultado = StringGuion + StringUno;	
+		}
+		
+		// De 180 a 270 
+		if (IsMayor(Angulo, StringUno + StringOcho + StringCero) == true && IsMayor( StringDos + StringSiete + StringCero, Angulo) == true ){
+			Angulo = RestaSignos(Angulo, "270");
+			if (IsNegative(Angulo) == true){
+				Angulo = ConvertPositive(Angulo);
+			}
+			Angulo = RestaSignos("90", Angulo);
+			Resultado = StringGuion + Seno(Angulo, StringNullString + Reitera, StringNullString + LongiDecimal);	
+		}
+		
+		// Para 360
+		if (IsEquals(Angulo, StringTres + StringSeis + StringCero) == true){
+			Resultado = StringCero;	
+		}
+		
+		// De 270 a 360 
+		if (IsMayor(Angulo, StringDos + StringSiete + StringCero) == true && IsMayor( StringTres + StringSeis + StringCero, Angulo) == true ){
+			Angulo = RestaSignos(Angulo, "360");
+			if (IsNegative(Angulo) == true){
+				Angulo = ConvertPositive(Angulo);
+			}
+			Resultado = StringGuion + Seno(Angulo, StringNullString + Reitera, StringNullString + LongiDecimal);	
+		}
+	}
+	return Resultado;
+}
+
 function FactorialSumas(Texto1,Reiterations){
 	var ComTexto1 = Texto1;
 	if (IsNegativeAndNumber(Texto1) == true ){

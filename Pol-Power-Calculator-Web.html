@@ -53,7 +53,7 @@
 </head>
 <body >
 	<center>
-		<h1 style="color: blue;">Pol Power Calculator Web Version 12.2</h1>
+		<h1 style="color: blue;">Pol Power Calculator Web Version 13.0</h1>
 		<div style="width: 98%;" >
 			<section id="Numeros1">
 				<div id="ParteNum1">
@@ -122,6 +122,9 @@
 					<input id="NumeroLongDecimales" type="text" maxlength="4" style="width: 55px; font-size: 4mm; text-align: right;" value="0" title="Long Decimals" />
 					<input id="BtnRaiz" onclick="RaizY()" type="button" style="font-size: 4mm;" value="Root Y" title="Root Square, Cubic, Etc..." />
 					<input id="BtnPitagoras" onclick="TeoriaPitagoras()" type="button" style="font-size: 4mm;" value="Pitagoras Theory" title="Pitagoras Theory..." />
+					<br><br>
+					<input id="BtnSeno" onclick="FuncionSeno()" type="button" style="font-size: 4mm;" value="Sin" title="Sine function" />
+					<input id="BtnCoseno" onclick="FuncionCoseno()" type="button" style="font-size: 4mm;" value="Cos" title="Cosine function" />
 				</div>
 			</section>
 			<section id="Numeros2">
@@ -520,6 +523,24 @@
 			ActualizarResultado();
 			AddListadoResultados(Resultado + " = ((" + Numero1 + " · " + Numero3 + ") / " + Numero2 + ")" );
 		}
+		function FuncionSeno(){
+			var Numero1 = document.getElementById("Numero1").value;
+			var Reiteraciones = document.getElementById("NumeroReiteraciones").value;
+			var LongitudDecimal = document.getElementById("NumeroLongDecimales").value;
+			var Resultado = Seno(Numero1, Reiteraciones, LongitudDecimal);
+			document.getElementById("Resultado").value = Resultado;
+			ActualizarResultado();
+			AddListadoResultados(Resultado + " = Sin(" + Numero1 + ")" );
+		}
+		function FuncionCoseno(){
+			var Numero1 = document.getElementById("Numero1").value;
+			var Reiteraciones = document.getElementById("NumeroReiteraciones").value;
+			var LongitudDecimal = document.getElementById("NumeroLongDecimales").value;
+			var Resultado = Coseno(Numero1, Reiteraciones, LongitudDecimal);
+			document.getElementById("Resultado").value = Resultado;
+			ActualizarResultado();
+			AddListadoResultados(Resultado + " = Cos(" + Numero1 + ")" );
+		}	
 		function Factorial(){
 			var Numero1 = document.getElementById("Numero1").value;
 			var Reiteraciones = document.getElementById("NumeroReiteraciones").value;
