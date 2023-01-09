@@ -1,8 +1,8 @@
 // Modulo Pol-Calculator.js **********************************************************************************************
 // ***********************************************************************************************************************
 // ***********************************************************************************************************************
-// Día Creación 14/12/2021 - Hasta - 09/10/2022 ** Autor: Pol Flórez Viciana *********************************************
-// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 09/10/2022 ***************************************************************
+// Día Creación 14/12/2021 - Hasta - 09/01/2023 ** Autor: Pol Flórez Viciana *********************************************
+// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 09/01/2023 ***************************************************************
 // ***********************************************************************************************************************
 // Constantes de Uso Reiterado
 const StringNullString = ""; 
@@ -476,6 +476,84 @@ function ConvertIntegerToBinary(Texto,Reiteraciones){
 }
 
 //Principales Funciones Finales de Uso con Signos
+
+function Tangente(Texto1, Reiteraciones, LongitudDecimal ){
+	var Resultado = StringCero;
+	var Angulo = Texto1;
+	if (IsNegativeAndNumber(Texto1) == true ){
+		Angulo = ConvertPositive(Texto1);
+	}else{
+		if (IsNumber(Texto1) == false ){
+			Angulo = StringCero;
+		}	
+	}
+	if (IsEquals(Angulo, StringCero) == false){
+		if (IsMayor(Angulo, "60") == false ) {
+			var Reitera = Reiteraciones;
+			var LongiDecimal = LongitudDecimal;
+			
+			if (IsMayor(LongitudDecimal, StringOcho) == false){
+				LongiDecimal = StringOcho;
+			}
+			if (IsMayor(Reiteraciones, StringTres + StringDos) == false ){
+				Reitera = StringTres + StringDos;
+			}
+		
+			var Numero1 = StringUno;
+			var Numero2 = StringUno;
+			var Numero3 = StringCero;
+			var ElevacionA = StringUno;
+			var ElevacionB = StringUno;
+			var ElevacionC = StringDos;
+			//alert(Numero1);
+			Numero3 = RootYSignos(ElevacionC, StringDos, Reitera, LongiDecimal);
+			
+			// Para 30
+			if (IsEquals(Angulo, StringTres + StringCero) == true){
+				Numero3 = DivideSignos(StringUno, StringTres, StringNullString + Reitera );
+				Resultado = RootYSignos(Numero3, StringDos, StringNullString + Reitera , StringNullString + LongiDecimal);
+			}
+			
+			// De 0 a 30 
+			if (IsMayor(Angulo, StringCero) == true && IsMayor( StringTres + StringCero, Angulo) == true ){
+				var RestoAngulo = DivideSignos(StringUno, "60", StringNullString + Reitera );
+				Numero2 = MultiplicaSignos(Angulo, RestoAngulo);
+				Resultado = DivideSignos(Numero2, Numero1, StringNullString + Reitera );	
+			}
+		
+			// Para 45
+			if (IsEquals(Angulo, StringCuatro + StringCinco) == true){
+				Resultado = StringUno;
+			}
+			
+			// De 30 a 45 
+			if (IsMayor(Angulo, StringTres + StringCero) == true && IsMayor( StringCuatro + StringCinco, Angulo) == true ){
+				var RestoAngulo = DivideSignos(StringUno, "45", StringNullString + Reitera );
+				Numero2 = MultiplicaSignos(Angulo, RestoAngulo);
+				Resultado = DivideSignos(Numero2, Numero1, StringNullString + Reitera );	
+			}
+			
+			// Para 60
+			if (IsEquals(Angulo, StringSeis + StringCero) == true){
+				Resultado = RootYSignos(StringTres, StringDos, StringNullString + Reitera , StringNullString + LongiDecimal);
+			}
+			
+			// De 45 a 60 
+			if (IsMayor(Angulo, StringCuatro + StringCinco) == true && IsMayor( StringSeis + StringCero, Angulo) == true ){
+				var RestoAngulo = DivideSignos(StringDos, "15", StringNullString + Reitera );
+				var Restacion1 = RestaSignos("60", Angulo);
+				var SubAngulo = RestaSignos("15", Restacion1);
+				var Multiplicacion1 = MultiplicaSignos(SubAngulo, RestoAngulo);
+				Numero2 = SumaSignos(StringUno, Multiplicacion1);
+				Resultado = RootYSignos(Numero2, StringDos, StringNullString + Reitera , StringNullString + LongiDecimal);	
+			}
+			
+		}
+	}else{
+		Resultado = StringUno;
+	}	
+	return Resultado;
+}
 
 function Coseno(Texto1, Reiteraciones, LongitudDecimal ){
 	var Resultado = StringCero;
