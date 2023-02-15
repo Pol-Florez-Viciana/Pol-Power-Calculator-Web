@@ -1651,7 +1651,7 @@ function RootYSignos(Texto1, Texto2, Reiterations, LongDecimales){
 				EsNegativo = false;
 			}
 			if (IsMayor(Num1,StringCero) == true && IsMayor(Num2,StringCero) == true ){
-				if (IsMayor(Num2, StringDiez) == false ){
+				if (IsMayor(Num2, StringUno + StringSeis) == false ){
 					var SubNumero1 = StringCero;
 					var Longitud1 = Cero;
 					var SubLongitud1 = Cero;
@@ -1664,12 +1664,12 @@ function RootYSignos(Texto1, Texto2, Reiterations, LongDecimales){
 						ParteEntera1 = StringNullString + Num1;
 						Longitud1 = ParteEntera1.length;
 					}
-					if (Longitud1 >= Diez){
+					if (Longitud1 >= 12){
 						if (IsPar(StringNullString + Longitud1) == true ){
-							SubLongitud1 = Longitud1 - Nueve;
+							SubLongitud1 = Longitud1 - 11;
 							Llevada = (SubLongitud1 / parseInt(Num2));
 						}else{
-							SubLongitud1 = Longitud1 - Ocho;
+							SubLongitud1 = Longitud1 - 10;
 							Llevada = (SubLongitud1 / parseInt(Num2));
 						}
 						Llevada = parseInt(Llevada);
