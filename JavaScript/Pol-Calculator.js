@@ -1780,7 +1780,7 @@ function RaizYReal(Texto1, Texto2, Reiterations, LongDecimales){
 						Salte = true;
 					}
 				}
-				if ( IsMayor(StringUno, Num2) == true ){	
+				if ( IsMayor(StringDos, Num2) == true ){	
 					if (IsMayor(Num1,Num2) == false || IsEquals(Num1,Num2) == true ){
 						var LaResta = RestaSignos(Num2,StringUno);
 						ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + Reitera);
