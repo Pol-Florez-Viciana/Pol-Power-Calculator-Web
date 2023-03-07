@@ -1,8 +1,8 @@
 // Modulo Pol-Calculator.js **********************************************************************************************
 // ***********************************************************************************************************************
 // ***********************************************************************************************************************
-// Día Creación 14/12/2021 - Hasta - 09/01/2023 ** Autor: Pol Flórez Viciana *********************************************
-// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 09/01/2023 ***************************************************************
+// Día Creación 14/12/2021 - Hasta - 07/03/2023 ** Autor: Pol Flórez Viciana *********************************************
+// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 07/03/2023 ***************************************************************
 // ***********************************************************************************************************************
 // Constantes de Uso Reiterado
 const StringNullString = ""; 
@@ -1773,6 +1773,7 @@ function RaizYReal(Texto1, Texto2, Reiterations, LongDecimales){
 				var CuentaNum1 = StringCero;
 				var Salte = false;
 				var ElevacionesCuentaNum1 = StringCero;
+				var Ilogica = false;
 				while ( Salte == false ){
 					CuentaNum1 = SumaSignos(CuentaNum1,StringUno);	
 					ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + TreintaiDos);
@@ -1789,6 +1790,7 @@ function RaizYReal(Texto1, Texto2, Reiterations, LongDecimales){
 						var DivisiondeR = MultiplicaSignos(LaElevacionMenor, StringDos);
 						SubResultado = DivideSignos( SumadeR, DivisiondeR, StringNullString + Reitera);
 					}else{
+						Ilogica = true;
 						SubResultado = DivideSignos(Num1,Num2,StringNullString + Reitera);
 					}	
 				}else{
@@ -1800,32 +1802,32 @@ function RaizYReal(Texto1, Texto2, Reiterations, LongDecimales){
 					SubResultado = DivideSignos( SumadeR, DivisiondeR, StringNullString + Reitera);
 				}	
 				ElevacionesCuentaNum1 = ElevaSignos(SubResultado, Num2, StringNullString + Reitera);				
-					if (IsEquals(Num1, ElevacionesCuentaNum1) == false ){
-						if (parseInt(LongiDecimales) != 0 ){
-							SubResultado = GetIntegerPart(SubResultado);
-							var i;
-							for ( i = 1; i <= parseInt(LongiDecimales) + Uno; i++){
-								if (IsEquals(Num1, ElevacionesCuentaNum1) == false ){
-									var LosNumDecimales = StringsCerosToRight(StringCero + StringComa, i + Uno) + StringUno;
-									while ( IsMayor(ElevacionesCuentaNum1, Num1) == false ){
-										SubResultado = SumaSignos(SubResultado,LosNumDecimales);
-										ElevacionesCuentaNum1 = ElevaSignos(SubResultado, Num2, StringNullString + Reitera );	
-									}
-									while ( IsMayor(ElevacionesCuentaNum1, Num1) == true ){
-										SubResultado = RestaSignos(SubResultado,LosNumDecimales);
-										ElevacionesCuentaNum1 = ElevaSignos(SubResultado, Num2, StringNullString + Reitera);
-									}
-								}else{
-									break;
-								}		
-							}
-							Resultado = SubResultado; // DivideSignos(SubResultado, LaResta, StringNullString + Reitera);
-						}else{
-							Resultado = SubResultado; // DivideSignos(SubResultado, LaResta, StringNullString + Reitera);
+				if (IsEquals(Num1, ElevacionesCuentaNum1) == false && Ilogica == false ){
+					if (parseInt(LongiDecimales) != 0 ){
+						SubResultado = GetIntegerPart(SubResultado);
+						var i;
+						for ( i = 1; i <= parseInt(LongiDecimales) + Uno; i++){
+							if (IsEquals(Num1, ElevacionesCuentaNum1) == false ){
+								var LosNumDecimales = StringsCerosToRight(StringCero + StringComa, i + Uno) + StringUno;
+								while ( IsMayor(ElevacionesCuentaNum1, Num1) == false ){
+									SubResultado = SumaSignos(SubResultado,LosNumDecimales);
+									ElevacionesCuentaNum1 = ElevaSignos(SubResultado, Num2, StringNullString + Reitera );	
+								}
+								while ( IsMayor(ElevacionesCuentaNum1, Num1) == true ){
+									SubResultado = RestaSignos(SubResultado,LosNumDecimales);
+									ElevacionesCuentaNum1 = ElevaSignos(SubResultado, Num2, StringNullString + Reitera);
+								}
+							}else{
+								break;
+							}		
 						}
+						Resultado = SubResultado; // DivideSignos(SubResultado, LaResta, StringNullString + Reitera);
 					}else{
-						Resultado = SubResultado;	
+						Resultado = SubResultado; // DivideSignos(SubResultado, LaResta, StringNullString + Reitera);
 					}
+				}else{
+					Resultado = SubResultado;	
+				}
 					
 			}
 		}	
