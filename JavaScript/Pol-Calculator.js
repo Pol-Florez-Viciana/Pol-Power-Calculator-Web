@@ -1790,8 +1790,12 @@ function RaizYReal(Texto1, Texto2, Reiterations, LongDecimales){
 						var DivisiondeR = MultiplicaSignos(LaElevacionMenor, StringDos);
 						SubResultado = DivideSignos( SumadeR, DivisiondeR, StringNullString + Reitera);
 					}else{
-						Ilogica = true;
-						SubResultado = DivideSignos(Num1,Num2,StringNullString + Reitera);
+						if ( IsMayor(StringUno, Num2) == true ) {
+							Ilogica = true;
+							SubResultado = DivideSignos(Num1,Num2,StringNullString + Reitera);
+						}else{
+							SubResultado = DivideSignos(Num1,Num2,StringNullString + Reitera);
+						}	
 					}	
 				}else{
 					var LaResta = RestaSignos(Num2,StringUno);
