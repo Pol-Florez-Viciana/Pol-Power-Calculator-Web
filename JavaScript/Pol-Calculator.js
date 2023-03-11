@@ -1775,12 +1775,31 @@ function RaizYReal(Texto1, Texto2, Reiterations, LongDecimales){
 				var ElevacionesCuentaNum1 = StringCero;
 				var Ilogica = false;
 				while ( Salte == false ){
+					CuentaNum1 = SumaSignos(CuentaNum1,StringUno + StringCero + StringCero);	
+					ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + TreintaiDos);
+					if( IsMayor(Num1, ElevacionesCuentaNum1) == false || IsEquals(Num1, ElevacionesCuentaNum1) == true){
+						CuentaNum1 = RestaSignos(CuentaNum1,StringUno + StringCero + StringCero);
+						Salte = true;
+					}
+				}
+				Salte = false;
+				while ( Salte == false ){
+					CuentaNum1 = SumaSignos(CuentaNum1,StringUno + StringCero);	
+					ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + TreintaiDos);
+					if( IsMayor(Num1, ElevacionesCuentaNum1) == false || IsEquals(Num1, ElevacionesCuentaNum1) == true){
+						CuentaNum1 = RestaSignos(CuentaNum1,StringUno + StringCero);
+						Salte = true;
+					}
+				}
+				Salte = false;
+				while ( Salte == false ){
 					CuentaNum1 = SumaSignos(CuentaNum1,StringUno);	
 					ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + TreintaiDos);
 					if( IsMayor(Num1, ElevacionesCuentaNum1) == false || IsEquals(Num1, ElevacionesCuentaNum1) == true){
 						Salte = true;
 					}
 				}
+				
 				if ( IsMayor(StringDos, Num2) == true ){	
 					if (IsMayor(Num1,Num2) == false || IsEquals(Num1,Num2) == true ){
 						var LaResta = RestaSignos(Num2,StringUno);
