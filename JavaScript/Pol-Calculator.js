@@ -479,10 +479,20 @@ function ConvertIntegerToBinary(Texto,Reiteraciones){
 
 function MultiplyRepeat(Num1, Num2, Num3){
 	var Numero3 = Cero;
+	var EsNegativo1 = false;
+	var EsNegativo2 = false;
 	var Resultado = StringCero;
 	if (IsNumber(Num1) == true || IsNegativeAndNumber(Num1) == true){
 		if (IsNumber(Num2) == true || IsNegativeAndNumber(Num2) == true){
 			if (IsNumber(Num3) == true || IsNegativeAndNumber(Num3) == true){
+				if (IsNegativeAndNumber(Num1) == true){
+					EsNegativo1 = true;
+					Num1 = ConvertPositive(Num1);
+				}
+				if (IsNegativeAndNumber(Num2) == true){
+					EsNegativo2 = true;
+					Num2 = ConvertPositive(Num2);
+				}
 				Num3 = ConvertPositive(Num3);
 				if (IsEquals(Num3,StringCero) == false){
 					if (IsRealNumber(Num3) == true ){
@@ -501,7 +511,18 @@ function MultiplyRepeat(Num1, Num2, Num3){
 			}
 		}
 	}
-	return Resultado;
+	if (EsNegativo1 == true && EsNegativo2 == true){
+		return Resultado;	
+	}
+	if (EsNegativo1 == false && EsNegativo2 == false){
+		return Resultado;	
+	}
+	if (EsNegativo1 == true && EsNegativo2 == false){
+		return StringGuion + Resultado;	
+	}
+	if (EsNegativo1 == false && EsNegativo2 == true){
+		return StringGuion + Resultado;	
+	}
 }
 
 function Tangente(Texto1, Reiteraciones, LongitudDecimal ){
