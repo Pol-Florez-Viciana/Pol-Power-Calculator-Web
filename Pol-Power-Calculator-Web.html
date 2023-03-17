@@ -53,7 +53,7 @@
 </head>
 <body >
 	<center>
-		<h1 style="color: blue;">Pol Power Calculator Web Version 13.8</h1>
+		<h1 style="color: blue;">Pol Power Calculator Web Version 13.9</h1>
 		<div style="width: 98%;" >
 			<section id="Numeros1">
 				<div id="ParteNum1">
@@ -150,9 +150,12 @@
 					<input id="BtnPorUnidaje" onclick="TraePorunidaje()" type="button" style="font-size: 4mm;" value="1%" title="Perunitage of X%" />
 					<input id="BtnModLogPow" onclick="ModLogPowAsimetrico()" type="button" style="font-size: 4mm;" value="Mod.Log.Pow." title="ModLogPow Function" />
 					<input id="BtnPowAsimetrico" onclick="PowAsimetrico()" type="button" style="font-size: 4mm;" value="Pow Asimetric" title="Pow Asimetric" />
+					
 					<br><br>
 					<input id="BtnModLogPowReverse" onclick="ModLogPowAsimetricoReverse()" type="button" style="font-size: 4mm;" value="Mod.Log.Reverse.Pow." title="Mod Log Reverse Pow Function" />
 					<input id="BtnPowAsimetricoReverse" onclick="PowAsimetricoReverse()" type="button" style="font-size: 4mm;" value="Reverse Pow Asimetric" title="Reverse Pow Asimetric" />
+					<br><br>
+					<input id="BtnMultiplicaRepetidasVeces" onclick="MultiplicarRepeat()" type="button" style="font-size: 4mm;" value="Multiply Repeat" title="Multiply Repeat" />
 				</div>
 				<div id="ParteNumResultado">
 					<h2>
@@ -404,6 +407,20 @@
 				AddListadoResultados(Resultado + " = ((" + GetIntegerPart(Numero1) + " · " + Numero2 + ") + " + Numero3 + ")" );
 			}else{
 				AddListadoResultados(Resultado + " = (( -" + GetIntegerPart(ConvertPositive(Numero1)) + " · " + Numero2 + ") + " + Numero3 + ")" );
+			}
+		}
+		function MultiplicarRepeat(){
+			var Numero1 = document.getElementById("Numero1").value;
+			var Numero2 = document.getElementById("Numero2").value;
+			var Numero3 = document.getElementById("Numero3").value;
+			var Resultado = MultiplyRepeat(Numero1,Numero2,Numero3);
+			var EsNegativa = IsNegativeAndNumber(Numero3);
+			document.getElementById("Resultado").value = Resultado;
+			ActualizarResultado();
+			if (EsNegativa == false ){
+				AddListadoResultados(Resultado + " = ( " + Numero1 + " · " + Numero2 + " ) Multiply " + GetIntegerPart(Numero3) + " Repeats" );
+			}else{
+				AddListadoResultados(Resultado + " = ( " + Numero1 + " · " + Numero2 + " ) Multiply " + GetIntegerPart(ConvertPositive(Numero3)) + " Repeats" );
 			}
 		}
 		function Dividir(){

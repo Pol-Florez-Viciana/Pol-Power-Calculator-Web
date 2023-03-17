@@ -1,8 +1,8 @@
 // Modulo Pol-Calculator.js **********************************************************************************************
 // ***********************************************************************************************************************
 // ***********************************************************************************************************************
-// Día Creación 14/12/2021 - Hasta - 07/03/2023 ** Autor: Pol Flórez Viciana *********************************************
-// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 07/03/2023 ***************************************************************
+// Día Creación 14/12/2021 - Hasta - 17/03/2023 ** Autor: Pol Flórez Viciana *********************************************
+// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 17/03/2023 ***************************************************************
 // ***********************************************************************************************************************
 // Constantes de Uso Reiterado
 const StringNullString = ""; 
@@ -476,6 +476,33 @@ function ConvertIntegerToBinary(Texto,Reiteraciones){
 }
 
 //Principales Funciones Finales de Uso con Signos
+
+function MultiplyRepeat(Num1, Num2, Num3){
+	var Numero3 = Cero;
+	var Resultado = StringCero;
+	if (IsNumber(Num1) == true || IsNegativeAndNumber(Num1) == true){
+		if (IsNumber(Num2) == true || IsNegativeAndNumber(Num2) == true){
+			if (IsNumber(Num3) == true || IsNegativeAndNumber(Num3) == true){
+				Num3 = ConvertPositive(Num3);
+				if (IsEquals(Num3,StringCero) == false){
+					if (IsRealNumber(Num3) == true ){
+						Numero3 = parseInt(GetIntegerPart(Num3));
+					}else{
+						Numero3 = parseInt(Num3);
+					}
+					var i = 0;
+					Resultado = Num1;
+					for (i = 1; i <= Numero3; i++) {
+						Resultado = MultiplicaSignos(Resultado,Num2);
+					}
+				}else{
+					Resultado = Num1;
+				}	
+			}
+		}
+	}
+	return Resultado;
+}
 
 function Tangente(Texto1, Reiteraciones, LongitudDecimal ){
 	var Resultado = StringCero;
