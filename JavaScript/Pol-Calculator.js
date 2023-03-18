@@ -1698,8 +1698,9 @@ function RootYSignos(Texto1, Texto2, Reiterations, LongDecimales){
 				Num1 = StringNullString + Texto1;
 				EsNegativo = false;
 			}
+			
 			//if (IsMayor(Num1,StringCero) == true && IsMayor(Num2,StringCero) == true ){
-			//	if (IsMayor(Num2, StringUno + StringSeis) == false ){
+				if (IsMayor(Num2, StringUno + StringCero + StringCero) == false ){
 			//		var SubNumero1 = StringCero;
 			//		var Longitud1 = Cero;
 			//		var SubLongitud1 = Cero;
@@ -1729,7 +1730,7 @@ function RootYSignos(Texto1, Texto2, Reiterations, LongDecimales){
 			//		}else{
 						Resultado = RaizYReal(Texto1, Texto2, StringNullString + Reitera, StringNullString + LongiDecimales);
 			//		}
-			//	}		
+				}		
 			//}	
 		}
 	}
