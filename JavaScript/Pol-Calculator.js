@@ -1,8 +1,8 @@
 // Modulo Pol-Calculator.js **********************************************************************************************
 // ***********************************************************************************************************************
 // ***********************************************************************************************************************
-// Día Creación 14/12/2021 - Hasta - 17/03/2023 ** Autor: Pol Flórez Viciana *********************************************
-// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 17/03/2023 ***************************************************************
+// Día Creación 14/12/2021 - Hasta - 07/04/2023 ** Autor: Pol Flórez Viciana *********************************************
+// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 07/04/2023 ***************************************************************
 // ***********************************************************************************************************************
 // Constantes de Uso Reiterado
 const StringNullString = ""; 
@@ -1179,8 +1179,9 @@ function ElevaSignos(Texto1,Texto2,Reiteraciones){
 				var ParteDecimal = StringNullString + GetDecimalPart(Num2);
 				if (IsMayor(ParteEntera, StringCero) == true ){
 					var PreResultado1 =	ElevaIntegers(Num1,ParteEntera, Reiteraciones);
-					var ParteEnteraMas1 = SumaSignos(ParteEntera, StringUno);
-					var PreResultado2 =	ElevaIntegers(Num1,ParteEnteraMas1, Reiteraciones);
+					//var ParteEnteraMas1 = SumaSignos(ParteEntera, StringUno);
+					//var PreResultado2 = ElevaIntegers(Num1,ParteEnteraMas1, Reiteraciones);
+					var PreResultado2 =	MultiplicaSignos(Num1,PreResultado1);
 					var Diferencia = RestaSignos(PreResultado2,PreResultado1);
 					if (IsNegativeAndNumber(Diferencia) == true){
 						Diferencia = ConvertPositive(Diferencia);
