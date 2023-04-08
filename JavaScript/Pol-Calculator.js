@@ -1,8 +1,8 @@
 // Modulo Pol-Calculator.js **********************************************************************************************
 // ***********************************************************************************************************************
 // ***********************************************************************************************************************
-// Día Creación 14/12/2021 - Hasta - 07/04/2023 ** Autor: Pol Flórez Viciana *********************************************
-// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 07/04/2023 ***************************************************************
+// Día Creación 14/12/2021 - Hasta - 08/04/2023 ** Autor: Pol Flórez Viciana *********************************************
+// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 08/04/2023 ***************************************************************
 // ***********************************************************************************************************************
 // Constantes de Uso Reiterado
 const StringNullString = ""; 
@@ -1069,8 +1069,9 @@ function LOGSignos(Texto1,Texto2,Reiteraciones){
 								SubResultado = PrimerParametro;
 							}else{
 								if (IsMayor(PrimerParametro, StringCero + StringComa + StringNueve ) == true){
-									var SegundoParametro = SumaReales(PrimerParametro,StringUno);
-									PreResultado2 = ElevaIntegers(Num2,SegundoParametro, Reiteraciones);
+									//var SegundoParametro = SumaReales(PrimerParametro,StringUno);
+									//PreResultado2 = ElevaIntegers(Num2,SegundoParametro, Reiteraciones);
+									PreResultado2 = MultiplicaSignos(Num2,PreResultado1);
 									if (MultiplicarPrimerResultado == true ){		
 										var Resta1 = RestaSignos(PreResultado1,PreResultado2);
 										var Resta2 = RestaSignos(Num1,PreResultado2);
