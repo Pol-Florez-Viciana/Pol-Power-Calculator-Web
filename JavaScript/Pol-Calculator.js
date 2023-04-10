@@ -1,8 +1,8 @@
 // Modulo Pol-Calculator.js **********************************************************************************************
 // ***********************************************************************************************************************
 // ***********************************************************************************************************************
-// Día Creación 14/12/2021 - Hasta - 08/04/2023 ** Autor: Pol Flórez Viciana *********************************************
-// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 08/04/2023 ***************************************************************
+// Día Creación 14/12/2021 - Hasta - 09/04/2023 ** Autor: Pol Flórez Viciana *********************************************
+// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 09/04/2023 ***************************************************************
 // ***********************************************************************************************************************
 // Constantes de Uso Reiterado
 const StringNullString = ""; 
@@ -1400,8 +1400,8 @@ function MODSignos(Texto1,Texto2,Reiteraciones){
 } 
 function RestaSignos(Texto1, Texto2){
 	var Resultado = StringCero;
-	if(IsNegativeAndNumber(Texto1) == true || IsNumber(Texto1) == true ){
-		if(IsNegativeAndNumber(Texto2) == true || IsNumber(Texto2) == true ){
+	//if(IsNegativeAndNumber(Texto1) == true || IsNumber(Texto1) == true ){
+	//	if(IsNegativeAndNumber(Texto2) == true || IsNumber(Texto2) == true ){
 			var EsNum1 = false;
 			var EsNum2 = false;
 			var EsNegativoNum1 = false;
@@ -1455,8 +1455,8 @@ function RestaSignos(Texto1, Texto2){
 					}
 				}	
 			}
-		}	
-	}	
+		//}	
+	//}	
 	return FormatCeros(Resultado);
 }
 function SumaSignos(Texto1, Texto2){
@@ -1931,7 +1931,7 @@ function RaizYReal(Texto1, Texto2, Reiterations, LongDecimales){
 						Salte = true;
 					}
 				}
-				if (IsEquals(Num1,ElevacionesCuentaNum1) == false ){
+				//if (IsEquals(Num1,ElevacionesCuentaNum1) == false ){
 					if ( IsMayor(StringDos, Num2) == true ){	
 						if (IsMayor(Num1,Num2) == false || IsEquals(Num1,Num2) == true ){
 							var LaResta = RestaSignos(Num2,StringUno);
@@ -1983,9 +1983,9 @@ function RaizYReal(Texto1, Texto2, Reiterations, LongDecimales){
 					}else{
 						Resultado = SubResultado;	
 					}
-				}else{
-					Resultado = CuentaNum1;
-				}	
+				//}else{
+				//	Resultado = CuentaNum1;
+				//}	
 			}
 		}	
 	}
@@ -2110,13 +2110,17 @@ function MultiplicaReales(Texto1,Texto2){
 function RestaReales(Texto1,Texto2){
 	var Resultado = StringCero;
 	//if (IsNumber(Texto1) == true && IsNumber(Texto2) == true){
-		var Centralizacion = CentralizeNumbers(Texto1,Texto2);
-		if (parseInt(Centralizacion[Tres]) == Cero) {
-			Resultado = RestaIntegers(Centralizacion[Cero],Centralizacion[Uno]);
+		if (IsEquals(Texto1,Texto2) == false ){
+			var Centralizacion = CentralizeNumbers(Texto1,Texto2);
+			if (parseInt(Centralizacion[Tres]) == Cero) {
+				Resultado = RestaIntegers(Centralizacion[Cero],Centralizacion[Uno]);
+			}else{
+				var PreResultado = StringNullString + RestaIntegers(Centralizacion[Cero],Centralizacion[Uno]);
+				Resultado = StringsLeft(PreResultado, PreResultado.length - parseInt(Centralizacion[Tres])) + StringComa + StringsRight(PreResultado, parseInt(Centralizacion[Tres]));
+			}
 		}else{
-			var PreResultado = StringNullString + RestaIntegers(Centralizacion[Cero],Centralizacion[Uno]);
-			Resultado = StringsLeft(PreResultado, PreResultado.length - parseInt(Centralizacion[Tres])) + StringComa + StringsRight(PreResultado, parseInt(Centralizacion[Tres]));
-		}
+			Resultado = StringCero;
+		}	
 	//}	
 	return FormatCeros(Resultado);
 }
@@ -2180,14 +2184,16 @@ function MultiplicaIntegers(Texto1,Texto2){
 	var ResultadosSuma = [];
 	var Resultado = StringCero;
 	//if (IsNumber(Texto1) == true && IsNumber(Texto2) == true && IsRealNumber(Texto1) == false && IsRealNumber(Texto2) == false ){
-		var Centralizacion = CentralizeNumbers(Texto1,Texto2)
-		var Num1 = StringNullString + Centralizacion[0];
-		var Num2 = StringNullString + Centralizacion[1];
+		var Centralizacion = CentralizeNumbers(Texto1,Texto2);
+		var Centralizacion0 = StringNullString + Centralizacion[0];
+		var Centralizacion1 = StringNullString + Centralizacion[1];
+		var Num1 = StringNullString + Centralizacion0;
+		var Num2 = StringNullString + Centralizacion1;
 		var UnidadDeMas = Cero;
 		var i = Cero;
 		var n = Cero;
 		if (IsMayor(Num1,Num2) == true){
-			var Largada = Centralizacion[Cero];
+			var Largada = Centralizacion0;
 			for (n = Uno; n <= Largada.length; n++ ){
 				var T1 = StringsRight(Num1, Uno);
 				if (n != Uno){
@@ -2195,7 +2201,7 @@ function MultiplicaIntegers(Texto1,Texto2){
 				}else{
 					ResultadosSuma.push(StringNullString);
 				}
-				Num2 = StringsLeft(Centralizacion[Uno], Largada.length);
+				Num2 = StringsLeft(Centralizacion1, Largada.length);
 				for (i = Uno; i <= Largada.length ; i++){
 					var T2 = StringsRight(Num2, Uno);
 					if (parseInt(T1) != Cero ){
@@ -2211,12 +2217,12 @@ function MultiplicaIntegers(Texto1,Texto2){
 					}else{
 						ResultadosSuma[n - Uno] = StringNullString + StringCero + ResultadosSuma[n - Uno];
 					}
-					Num2 = StringsLeft(Centralizacion[Uno], Largada.length - i);
+					Num2 = StringsLeft(Centralizacion1, Largada.length - i);
 				}
 				if (parseInt(UnidadDeMas) != Cero){
 					ResultadosSuma[n - Uno] = StringNullString + UnidadDeMas + ResultadosSuma[n - Uno];
 				}
-				Num1 = StringsLeft(Centralizacion[Cero], Largada.length - n);
+				Num1 = StringsLeft(Centralizacion0, Largada.length - n);
 				UnidadDeMas = Cero;
 			}
 			for (n = Cero; n < ResultadosSuma.length; n++ ){
@@ -2224,8 +2230,7 @@ function MultiplicaIntegers(Texto1,Texto2){
 				Resultado = SumaIntegers(Anterior, ResultadosSuma[n] );
 			}
 		}else{
-			var Largada = Centralizacion[Uno];
-			
+			var Largada = Centralizacion1;
 			for (n = Uno; n <= Largada.length; n++ ){
 				var T2 = StringsRight(Num2, Uno);
 				if (n != Uno){
@@ -2233,7 +2238,7 @@ function MultiplicaIntegers(Texto1,Texto2){
 				}else{
 					ResultadosSuma.push(StringNullString);
 				}
-				Num1 = StringsLeft(Centralizacion[Cero], Largada.length);
+				Num1 = StringsLeft(Centralizacion0, Largada.length);
 				for (i = Uno; i <= Largada.length ; i++){
 					var T1 = StringsRight(Num1, Uno);
 					if (parseInt(T2) != Cero ){
@@ -2249,12 +2254,12 @@ function MultiplicaIntegers(Texto1,Texto2){
 					}else{
 						ResultadosSuma[n - Uno] = StringNullString + StringCero + ResultadosSuma[n - Uno];
 					}
-					Num1 = StringsLeft(Centralizacion[Cero], Largada.length - i);
+					Num1 = StringsLeft(Centralizacion0, Largada.length - i);
 				}
 				if (parseInt(UnidadDeMas) != Cero){
 					ResultadosSuma[n - Uno] = StringNullString + UnidadDeMas + ResultadosSuma[n - Uno];
 				}
-				Num2 = StringsLeft(Centralizacion[Uno], Largada.length - n);
+				Num2 = StringsLeft(Centralizacion1, Largada.length - n);
 				UnidadDeMas = Cero;
 			}
 			for (n = Cero; n < ResultadosSuma.length; n++ ){
@@ -2277,52 +2282,56 @@ function RestaIntegers(Texto1,Texto2){
 		var Num2 = StringNullString + Centralizacion[1];
 		var UnidadDeMas = Cero;
 		var i;
-		if (IsMayor(Num1,Num2) == true){
-			var Largada = Centralizacion[Cero];
-			for (i = 1; i <= Largada.length ; i++){
-				var T1 = StringsRight(Num1, Uno);
-				var T2 = StringsRight(Num2, Uno);
-				var R1 = parseInt(T1) - ( parseInt(T2) + parseInt(UnidadDeMas));
-				var R2 = StringNullString + R1;
-				if (IsNegative(R2) == true ){
-					var R3 = Diez + parseInt(R2);
-					var R4 = StringNullString + R3;
-					Resultado = StringNullString + StringsRight(R4,Uno) + Resultado;	
-					UnidadDeMas = Uno 
-				}else{
-					Resultado = StringNullString + StringsRight(R2,Uno) + Resultado;
-					UnidadDeMas = Cero;
+		//if (IsEquals(Num1,Num2) == false){
+			if (IsMayor(Num1,Num2) == true){
+				var Largada = Centralizacion[Cero];
+				for (i = 1; i <= Largada.length ; i++){
+					var T1 = StringsRight(Num1, Uno);
+					var T2 = StringsRight(Num2, Uno);
+					var R1 = parseInt(T1) - ( parseInt(T2) + parseInt(UnidadDeMas));
+					var R2 = StringNullString + R1;
+					if (IsNegative(R2) == true ){
+						var R3 = Diez + parseInt(R2);
+						var R4 = StringNullString + R3;
+						Resultado = StringNullString + StringsRight(R4,Uno) + Resultado;	
+						UnidadDeMas = Uno 
+					}else{
+						Resultado = StringNullString + StringsRight(R2,Uno) + Resultado;
+						UnidadDeMas = Cero;
+					}
+					Num1 = StringsLeft(Centralizacion[Cero], Largada.length - i);
+					Num2 = StringsLeft(Centralizacion[Uno], Largada.length - i);
 				}
-				Num1 = StringsLeft(Centralizacion[Cero], Largada.length - i);
-				Num2 = StringsLeft(Centralizacion[Uno], Largada.length - i);
+				if (parseInt(UnidadDeMas) != Cero){
+					Resultado = StringNullString + UnidadDeMas + Resultado;
+				}
+			}else{
+				var Largada = Centralizacion[1];
+				for (i = 1; i <= Largada.length ; i++){
+					var T1 = StringsRight(Num1, Uno);
+					var T2 = StringsRight(Num2, Uno);
+					var	R1 = parseInt(T2) - ( parseInt(T1) + parseInt(UnidadDeMas));
+					var R2 = StringNullString + R1;
+					if (IsNegative(R2) == true ){
+						var R3 = Diez + parseInt(R2);
+						var R4 = StringNullString + R3;
+						Resultado = StringNullString + StringsRight(R4,Uno) + Resultado;	
+						UnidadDeMas = Uno 
+					}else{
+						Resultado = StringNullString + StringsRight(R2,Uno) + Resultado;
+						UnidadDeMas = Cero;
+					}			
+					Num1 = StringsLeft(Centralizacion[Cero], Largada.length - i);
+					Num2 = StringsLeft(Centralizacion[Uno], Largada.length - i);
+				}
+				if (parseInt(UnidadDeMas) != Cero){
+					Resultado = StringNullString +  UnidadDeMas + Resultado;
+				}
+				Resultado = StringGuion + Resultado;
 			}
-			if (parseInt(UnidadDeMas) != Cero){
-				Resultado = StringNullString + UnidadDeMas + Resultado;
-			}
-		}else{
-			var Largada = Centralizacion[1];
-			for (i = 1; i <= Largada.length ; i++){
-				var T1 = StringsRight(Num1, Uno);
-				var T2 = StringsRight(Num2, Uno);
-				var	R1 = parseInt(T2) - ( parseInt(T1) + parseInt(UnidadDeMas));
-				var R2 = StringNullString + R1;
-				if (IsNegative(R2) == true ){
-					var R3 = Diez + parseInt(R2);
-					var R4 = StringNullString + R3;
-					Resultado = StringNullString + StringsRight(R4,Uno) + Resultado;	
-					UnidadDeMas = Uno 
-				}else{
-					Resultado = StringNullString + StringsRight(R2,Uno) + Resultado;
-					UnidadDeMas = Cero;
-				}			
-				Num1 = StringsLeft(Centralizacion[Cero], Largada.length - i);
-				Num2 = StringsLeft(Centralizacion[Uno], Largada.length - i);
-			}
-			if (parseInt(UnidadDeMas) != Cero){
-				Resultado = StringNullString +  UnidadDeMas + Resultado;
-			}
-			Resultado = StringGuion + Resultado;
-		}
+		//}else{
+		//	Resultado = StringCero;
+		//}	
 	//}
 	if (Resultado == StringNullString){
 		return StringCero;
