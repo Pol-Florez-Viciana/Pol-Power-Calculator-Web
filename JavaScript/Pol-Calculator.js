@@ -1,8 +1,8 @@
 // Modulo Pol-Calculator.js **********************************************************************************************
 // ***********************************************************************************************************************
 // ***********************************************************************************************************************
-// Día Creación 14/12/2021 - Hasta - 09/04/2023 ** Autor: Pol Flórez Viciana *********************************************
-// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 09/04/2023 ***************************************************************
+// Día Creación 14/12/2021 - Hasta - 11/04/2023 ** Autor: Pol Flórez Viciana *********************************************
+// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 11/04/2023 ***************************************************************
 // ***********************************************************************************************************************
 // Constantes de Uso Reiterado
 const StringNullString = ""; 
@@ -790,6 +790,10 @@ function FactorialSumas(Texto1,Reiterations){
 			ComTexto1 = StringCero;
 		}	
 	}
+	Reiterations = ConvertPositive(Reiterations);
+	if (IsMayor(Reiterations, StringTres + StringDos) == false ){
+		Reiterations = StringTres + StringDos;
+	}
 	var EsNegativo1 = false;
 	var Resultado = StringCero;
 	var Reitera = Reiterations;
@@ -803,28 +807,28 @@ function FactorialSumas(Texto1,Reiterations){
 			}else{
 				if (IsRealNumber(Texto1) == true ){
 					var Decimales = GetDecimalPart(Texto1);
-					var Factor1 = FactorialSumasEnteras(GetIntegerPart(Texto1));
-					var Factor2 = FactorialSumasEnteras(SumaSignos(GetIntegerPart(Texto1), StringUno));
+					var Factor1 = FactorialSumasEnteras(GetIntegerPart(Texto1), Reiterations);
+					var Factor2 = FactorialSumasEnteras(SumaSignos(GetIntegerPart(Texto1), StringUno), Reiterations);
 					var Diferencia = RestaReales(Factor2,Factor1);
 					var Limite = StringsCerosToRight(StringUno, Decimales.length + Uno);
 					var ParteDecimal = MultiplicaSignos(Decimales, DivideSignos(Diferencia,Limite, Reitera));
 					Resultado = SumaReales(Factor1,ParteDecimal);
 				}else{
-					Resultado = FactorialSumasEnteras(Texto1);
+					Resultado = FactorialSumasEnteras(Texto1, Reiterations);
 				}
 			}
 		}else{
 			if (IsNumber(Texto1) == true ){
 				if (IsRealNumber(Texto1) == true ){
 					var Decimales = GetDecimalPart(Texto1);
-					var Factor1 = FactorialSumasEnteras(GetIntegerPart(Texto1));
-					var Factor2 = FactorialSumasEnteras(SumaSignos(GetIntegerPart(Texto1), StringUno));
+					var Factor1 = FactorialSumasEnteras(GetIntegerPart(Texto1), Reiterations);
+					var Factor2 = FactorialSumasEnteras(SumaSignos(GetIntegerPart(Texto1), StringUno), Reiterations);
 					var Diferencia = RestaReales(Factor2,Factor1);
 					var Limite = StringsCerosToRight(StringUno, Decimales.length + Uno);
 					var ParteDecimal = MultiplicaSignos(Decimales, DivideSignos(Diferencia,Limite,Reitera));
 					Resultado = SumaReales(Factor1,ParteDecimal);
 				}else{
-					Resultado = FactorialSumasEnteras(Texto1);
+					Resultado = FactorialSumasEnteras(Texto1, Reiterations);
 				}
 			}	
 		}
@@ -839,7 +843,7 @@ function FactorialSumas(Texto1,Reiterations){
 	}	
 }
 
-function FactorialSumasEnteras(Texto1){
+function FactorialSumasEnteras(Texto1, Reiteraciones){
 	var EsNegativo1 = false;
 	var Resultado = StringCero;
 	if (IsNegativeAndNumber(Texto1) == true ){
@@ -851,13 +855,15 @@ function FactorialSumasEnteras(Texto1){
 			var i = 0;
 			if (IsRealNumber(Texto1) == true ){
 				Texto1 = GetIntegerPart(Texto1);
-				for ( i = 0; i <= parseInt(Texto1); i++){
-					Resultado = SumaReales(Resultado, StringNullString + i);
-				}
+				Resultado = ElevaSignos(Texto1, "1,5", Reiteraciones);
+				//for ( i = 0; i <= parseInt(Texto1); i++){
+				//	Resultado = SumaReales(Resultado, StringNullString + i);
+				//}
 			}else{
-				for ( i = 0 ; i <= parseInt(Texto1); i++){
-					Resultado = SumaReales(Resultado, StringNullString + i);
-				}
+				Resultado = ElevaSignos(Texto1, "1,5", Reiteraciones);
+				//for ( i = 0 ; i <= parseInt(Texto1); i++){
+				//	Resultado = SumaReales(Resultado, StringNullString + i);
+				//}
 			}
 		}
 	}else{
@@ -868,14 +874,15 @@ function FactorialSumasEnteras(Texto1){
 				var i = 0;
 				if (IsRealNumber(Texto1) == true ){
 					Texto1 = GetIntegerPart(Texto1);
-					
-					for ( i = 0 ; i <= parseInt(Texto1); i++){
-						Resultado = SumaReales(Resultado, StringNullString + i);
-					}
+					Resultado = ElevaSignos(Texto1, "1,5", Reiteraciones);
+					//for ( i = 0 ; i <= parseInt(Texto1); i++){
+					//	Resultado = SumaReales(Resultado, StringNullString + i);
+					//}
 				}else{
-					for ( i = 0 ; i <= parseInt(Texto1); i++){
-						Resultado = SumaReales(Resultado, StringNullString + i);
-					}
+					Resultado = ElevaSignos(Texto1, "1,5", Reiteraciones);
+					//for ( i = 0 ; i <= parseInt(Texto1); i++){
+					//	Resultado = SumaReales(Resultado, StringNullString + i);
+					//}
 				}
 			}
 		}	
