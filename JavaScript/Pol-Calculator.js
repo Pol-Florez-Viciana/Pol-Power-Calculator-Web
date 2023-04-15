@@ -1834,6 +1834,29 @@ function RaizYReal(Texto1, Texto2, Reiterations, LongDecimales){
 				var Ilogica = false;
 				var Numeraco = GetIntegerPart(Num1);
 				
+				if (Numeraco.length > 14){ 
+					while ( Salte == false ){
+						CuentaNum1 = SumaSignos(CuentaNum1, StringUno + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero);	
+						ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + Reiterations);
+						if( IsMayor(ElevacionesCuentaNum1, Num1) == true || IsEquals(Num1, ElevacionesCuentaNum1) == true){
+							CuentaNum1 = RestaSignos(CuentaNum1,StringUno + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero);
+							Salte = true;
+						}
+					}
+				}
+				Salte = false;
+				
+				if (Numeraco.length > 13){ 
+					while ( Salte == false ){
+						CuentaNum1 = SumaSignos(CuentaNum1, StringUno + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero);	
+						ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + Reiterations);
+						if( IsMayor(ElevacionesCuentaNum1, Num1) == true || IsEquals(Num1, ElevacionesCuentaNum1) == true){
+							CuentaNum1 = RestaSignos(CuentaNum1,StringUno + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero);
+							Salte = true;
+						}
+					}
+				}
+				Salte = false;
 				if (Numeraco.length > 12){ 
 					while ( Salte == false ){
 						CuentaNum1 = SumaSignos(CuentaNum1, StringUno + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero);	
