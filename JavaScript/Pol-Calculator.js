@@ -1,8 +1,8 @@
 // Modulo Pol-Calculator.js **********************************************************************************************
 // ***********************************************************************************************************************
 // ***********************************************************************************************************************
-// Día Creación 14/12/2021 - Hasta - 11/04/2023 ** Autor: Pol Flórez Viciana *********************************************
-// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 11/04/2023 ***************************************************************
+// Día Creación 14/12/2021 - Hasta - 15/04/2023 ** Autor: Pol Flórez Viciana *********************************************
+// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 15/04/2023 ***************************************************************
 // ***********************************************************************************************************************
 // Constantes de Uso Reiterado
 const StringNullString = ""; 
@@ -1832,102 +1832,126 @@ function RaizYReal(Texto1, Texto2, Reiterations, LongDecimales){
 				var Salte = false;
 				var ElevacionesCuentaNum1 = StringCero;
 				var Ilogica = false;
-				while ( Salte == false ){
-					CuentaNum1 = SumaSignos(CuentaNum1, StringUno + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero);	
-					ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + Reiterations);
-					if( IsMayor(ElevacionesCuentaNum1, Num1) == true || IsEquals(Num1, ElevacionesCuentaNum1) == true){
-						CuentaNum1 = RestaSignos(CuentaNum1,StringUno + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero);
-						Salte = true;
+				var Numeraco = GetIntegerPart(Num1);
+				
+				if (Numeraco.length > 12){ 
+					while ( Salte == false ){
+						CuentaNum1 = SumaSignos(CuentaNum1, StringUno + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero);	
+						ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + Reiterations);
+						if( IsMayor(ElevacionesCuentaNum1, Num1) == true || IsEquals(Num1, ElevacionesCuentaNum1) == true){
+							CuentaNum1 = RestaSignos(CuentaNum1,StringUno + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero);
+							Salte = true;
+						}
 					}
 				}
 				Salte = false;
-				while ( Salte == false ){
-					CuentaNum1 = SumaSignos(CuentaNum1, StringUno + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero);	
-					ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + Reiterations);
-					if( IsMayor(ElevacionesCuentaNum1, Num1) == true || IsEquals(Num1, ElevacionesCuentaNum1) == true){
-						CuentaNum1 = RestaSignos(CuentaNum1,StringUno + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero);
-						Salte = true;
+				if (Numeraco.length > 11){
+					while ( Salte == false ){
+						CuentaNum1 = SumaSignos(CuentaNum1, StringUno + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero);	
+						ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + Reiterations);
+						if( IsMayor(ElevacionesCuentaNum1, Num1) == true || IsEquals(Num1, ElevacionesCuentaNum1) == true){
+							CuentaNum1 = RestaSignos(CuentaNum1,StringUno + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero);
+							Salte = true;
+						}
 					}
 				}
 				Salte = false;
-				while ( Salte == false ){
-					CuentaNum1 = SumaSignos(CuentaNum1, StringUno + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero);	
-					ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + Reiterations);
-					if( IsMayor(ElevacionesCuentaNum1, Num1) == true || IsEquals(Num1, ElevacionesCuentaNum1) == true){
-						CuentaNum1 = RestaSignos(CuentaNum1,StringUno + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero);
-						Salte = true;
+				if (Numeraco.length > 10){
+					while ( Salte == false ){
+						CuentaNum1 = SumaSignos(CuentaNum1, StringUno + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero);	
+						ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + Reiterations);
+						if( IsMayor(ElevacionesCuentaNum1, Num1) == true || IsEquals(Num1, ElevacionesCuentaNum1) == true){
+							CuentaNum1 = RestaSignos(CuentaNum1,StringUno + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero);
+							Salte = true;
+						}
 					}
 				}
 				Salte = false;
-				while ( Salte == false ){
-					CuentaNum1 = SumaSignos(CuentaNum1,StringUno + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero);	
-					ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + Reiterations);
-					if( IsMayor(ElevacionesCuentaNum1, Num1) == true || IsEquals(Num1, ElevacionesCuentaNum1) == true){
-						CuentaNum1 = RestaSignos(CuentaNum1,StringUno + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero);
-						Salte = true;
+				if (Numeraco.length > 9){
+					while ( Salte == false ){
+						CuentaNum1 = SumaSignos(CuentaNum1,StringUno + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero);	
+						ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + Reiterations);
+						if( IsMayor(ElevacionesCuentaNum1, Num1) == true || IsEquals(Num1, ElevacionesCuentaNum1) == true){
+							CuentaNum1 = RestaSignos(CuentaNum1,StringUno + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero);
+							Salte = true;
+						}
 					}
 				}
 				Salte = false;
-				while ( Salte == false ){
-					CuentaNum1 = SumaSignos(CuentaNum1,StringUno + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero);	
-					ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + Reiterations);
-					if( IsMayor(ElevacionesCuentaNum1, Num1) == true || IsEquals(Num1, ElevacionesCuentaNum1) == true){
-						CuentaNum1 = RestaSignos(CuentaNum1,StringUno + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero);
-						Salte = true;
+				if (Numeraco.length > 8){
+					while ( Salte == false ){
+						CuentaNum1 = SumaSignos(CuentaNum1,StringUno + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero);	
+						ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + Reiterations);
+						if( IsMayor(ElevacionesCuentaNum1, Num1) == true || IsEquals(Num1, ElevacionesCuentaNum1) == true){
+							CuentaNum1 = RestaSignos(CuentaNum1,StringUno + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero);
+							Salte = true;
+						}
+					}
+				}	
+				Salte = false;
+				if (Numeraco.length > 7){
+					while ( Salte == false ){
+						CuentaNum1 = SumaSignos(CuentaNum1,StringUno + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero);	
+						ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + Reiterations);
+						if( IsMayor(ElevacionesCuentaNum1, Num1) == true || IsEquals(Num1, ElevacionesCuentaNum1) == true){
+							CuentaNum1 = RestaSignos(CuentaNum1,StringUno + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero);
+							Salte = true;
+						}
+					}
+				}	
+				Salte = false;
+				if (Numeraco.length > 6){
+					while ( Salte == false ){
+						CuentaNum1 = SumaSignos(CuentaNum1,StringUno + StringCero + StringCero + StringCero + StringCero + StringCero);	
+						ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + Reiterations);
+						if( IsMayor(ElevacionesCuentaNum1, Num1) == true || IsEquals(Num1, ElevacionesCuentaNum1) == true){
+							CuentaNum1 = RestaSignos(CuentaNum1,StringUno + StringCero + StringCero + StringCero + StringCero + StringCero);
+							Salte = true;
+						}
 					}
 				}
 				Salte = false;
-				while ( Salte == false ){
-					CuentaNum1 = SumaSignos(CuentaNum1,StringUno + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero);	
-					ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + Reiterations);
-					if( IsMayor(ElevacionesCuentaNum1, Num1) == true || IsEquals(Num1, ElevacionesCuentaNum1) == true){
-						CuentaNum1 = RestaSignos(CuentaNum1,StringUno + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero);
-						Salte = true;
+				if (Numeraco.length > 5){
+					while ( Salte == false ){
+						CuentaNum1 = SumaSignos(CuentaNum1,StringUno + StringCero + StringCero + StringCero + StringCero);	
+						ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + Reiterations);
+						if( IsMayor(ElevacionesCuentaNum1, Num1) == true || IsEquals(Num1, ElevacionesCuentaNum1) == true){
+							CuentaNum1 = RestaSignos(CuentaNum1,StringUno + StringCero + StringCero + StringCero + StringCero);
+							Salte = true;
+						}
 					}
 				}
 				Salte = false;
-				while ( Salte == false ){
-					CuentaNum1 = SumaSignos(CuentaNum1,StringUno + StringCero + StringCero + StringCero + StringCero + StringCero);	
-					ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + Reiterations);
-					if( IsMayor(ElevacionesCuentaNum1, Num1) == true || IsEquals(Num1, ElevacionesCuentaNum1) == true){
-						CuentaNum1 = RestaSignos(CuentaNum1,StringUno + StringCero + StringCero + StringCero + StringCero + StringCero);
-						Salte = true;
+				if (Numeraco.length > 4){
+					while ( Salte == false ){
+						CuentaNum1 = SumaSignos(CuentaNum1,StringUno + StringCero + StringCero + StringCero);	
+						ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + Reiterations);
+						if( IsMayor(ElevacionesCuentaNum1, Num1) == true || IsEquals(Num1, ElevacionesCuentaNum1) == true){
+							CuentaNum1 = RestaSignos(CuentaNum1,StringUno + StringCero + StringCero + StringCero );
+							Salte = true;
+						}
 					}
 				}
 				Salte = false;
-				while ( Salte == false ){
-					CuentaNum1 = SumaSignos(CuentaNum1,StringUno + StringCero + StringCero + StringCero + StringCero);	
-					ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + Reiterations);
-					if( IsMayor(ElevacionesCuentaNum1, Num1) == true || IsEquals(Num1, ElevacionesCuentaNum1) == true){
-						CuentaNum1 = RestaSignos(CuentaNum1,StringUno + StringCero + StringCero + StringCero + StringCero);
-						Salte = true;
+				if (Numeraco.length > 3){
+					while ( Salte == false ){
+						CuentaNum1 = SumaSignos(CuentaNum1,StringUno + StringCero + StringCero);	
+						ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + Reiterations);
+						if( IsMayor(ElevacionesCuentaNum1, Num1) == true || IsEquals(Num1, ElevacionesCuentaNum1) == true){
+							CuentaNum1 = RestaSignos(CuentaNum1,StringUno + StringCero + StringCero);
+							Salte = true;
+						}
 					}
 				}
 				Salte = false;
-				while ( Salte == false ){
-					CuentaNum1 = SumaSignos(CuentaNum1,StringUno + StringCero + StringCero + StringCero);	
-					ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + Reiterations);
-					if( IsMayor(ElevacionesCuentaNum1, Num1) == true || IsEquals(Num1, ElevacionesCuentaNum1) == true){
-						CuentaNum1 = RestaSignos(CuentaNum1,StringUno + StringCero + StringCero + StringCero );
-						Salte = true;
-					}
-				}
-				Salte = false;
-				while ( Salte == false ){
-					CuentaNum1 = SumaSignos(CuentaNum1,StringUno + StringCero + StringCero);	
-					ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + Reiterations);
-					if( IsMayor(ElevacionesCuentaNum1, Num1) == true || IsEquals(Num1, ElevacionesCuentaNum1) == true){
-						CuentaNum1 = RestaSignos(CuentaNum1,StringUno + StringCero + StringCero);
-						Salte = true;
-					}
-				}
-				Salte = false;
-				while ( Salte == false ){
-					CuentaNum1 = SumaSignos(CuentaNum1,StringUno + StringCero);	
-					ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + Reiterations);
-					if( IsMayor(ElevacionesCuentaNum1, Num1) == true || IsEquals(Num1, ElevacionesCuentaNum1) == true){
-						CuentaNum1 = RestaSignos(CuentaNum1,StringUno + StringCero);
-						Salte = true;
+				if (Numeraco.length > 2){
+					while ( Salte == false ){
+						CuentaNum1 = SumaSignos(CuentaNum1,StringUno + StringCero);	
+						ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + Reiterations);
+						if( IsMayor(ElevacionesCuentaNum1, Num1) == true || IsEquals(Num1, ElevacionesCuentaNum1) == true){
+							CuentaNum1 = RestaSignos(CuentaNum1,StringUno + StringCero);
+							Salte = true;
+						}
 					}
 				}
 				Salte = false;
