@@ -1,8 +1,8 @@
 // Modulo Pol-Calculator.js **********************************************************************************************
 // ***********************************************************************************************************************
 // ***********************************************************************************************************************
-// Día Creación 14/12/2021 - Hasta - 15/04/2023 ** Autor: Pol Flórez Viciana *********************************************
-// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 15/04/2023 ***************************************************************
+// Día Creación 14/12/2021 - Hasta - 19/04/2023 ** Autor: Pol Flórez Viciana *********************************************
+// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 19/04/2023 ***************************************************************
 // ***********************************************************************************************************************
 // Constantes de Uso Reiterado
 const StringNullString = ""; 
@@ -46,23 +46,42 @@ const TreintaiDos = 32;
 // Funciones Avanzadas de Otro Tipo
 function IsPrimeNumber(Texto, Reiterations){
 	var Retorno1 = true;
-	var x = Cero;
-	if (IsRealNumber(Texto) == false && IsNegativeAndNumber(Texto) == false && IsNumber(Texto) == true ){
-		if (IsEquals(Texto, StringCero) == true  || IsEquals(Texto, StringUno) == true || IsEquals(Texto, StringCuatro) == true) { 
-			Retorno1 = false; 
-		}else{
-			var NumeroTemp = StringNullString + DivideSignos(Texto, StringDos, Reiterations);
-			var Temporal = parseInt(GetIntegerPart(NumeroTemp));
-			for ( x = Dos; x < parseInt(Temporal); x++) {
-				if ( IsEquals( MODSignos(Texto, StringNullString + x, Reiterations),StringCero) == true ) { 
-					Retorno1 = false;
-					break;	
-				}
+	if (IsNumber(Reiterations) == true || IsNegativeAndNumber(Reiterations) == true ){
+		Reiterations = ConvertPositive(Reiterations);	
+		
+		//var x = Cero;
+		if (IsRealNumber(Texto) == false && IsNegativeAndNumber(Texto) == false && IsNumber(Texto) == true ){
+			if (IsEquals(Texto, StringCero) == true  || IsEquals(Texto, StringUno) == true || IsEquals(Texto, StringCuatro) == true) { 
+				Retorno1 = false; 
+			}else{
+				if ( IsEquals(Texto, StringDos) == false ) {
+					var X = MODSignos(Texto, StringDos, Reiterations);
+					if ( IsEquals( X ,StringCero) == true ) { 
+						Retorno1 = false;	
+					}else{
+						if ( IsEquals( Texto ,StringTres) == false ) {
+							X = MODSignos(Texto, StringTres, Reiterations);
+							if ( IsEquals( X ,StringCero) == true ) { 
+								Retorno1 = false;	
+							}
+						}	
+					}
+				}	
+				//var NumeroTemp = StringNullString + DivideSignos(Texto, StringDos, Reiterations);
+				//var Temporal = parseInt(GetIntegerPart(NumeroTemp));
+				//for ( x = Dos; x < parseInt(Temporal); x++) {
+				//	if ( IsEquals( MODSignos(Texto, StringNullString + x, Reiterations),StringCero) == true ) { 
+				//		Retorno1 = false;
+				//		break;	
+				//	}
+				//}
 			}
+		}else{
+			Retorno1 = false;
 		}
 	}else{
 		Retorno1 = false;
-	}
+	}	
 	return Retorno1;	
 }
 
