@@ -1865,6 +1865,8 @@ function RaizYReal(Texto1, Texto2, Reiterations, LongDecimales){
 				var Especial5 = MultiplicaSignos(Especial4,StringTres);
 				var Numeraco = RestaSignos(Especial2, Especial5);
 				
+				Numeraco = ConvertPositive(Numeraco);
+				
 				if (IsMayor(Numeraco, "23") == true ){ 
 					while ( Salte == false ){
 						CuentaNum1 = SumaSignos(CuentaNum1, StringUno + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero);	
