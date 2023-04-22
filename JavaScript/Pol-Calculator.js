@@ -1860,8 +1860,34 @@ function RaizYReal(Texto1, Texto2, Reiterations, LongDecimales){
 				var Ilogica = false;
 				var Especial1 = GetIntegerPart(Num1);
 				var Especial2 = StringNullString + Especial1.length;
-				var Especial3 = DivideSignos(Num2,StringCinco, StringNullString + Reiterations);
-				var Numeraco = RestaSignos(Especial2, Especial3);
+				var Especial3 = DivideSignos(Num2,StringDiez, StringNullString + Reiterations);
+				var Especial4 = GetIntegerPart(Especial3);
+				var Especial5 = MultiplicaSignos(Especial4,StringTres);
+				var Numeraco = RestaSignos(Especial2, Especial5);
+				
+				if (IsMayor(Numeraco, "23") == true ){ 
+					while ( Salte == false ){
+						CuentaNum1 = SumaSignos(CuentaNum1, StringUno + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero);	
+						ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + Reiterations);
+						if( IsMayor(ElevacionesCuentaNum1, Num1) == true || IsEquals(Num1, ElevacionesCuentaNum1) == true){
+							CuentaNum1 = RestaSignos(CuentaNum1,StringUno + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero);
+							Salte = true;
+						}
+					}
+				}
+				Salte = false;
+				
+				if (IsMayor(Numeraco, "22") == true ){ 
+					while ( Salte == false ){
+						CuentaNum1 = SumaSignos(CuentaNum1, StringUno + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero);	
+						ElevacionesCuentaNum1 = ElevaSignos(CuentaNum1, Num2, StringNullString + Reiterations);
+						if( IsMayor(ElevacionesCuentaNum1, Num1) == true || IsEquals(Num1, ElevacionesCuentaNum1) == true){
+							CuentaNum1 = RestaSignos(CuentaNum1,StringUno + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero + StringCero);
+							Salte = true;
+						}
+					}
+				}
+				Salte = false;
 				
 				if (IsMayor(Numeraco, "21") == true ){ 
 					while ( Salte == false ){
