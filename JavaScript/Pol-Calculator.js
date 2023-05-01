@@ -1,8 +1,8 @@
 // Modulo Pol-Calculator.js **********************************************************************************************
 // ***********************************************************************************************************************
 // ***********************************************************************************************************************
-// Día Creación 14/12/2021 - Hasta - 28/04/2023 ** Autor: Pol Flórez Viciana *********************************************
-// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 28/04/2023 ***************************************************************
+// Día Creación 14/12/2021 - Hasta - 01/05/2023 ** Autor: Pol Flórez Viciana *********************************************
+// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 01/05/2023 ***************************************************************
 // ***********************************************************************************************************************
 // Constantes de Uso Reiterado
 const StringNullString = ""; 
@@ -1862,8 +1862,13 @@ function RaizYReal(Texto1, Texto2, Reiterations, LongDecimales){
 				var Especial2 = StringNullString + Especial1.length;
 				var Especial3 = DivideSignos(Num2,StringDiez, StringNullString + Reiterations);
 				var Especial4 = GetIntegerPart(Especial3);
-				var Especial5 = MultiplicaSignos(Especial4,StringTres);
-				var Numeraco = RestaSignos(Especial2, Especial5);
+				var Numeraco = Especial2;
+				if (IsEquals(Especial4, StringCero) == false && IsMayor(Especial2,Especial4) == true){
+					var SubNumeraco = DivideSignos(Especial2,Especial4, StringNullString + Reiterations);
+					Numeraco = GetIntegerPart(SubNumeraco);
+				}
+				//var Especial5 = MultiplicaSignos(Especial4,StringTres);
+				//var Numeraco = RestaSignos(Especial2, Especial5);
 				
 				if (IsNegative(Numeraco) == true){
 					Numeraco = StringUno;
