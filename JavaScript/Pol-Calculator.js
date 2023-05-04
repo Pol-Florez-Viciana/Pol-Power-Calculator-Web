@@ -1,8 +1,8 @@
 // Modulo Pol-Calculator.js **********************************************************************************************
 // ***********************************************************************************************************************
 // ***********************************************************************************************************************
-// Día Creación 14/12/2021 - Hasta - 02/05/2023 ** Autor: Pol Flórez Viciana *********************************************
-// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 02/05/2023 ***************************************************************
+// Día Creación 14/12/2021 - Hasta - 04/05/2023 ** Autor: Pol Flórez Viciana *********************************************
+// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 04/05/2023 ***************************************************************
 // ***********************************************************************************************************************
 // Constantes de Uso Reiterado
 const StringNullString = ""; 
@@ -50,7 +50,10 @@ function IsPrimeNumber(Texto, Reiterations){
 		Reiterations = ConvertPositive(Reiterations);	
 		
 		//var x = Cero;
-		if (IsRealNumber(Texto) == false && IsNegativeAndNumber(Texto) == false && IsNumber(Texto) == true ){
+		if (IsRealNumber(Texto) == false && IsNegativeAndNumber(Texto) == true || IsNumber(Texto) == true ){
+			if (IsNegativeAndNumber(Texto) == true){
+				Texto = ConvertPositive(Texto);
+			}
 			if (IsEquals(Texto, StringCero) == true  || IsEquals(Texto, StringUno) == true || IsEquals(Texto, StringCuatro) == true) { 
 				Retorno1 = false; 
 			}else{
