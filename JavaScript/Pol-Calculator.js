@@ -49,53 +49,56 @@ function IsPrimeNumber(Texto, Reiterations){
 	if (IsNumber(Reiterations) == true || IsNegativeAndNumber(Reiterations) == true ){
 		Reiterations = ConvertPositive(Reiterations);	
 		
-		//var x = Cero;
-		if (IsRealNumber(Texto) == false && IsNegativeAndNumber(Texto) == true || IsNumber(Texto) == true ){
+		if (IsNegativeAndNumber(Texto) == true || IsNumber(Texto) == true){
 			if (IsNegativeAndNumber(Texto) == true){
 				Texto = ConvertPositive(Texto);
 			}
-			if (IsEquals(Texto, StringCero) == true  || IsEquals(Texto, StringUno) == true || IsEquals(Texto, StringCuatro) == true) { 
-				Retorno1 = false; 
-			}else{
-				if ( IsEquals(Texto, StringDos) == false ) {
-					var X = MODSignos(Texto, StringDos, Reiterations);
-					if ( IsEquals( X ,StringCero) == true ) { 
-						Retorno1 = false;	
-					}else{
-						if ( IsEquals( Texto ,StringTres) == false ) {
-							X = MODSignos(Texto, StringTres, Reiterations);
-							if ( IsEquals( X ,StringCero) == true ) { 
-								Retorno1 = false;	
-							}else{
-								if ( IsEquals( Texto ,StringCinco) == false ) {
-									X = MODSignos(Texto, StringCinco, Reiterations);
-									if ( IsEquals( X ,StringCero) == true ) { 
-										Retorno1 = false;	
-									}else{
-										if ( IsEquals( Texto ,StringSiete) == false ) {
-											X = MODSignos(Texto, StringSiete, Reiterations);
-											if ( IsEquals( X ,StringCero) == true ) { 
-												Retorno1 = false;	
+			if (IsRealNumber(Texto) == false ){				
+				if (IsEquals(Texto, StringCero) == true  || IsEquals(Texto, StringUno) == true || IsEquals(Texto, StringCuatro) == true) { 
+					Retorno1 = false; 
+				}else{
+					if ( IsEquals(Texto, StringDos) == false ) {
+						var X = MODSignos(Texto, StringDos, Reiterations);
+						if ( IsEquals( X ,StringCero) == true ) { 
+							Retorno1 = false;	
+						}else{
+							if ( IsEquals( Texto ,StringTres) == false ) {
+								X = MODSignos(Texto, StringTres, Reiterations);
+								if ( IsEquals( X ,StringCero) == true ) { 
+									Retorno1 = false;	
+								}else{
+									if ( IsEquals( Texto ,StringCinco) == false ) {
+										X = MODSignos(Texto, StringCinco, Reiterations);
+										if ( IsEquals( X ,StringCero) == true ) { 
+											Retorno1 = false;	
+										}else{
+											if ( IsEquals( Texto ,StringSiete) == false ) {
+												X = MODSignos(Texto, StringSiete, Reiterations);
+												if ( IsEquals( X ,StringCero) == true ) { 
+													Retorno1 = false;	
+												}
 											}
-										}
-									}	
+										}	
+									}
 								}
-							}
-						}	
-					}
-				}	
-				//var NumeroTemp = StringNullString + DivideSignos(Texto, StringDos, Reiterations);
-				//var Temporal = parseInt(GetIntegerPart(NumeroTemp));
-				//for ( x = Dos; x < parseInt(Temporal); x++) {
-				//	if ( IsEquals( MODSignos(Texto, StringNullString + x, Reiterations),StringCero) == true ) { 
-				//		Retorno1 = false;
-				//		break;	
-				//	}
-				//}
+							}	
+						}
+					}	
+					//var NumeroTemp = StringNullString + DivideSignos(Texto, StringDos, Reiterations);
+					//var Temporal = parseInt(GetIntegerPart(NumeroTemp));
+					//for ( x = Dos; x < parseInt(Temporal); x++) {
+					//	if ( IsEquals( MODSignos(Texto, StringNullString + x, Reiterations),StringCero) == true ) { 
+					//		Retorno1 = false;
+					//		break;	
+					//	}
+					//}
+				}
+			}else{
+				Retorno1 = false;
 			}
 		}else{
 			Retorno1 = false;
-		}
+		}	
 	}else{
 		Retorno1 = false;
 	}	
