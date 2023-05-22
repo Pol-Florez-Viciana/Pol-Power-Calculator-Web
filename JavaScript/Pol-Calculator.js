@@ -1,8 +1,8 @@
 // Modulo Pol-Calculator.js **********************************************************************************************
 // ***********************************************************************************************************************
 // ***********************************************************************************************************************
-// Día Creación 14/12/2021 - Hasta - 04/05/2023 ** Autor: Pol Flórez Viciana *********************************************
-// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 04/05/2023 ***************************************************************
+// Día Creación 14/12/2021 - Hasta - 22/05/2023 ** Autor: Pol Flórez Viciana *********************************************
+// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 22/05/2023 ***************************************************************
 // ***********************************************************************************************************************
 // Constantes de Uso Reiterado
 const StringNullString = ""; 
@@ -57,41 +57,43 @@ function IsPrimeNumber(Texto, Reiterations){
 				if (IsEquals(Texto, StringCero) == true  || IsEquals(Texto, StringUno) == true || IsEquals(Texto, StringCuatro) == true) { 
 					Retorno1 = false; 
 				}else{
-					if ( IsEquals(Texto, StringDos) == false ) {
-						var X = MODSignos(Texto, StringDos, Reiterations);
-						if ( IsEquals( X ,StringCero) == true ) { 
-							Retorno1 = false;	
-						}else{
-							if ( IsEquals( Texto ,StringTres) == false ) {
-								X = MODSignos(Texto, StringTres, Reiterations);
-								if ( IsEquals( X ,StringCero) == true ) { 
-									Retorno1 = false;	
-								}else{
-									if ( IsEquals( Texto ,StringCinco) == false ) {
-										X = MODSignos(Texto, StringCinco, Reiterations);
-										if ( IsEquals( X ,StringCero) == true ) { 
-											Retorno1 = false;	
-										}else{
-											if ( IsEquals( Texto ,StringSiete) == false ) {
-												X = MODSignos(Texto, StringSiete, Reiterations);
-												if ( IsEquals( X ,StringCero) == true ) { 
-													Retorno1 = false;	
-												}
-											}
-										}	
-									}
-								}
-							}	
-						}
-					}	
-					//var NumeroTemp = StringNullString + DivideSignos(Texto, StringDos, Reiterations);
-					//var Temporal = parseInt(GetIntegerPart(NumeroTemp));
-					//for ( x = Dos; x < parseInt(Temporal); x++) {
-					//	if ( IsEquals( MODSignos(Texto, StringNullString + x, Reiterations),StringCero) == true ) { 
-					//		Retorno1 = false;
-					//		break;	
+					//if ( IsEquals(Texto, StringDos) == false ) {
+					//	var X = MODSignos(Texto, StringDos, Reiterations);
+					//	if ( IsEquals( X ,StringCero) == true ) { 
+					//		Retorno1 = false;	
+					//	}else{
+					//		if ( IsEquals( Texto ,StringTres) == false ) {
+					//			X = MODSignos(Texto, StringTres, Reiterations);
+					//			if ( IsEquals( X ,StringCero) == true ) { 
+					//				Retorno1 = false;	
+					//			}else{
+					//				if ( IsEquals( Texto ,StringCinco) == false ) {
+					//					X = MODSignos(Texto, StringCinco, Reiterations);
+					//					if ( IsEquals( X ,StringCero) == true ) { 
+					//						Retorno1 = false;	
+					//					}else{
+					//						if ( IsEquals( Texto ,StringSiete) == false ) {
+					//							X = MODSignos(Texto, StringSiete, Reiterations);
+					//							if ( IsEquals( X ,StringCero) == true ) { 
+					//								Retorno1 = false;	
+					//							}
+					//						}
+					//					}	
+					//				}
+					//			}
+					//		}	
 					//	}
 					//}
+					if ( IsEquals(Texto, StringDos) == false && IsEquals(Texto, StringTres) == false ) {	
+						var NumeroTemp = StringNullString + DivideSignos(Texto, StringDos, Reiterations);
+						var Temporal = parseInt(GetIntegerPart(NumeroTemp));
+						for ( x = Dos; x < parseInt(Temporal); x++) {
+							if ( IsEquals( MODSignos(Texto, StringNullString + x, Reiterations),StringCero) == true ) { 
+								Retorno1 = false;
+								break;	
+							}
+						}
+					}	
 				}
 			}else{
 				Retorno1 = false;
