@@ -87,7 +87,7 @@ function IsPrimeNumber(Texto, Reiterations){
 					if ( IsEquals(Texto, StringDos) == false && IsEquals(Texto, StringTres) == false ) {	
 						var NumeroTemp = StringNullString + DivideSignos(Texto, StringDos, Reiterations);
 						var Temporal = parseInt(GetIntegerPart(NumeroTemp));
-						if (IsMayor(NumeroTemp, StringDiez) == false ){
+						if (IsMayor(NumeroTemp, StringTres) == false ){
 							for ( x = Dos; x < parseInt(Temporal); x++) {
 								if ( IsEquals( MODSignos(Texto, StringNullString + x, Reiterations),StringCero) == true ) { 
 									Retorno1 = false;
@@ -95,14 +95,14 @@ function IsPrimeNumber(Texto, Reiterations){
 								}
 							}
 						}else{
-							for ( x = Dos; x < Diez; x++) {
-								if ( IsEquals( MODSignos(Texto, StringNullString + x, Reiterations),StringCero) == true ) { 
+							//for ( x = Dos; x < Diez; x++) {
+								if ( IsEquals( MODSignos(Texto, StringDos, Reiterations),StringCero) == true ) { 
 									Retorno1 = false;
-									break;	
+									//break;	
 								}
-							}
+							//}
 							if ( Retorno1 == true ){
-								for ( x = 11; x < parseInt(Temporal); x = x + Dos) {
+								for ( x = Tres; x < parseInt(Temporal); x = x + Dos) {
 									if ( IsEquals( MODSignos(Texto, StringNullString + x, Reiterations),StringCero) == true ) { 
 										Retorno1 = false;
 										break;	
