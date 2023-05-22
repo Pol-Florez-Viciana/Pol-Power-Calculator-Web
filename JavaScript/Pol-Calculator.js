@@ -1,8 +1,8 @@
 // Modulo Pol-Calculator.js **********************************************************************************************
 // ***********************************************************************************************************************
 // ***********************************************************************************************************************
-// Día Creación 14/12/2021 - Hasta - 22/05/2023 ** Autor: Pol Flórez Viciana *********************************************
-// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 22/05/2023 ***************************************************************
+// Día Creación 14/12/2021 - Hasta - 23/05/2023 ** Autor: Pol Flórez Viciana *********************************************
+// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 23/05/2023 ***************************************************************
 // ***********************************************************************************************************************
 // Constantes de Uso Reiterado
 const StringNullString = ""; 
@@ -101,12 +101,14 @@ function IsPrimeNumber(Texto, Reiterations){
 									break;	
 								}
 							}
-							for ( x = 11; x < parseInt(Temporal); x = x + Dos) {
-								if ( IsEquals( MODSignos(Texto, StringNullString + x, Reiterations),StringCero) == true ) { 
-									Retorno1 = false;
-									break;	
+							if ( Retorno1 == true ){
+								for ( x = 11; x < parseInt(Temporal); x = x + Dos) {
+									if ( IsEquals( MODSignos(Texto, StringNullString + x, Reiterations),StringCero) == true ) { 
+										Retorno1 = false;
+										break;	
+									}
 								}
-							}
+							}	
 						}	
 					}	
 				}
