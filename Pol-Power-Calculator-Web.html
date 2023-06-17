@@ -29,6 +29,7 @@
 		#Controles5 { padding: 0px 10px 10px 10px; border-radius: 0px 0px 10px 10px; vertical-align: top; }
 		#Controles6 { padding: 0px 10px 10px 10px; border-radius: 0px 0px 10px 10px; vertical-align: top; }
 		#Controles7 { padding: 0px 10px 10px 10px; border-radius: 0px 0px 10px 10px; vertical-align: top; }
+		#Controles8 { padding: 0px 10px 10px 10px; border-radius: 0px 0px 10px 10px; vertical-align: top; }
 		#Numero1 { font-size: 5mm; }
 		#Numero2 { font-size: 5mm; }
 		#Numero3 { font-size: 5mm; }
@@ -53,7 +54,7 @@
 </head>
 <body >
 	<center>
-		<h1 style="color: blue;">Pol Power Calculator Web Version 13.36</h1>
+		<h1 style="color: blue;">Pol Power Calculator Web Version 14.0</h1>
 		<div style="width: 98%;" >
 			<section id="Numeros1">
 				<div id="ParteNum1">
@@ -102,6 +103,12 @@
 					<input id="BtnSumar" onclick="Sumar()" type="button" style="font-size: 4mm;" value="+" title="Add" />
 					<input id="BtnRestar" onclick="Restar()" type="button" style="font-size: 4mm;" value="-" title="Subtract" />
 					<input id="BtnMultiplicarSimetrico" onclick="Multiplicar()" type="button" style="font-size: 4mm;" value="X Simetric" title="Multipy Simetric" />
+				</div>
+				<div id="Controles8" style="display: inline-block; background-color: gray;">
+					<label style="color: white;" >System Operators With Num1 And Num2</label><br>
+					<input id="BtnPotenciarSistema" onclick="PotenciarSistema()" type="button" style="font-size: 4mm;" value="Pow" title="Pow" />
+					<input id="BtnRadicarSistema" onclick="RadicarSistema()" type="button" style="font-size: 4mm;" value="yRoot" title="yRoot" />
+					<input id="BtnLogaritmicarSistema" onclick="LogaritmicarSistema()" type="button" style="font-size: 4mm;" value="LOG" title="Logaritm" />
 				</div>
 				<div id="Controles3" style="display: inline-block; background-color: limegreen;">
 					<label style="color: white;" >With Num1 And Num2 And Reiterations</label><br>
@@ -643,6 +650,30 @@
 			document.getElementById("Resultado").value = Resultado;
 			ActualizarResultado();
 			AddListadoResultados(Resultado + " = (( 1 / " + Numero1 + " ) ^ " + Numero2 + " ) + " + Numero3 );
+		}
+		function PotenciarSistema(){
+			var Numero1 = document.getElementById("Numero1").value;
+			var Numero2 = document.getElementById("Numero2").value;
+			var Resultado = PotenciaSistema(Numero1,Numero2);
+			document.getElementById("Resultado").value = Resultado;
+			ActualizarResultado();
+			AddListadoResultados(Resultado + " = " + Numero1 + " ^ " + Numero2 );
+		}
+		function RadicarSistema(){
+			var Numero1 = document.getElementById("Numero1").value;
+			var Numero2 = document.getElementById("Numero2").value;
+			var Resultado = RaizSistema(Numero1,Numero2);
+			document.getElementById("Resultado").value = Resultado;
+			ActualizarResultado();
+			AddListadoResultados(Resultado + " = " + Numero1 + " yRoot " + Numero2 );
+		}
+		function LogaritmicarSistema(){
+			var Numero1 = document.getElementById("Numero1").value;
+			var Numero2 = document.getElementById("Numero2").value;
+			var Resultado = LogaritmoSistema(Numero1,Numero2);
+			document.getElementById("Resultado").value = Resultado;
+			ActualizarResultado();
+			AddListadoResultados(Resultado + " = " + Numero1 + " LOG " + Numero2 );
 		}
 		function EsunNumeroPrimo(){
 			var Numero1 = document.getElementById("Numero1").value;

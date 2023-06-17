@@ -1,8 +1,8 @@
 // Modulo Pol-Calculator.js **********************************************************************************************
 // ***********************************************************************************************************************
 // ***********************************************************************************************************************
-// Día Creación 14/12/2021 - Hasta - 25/05/2023 ** Autor: Pol Flórez Viciana *********************************************
-// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 25/05/2023 ***************************************************************
+// Día Creación 14/12/2021 - Hasta - 17/06/2023 ** Autor: Pol Flórez Viciana *********************************************
+// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 17/06/2023 ***************************************************************
 // ***********************************************************************************************************************
 // Constantes de Uso Reiterado
 const StringNullString = ""; 
@@ -42,6 +42,45 @@ const Nueve = 9;
 const Diez = 10;
 const DieziSeis = 16;
 const TreintaiDos = 32;
+
+// Funciones del Sistema
+
+function PotenciaSistema(Texto1,Texto2){
+	var Resultado = StringCero;
+	if (IsNumber(Texto1) == true || IsNegativeAndNumber(Texto1) == true ){
+		if (IsNumber(Texto2) == true || IsNegativeAndNumber(Texto2) == true ){
+			var Numero1 = Texto1.replace(StringComa,".");
+			var Numero2 = Texto2.replace(StringComa,".");
+			Resultado = StringNullString + Math.pow(parseFloat(Numero1), parseFloat(Numero2));
+		}	
+	}
+	return Resultado.replace(".",StringComa);
+}
+
+function RaizSistema(Texto1,Texto2){
+	var Resultado = StringCero;
+	if (IsNumber(Texto1) == true || IsNegativeAndNumber(Texto1) == true ){
+		if (IsNumber(Texto2) == true || IsNegativeAndNumber(Texto2) == true ){
+			var Numero1 = Texto1.replace(StringComa,".");
+			var Numero2 = Texto2.replace(StringComa,".");
+			var Numero3 = Uno / parseFloat(Numero2);
+			Resultado = StringNullString + Math.pow(parseFloat(Numero1), Numero3);
+		}	
+	}
+	return Resultado.replace(".",StringComa);
+}
+
+function LogaritmoSistema(Texto1,Texto2){
+	var Resultado = StringCero;
+	if (IsNumber(Texto1) == true || IsNegativeAndNumber(Texto1) == true ){
+		if (IsNumber(Texto2) == true || IsNegativeAndNumber(Texto2) == true ){
+			var Numero1 = Texto1.replace(StringComa,".");
+			var Numero2 = Texto2.replace(StringComa,".");
+			Resultado = StringNullString + (Math.log(parseFloat(Numero1))/Math.log(parseFloat(Numero2)));
+		}	
+	}
+	return Resultado.replace(".",StringComa);
+}
 
 // Funciones Avanzadas de Otro Tipo
 function IsPrimeNumber(Texto, Reiterations){
