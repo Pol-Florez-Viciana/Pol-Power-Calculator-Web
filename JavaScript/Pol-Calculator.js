@@ -1,8 +1,8 @@
 // Modulo Pol-Calculator.js **********************************************************************************************
 // ***********************************************************************************************************************
 // ***********************************************************************************************************************
-// Día Creación 14/12/2021 - Hasta - 17/06/2023 ** Autor: Pol Flórez Viciana *********************************************
-// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 17/06/2023 ***************************************************************
+// Día Creación 14/12/2021 - Hasta - 29/06/2023 ** Autor: Pol Flórez Viciana *********************************************
+// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 29/06/2023 ***************************************************************
 // ***********************************************************************************************************************
 // Constantes de Uso Reiterado
 const StringNullString = ""; 
@@ -1118,8 +1118,9 @@ function LOGSignos(Texto1,Texto2,Reiteraciones){
 						var Temporal = Num1;
 						if (IsMayor(Num2, StringUno) == true ){
 							while (IsMayor(Num2, Temporal) == false ){
-								var NewTemporal = DivideSignos(Temporal,Num2,Reitera);
-								Temporal = GetIntegerPart(NewTemporal);
+								//var NewTemporal = DivideSignos(Temporal,Num2,Reitera);
+								//Temporal = GetIntegerPart(NewTemporal);
+								Temporal = DivideSignos(Temporal,Num2,Reitera);
 								PrimerParametro = SumaReales(PrimerParametro,StringUno);
 							}
 						}else{
