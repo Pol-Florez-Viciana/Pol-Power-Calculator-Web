@@ -698,13 +698,13 @@ function Tangente(Texto1, Reiteraciones, LongitudDecimal ){
 		Resultado = StringUno;
 	}	
 	if (EsNegativo == false && IsNegativeAndNumber(Resultado) == false){
-		return Resultado;
+		return FormatCeros(Resultado);
 	}else if (EsNegativo == true && IsNegativeAndNumber(Resultado) == false){
-		return StringGuion + Resultado;
+		return FormatCeros(StringGuion + Resultado);
 	}else if (EsNegativo == false && IsNegativeAndNumber(Resultado) == true){
-		return Resultado;		
+		return FormatCeros(Resultado);		
 	}else{
-		return ConvertPositive(Resultado);
+		return FormatCeros(ConvertPositive(Resultado));
 	}
 }
 
@@ -886,13 +886,13 @@ function Seno(Texto1, Reiteraciones, LongitudDecimal ){
 		}
 	}
 	if (EsNegativo == false && IsNegativeAndNumber(Resultado) == false){
-		return Resultado;
+		return FormatCeros(Resultado);
 	}else if (EsNegativo == true && IsNegativeAndNumber(Resultado) == false){
-		return StringGuion + Resultado;
+		return FormatCeros(StringGuion + Resultado);
 	}else if (EsNegativo == false && IsNegativeAndNumber(Resultado) == true){
-		return Resultado;		
+		return FormatCeros(Resultado);		
 	}else{
-		return ConvertPositive(Resultado);
+		return FormatCeros(ConvertPositive(Resultado));
 	}
 }
 
