@@ -30,6 +30,7 @@
 		#Controles6 { padding: 0px 10px 10px 10px; border-radius: 0px 0px 10px 10px; vertical-align: top; }
 		#Controles7 { padding: 0px 10px 10px 10px; border-radius: 0px 0px 10px 10px; vertical-align: top; }
 		#Controles8 { padding: 0px 10px 10px 10px; border-radius: 0px 0px 10px 10px; vertical-align: top; }
+		#Controles9 { padding: 0px 10px 10px 10px; border-radius: 0px 0px 10px 10px; vertical-align: top; }
 		#Numero1 { font-size: 5mm; }
 		#Numero2 { font-size: 5mm; }
 		#Numero3 { font-size: 5mm; }
@@ -54,7 +55,7 @@
 </head>
 <body >
 	<center>
-		<h1 style="color: blue;">Pol Power Calculator Web Version 14.1</h1>
+		<h1 style="color: blue;">Pol Power Calculator Web Version 15.0</h1>
 		<div style="width: 98%;" >
 			<section id="Numeros1">
 				<div id="ParteNum1">
@@ -75,6 +76,12 @@
 					<input id="BtnOctToDec" onclick="ConvierteOctalADecimal()" type="button" style="margin: 2px; font-size: 4mm;" value="OctToDec" title="Convert Octal To Decimal" />
 					<input id="BtnHexToDec" onclick="ConvierteHexadecimalADecimal()" type="button" style="margin: 2px; font-size: 4mm;" value="HexToDec" title="Convert Hexadecimal To Decimal" />
 				</div>
+				<div id="Controles9" style="display: inline-block; background-color: gray;">
+					<label style="color: white;" >System Operators With Num1</label><br>
+					<input id="BtnSenosSistema" onclick="SenosSistema()" type="button" style="font-size: 4mm;" value="Sin" title="Pow" />
+					<input id="BtnCosenosSistema" onclick="CosenosSistema()" type="button" style="font-size: 4mm;" value="Cos" title="Pow" />
+					<input id="BtnTangentesSistema" onclick="TangentesSistema()" type="button" style="font-size: 4mm;" value="Tan" title="Pow" />
+				</div>
 				<div id="Controles1" style="display: inline-block; background-color: limegreen;">
 					<label style="color: white;">With Num1 And Reiterations</label><br>
 					<input id="BtnDecToBin" onclick="ConvierteDecimalABinario()" type="button" style="margin: 2px; font-size: 4mm;" value="DecToBin" title="Convert Decimal To Binary" />
@@ -85,6 +92,7 @@
 					<input id="BtnFactorial" onclick="Factorial()" type="button" style="margin: 2px; font-size: 4mm;" value="N!" title="Factorial" />
 					<input id="BtnFactorialdeSumas" onclick="FactorialdeSumas()" type="button" style="margin: 2px; font-size: 4mm;" value="N!S" title="Factorial of Sum" />
 				</div>
+				
 				<div id="ParteNum2">
 					<h2>
 						<label id="TextoNum2" style="text-align: left;">Number 2</label>
@@ -548,6 +556,33 @@
 			ActualizarResultado();
 			AddListadoResultados(Resultado + " = ((" + Numero1 + " · " + Numero3 + ") / " + Numero2 + ")" );
 		}
+		function SenosSistema(){
+			var Numero1 = document.getElementById("Numero1").value;
+			var Reiteraciones = document.getElementById("NumeroReiteraciones").value;
+			var LongitudDecimal = document.getElementById("NumeroLongDecimales").value;
+			var Resultado = SenoSistema(Numero1);
+			document.getElementById("Resultado").value = Resultado;
+			ActualizarResultado();
+			AddListadoResultados(Resultado + " = Sin(" + Numero1 + ") System Operator" );
+		}
+		function CosenosSistema(){
+			var Numero1 = document.getElementById("Numero1").value;
+			var Reiteraciones = document.getElementById("NumeroReiteraciones").value;
+			var LongitudDecimal = document.getElementById("NumeroLongDecimales").value;
+			var Resultado = CosenoSistema(Numero1);
+			document.getElementById("Resultado").value = Resultado;
+			ActualizarResultado();
+			AddListadoResultados(Resultado + " = Cos(" + Numero1 + ") System Operator" );
+		}
+		function TangentesSistema(){
+			var Numero1 = document.getElementById("Numero1").value;
+			var Reiteraciones = document.getElementById("NumeroReiteraciones").value;
+			var LongitudDecimal = document.getElementById("NumeroLongDecimales").value;
+			var Resultado = TangenteSistema(Numero1);
+			document.getElementById("Resultado").value = Resultado;
+			ActualizarResultado();
+			AddListadoResultados(Resultado + " = Tan(" + Numero1 + ") System Operator" );
+		}
 		function FuncionSeno(){
 			var Numero1 = document.getElementById("Numero1").value;
 			var Reiteraciones = document.getElementById("NumeroReiteraciones").value;
@@ -657,7 +692,7 @@
 			var Resultado = PotenciaSistema(Numero1,Numero2);
 			document.getElementById("Resultado").value = Resultado;
 			ActualizarResultado();
-			AddListadoResultados(Resultado + " = " + Numero1 + " ^ " + Numero2 );
+			AddListadoResultados(Resultado + " = " + Numero1 + " ^ " + Numero2 + " System Operator" );
 		}
 		function RadicarSistema(){
 			var Numero1 = document.getElementById("Numero1").value;
@@ -665,7 +700,7 @@
 			var Resultado = RaizSistema(Numero1,Numero2);
 			document.getElementById("Resultado").value = Resultado;
 			ActualizarResultado();
-			AddListadoResultados(Resultado + " = " + Numero1 + " yRoot " + Numero2 );
+			AddListadoResultados(Resultado + " = " + Numero1 + " yRoot " + Numero2 + " System Operator" );
 		}
 		function LogaritmicarSistema(){
 			var Numero1 = document.getElementById("Numero1").value;
@@ -673,7 +708,7 @@
 			var Resultado = LogaritmoSistema(Numero1,Numero2);
 			document.getElementById("Resultado").value = Resultado;
 			ActualizarResultado();
-			AddListadoResultados(Resultado + " = " + Numero1 + " LOG " + Numero2 );
+			AddListadoResultados(Resultado + " = " + Numero1 + " LOG " + Numero2 + " System Operator" );
 		}
 		function EsunNumeroPrimo(){
 			var Numero1 = document.getElementById("Numero1").value;

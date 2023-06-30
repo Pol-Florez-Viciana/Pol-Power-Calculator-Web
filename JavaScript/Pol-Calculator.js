@@ -1,8 +1,8 @@
 // Modulo Pol-Calculator.js **********************************************************************************************
 // ***********************************************************************************************************************
 // ***********************************************************************************************************************
-// Día Creación 14/12/2021 - Hasta - 29/06/2023 ** Autor: Pol Flórez Viciana *********************************************
-// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 29/06/2023 ***************************************************************
+// Día Creación 14/12/2021 - Hasta - 30/06/2023 ** Autor: Pol Flórez Viciana *********************************************
+// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 30/06/2023 ***************************************************************
 // ***********************************************************************************************************************
 // Constantes de Uso Reiterado
 const StringNullString = ""; 
@@ -44,6 +44,36 @@ const DieziSeis = 16;
 const TreintaiDos = 32;
 
 // Funciones del Sistema
+
+function SenoSistema(Texto1){
+	var Resultado = StringCero;
+	if (IsNumber(Texto1) == true || IsNegativeAndNumber(Texto1) == true ){
+		var Numero1 = Texto1.replace(StringComa,".");
+		var Radianes = ( Numero1 * Math.PI ) / 180;
+		Resultado = StringNullString + Math.sin(Radianes);	
+	}
+	return Resultado.replace(".",StringComa);
+}
+
+function CosenoSistema(Texto1){
+	var Resultado = StringCero;
+	if (IsNumber(Texto1) == true || IsNegativeAndNumber(Texto1) == true ){
+		var Numero1 = Texto1.replace(StringComa,".");
+		var Radianes = ( Numero1 * Math.PI ) / 180;
+		Resultado = StringNullString + Math.cos(Radianes);	
+	}
+	return Resultado.replace(".",StringComa);
+}
+
+function TangenteSistema(Texto1){
+	var Resultado = StringCero;
+	if (IsNumber(Texto1) == true || IsNegativeAndNumber(Texto1) == true ){
+		var Numero1 = Texto1.replace(StringComa,".");
+		var Radianes = ( Numero1 * Math.PI ) / 180;
+		Resultado = StringNullString + Math.tan(Radianes);	
+	}
+	return Resultado.replace(".",StringComa);
+}
 
 function PotenciaSistema(Texto1,Texto2){
 	var Resultado = StringCero;
@@ -593,8 +623,10 @@ function MultiplyRepeat(Num1, Num2, Num3){
 function Tangente(Texto1, Reiteraciones, LongitudDecimal ){
 	var Resultado = StringCero;
 	var Angulo = Texto1;
+	var EsNegativo = false;
 	if (IsNegativeAndNumber(Texto1) == true ){
 		Angulo = ConvertPositive(Texto1);
+		EsNegativo = true;
 	}else{
 		if (IsNumber(Texto1) == false ){
 			Angulo = StringCero;
@@ -665,15 +697,23 @@ function Tangente(Texto1, Reiteraciones, LongitudDecimal ){
 	}else{
 		Resultado = StringUno;
 	}	
-	return Resultado;
+	if (EsNegativo == false && IsNegativeAndNumber(Resultado) == false){
+		return Resultado;
+	}else if (EsNegativo == true && IsNegativeAndNumber(Resultado) == false){
+		return StringGuion + Resultado;
+	}else if (EsNegativo == false && IsNegativeAndNumber(Resultado) == true){
+		return Resultado;		
+	}else{
+		return ConvertPositive(Resultado);
+	}
 }
 
 function Coseno(Texto1, Reiteraciones, LongitudDecimal ){
 	var Resultado = StringCero;
 	var Angulo = Texto1;
-	if (IsNegativeAndNumber(Texto1) == true ){
-		Angulo = ConvertPositive(Texto1);
-	}else{
+	if (IsNegativeAndNumber(Texto1) == false ){
+		//Angulo = ConvertPositive(Texto1);
+	//}else{
 		if (IsNumber(Texto1) == false ){
 			Angulo = StringCero;
 		}	
@@ -705,8 +745,10 @@ function Coseno(Texto1, Reiteraciones, LongitudDecimal ){
 function Seno(Texto1, Reiteraciones, LongitudDecimal ){
 	var Resultado = StringCero;
 	var Angulo = Texto1;
+	var EsNegativo = false;
 	if (IsNegativeAndNumber(Texto1) == true ){
 		Angulo = ConvertPositive(Texto1);
+		EsNegativo = true;
 	}else{
 		if (IsNumber(Texto1) == false ){
 			Angulo = StringCero;
@@ -843,7 +885,15 @@ function Seno(Texto1, Reiteraciones, LongitudDecimal ){
 			Resultado = StringGuion + Seno(Angulo, StringNullString + Reitera, StringNullString + LongiDecimal);	
 		}
 	}
-	return Resultado;
+	if (EsNegativo == false && IsNegativeAndNumber(Resultado) == false){
+		return Resultado;
+	}else if (EsNegativo == true && IsNegativeAndNumber(Resultado) == false){
+		return StringGuion + Resultado;
+	}else if (EsNegativo == false && IsNegativeAndNumber(Resultado) == true){
+		return Resultado;		
+	}else{
+		return ConvertPositive(Resultado);
+	}
 }
 
 function FactorialSumas(Texto1,Reiterations){
