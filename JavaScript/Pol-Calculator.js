@@ -1,8 +1,8 @@
 // Modulo Pol-Calculator.js **********************************************************************************************
 // ***********************************************************************************************************************
 // ***********************************************************************************************************************
-// Día Creación 14/12/2021 - Hasta - 30/06/2023 ** Autor: Pol Flórez Viciana *********************************************
-// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 30/06/2023 ***************************************************************
+// Día Creación 14/12/2021 - Hasta - 25/07/2023 ** Autor: Pol Flórez Viciana *********************************************
+// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 25/07/2023 ***************************************************************
 // ***********************************************************************************************************************
 // Constantes de Uso Reiterado
 const StringNullString = ""; 
@@ -1825,7 +1825,7 @@ function RootYSignos(Texto1, Texto2, Reiterations, LongDecimales){
 			}
 			
 			//if (IsMayor(Num1,StringCero) == true && IsMayor(Num2,StringCero) == true ){
-				if (IsMayor(Num2, StringUno + StringCero + StringCero) == false ){
+				if (IsMayor(Num2, StringUno + StringDos + StringOcho) == false ){
 			//		var SubNumero1 = StringCero;
 			//		var Longitud1 = Cero;
 			//		var SubLongitud1 = Cero;
