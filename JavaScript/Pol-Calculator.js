@@ -1,8 +1,8 @@
 // Modulo Pol-Calculator.js **********************************************************************************************
 // ***********************************************************************************************************************
 // ***********************************************************************************************************************
-// Día Creación 14/12/2021 - Hasta - 25/07/2023 ** Autor: Pol Flórez Viciana *********************************************
-// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 25/07/2023 ***************************************************************
+// Día Creación 06/12/2021 - Hasta - 02/11/2023 ** Autor: Pol Flórez Viciana *********************************************
+// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 02/11/2023 ***************************************************************
 // ***********************************************************************************************************************
 // Constantes de Uso Reiterado
 const StringNullString = ""; 
@@ -1314,7 +1314,7 @@ function ElevaSignos(Texto1,Texto2,Reiteraciones){
 					var ResultadoDivision = DivideSignos(Diferencia,Base10,Reitera);
 					var DecimalResultDivision = GetDecimalPart(ResultadoDivision);
 					Base10 = StringsCerosToRight( StringUno, Dos);
-					var ResultadoenDecimales = DivideSignos(ParteDecimal, Base10, Reitera);
+					var ResultadoenDecimales = DivideSignos(ParteDecimal, Base10, Reiteraciones);
 					var Multiplo = MultiplicaSignos(ResultadoDivision,ResultadoenDecimales);
 					if (IsMayor(Num1, StringUno) == true ){
 						SubResultado = SumaSignos(PreResultado1,Multiplo);
@@ -1348,9 +1348,10 @@ function ElevaSignos(Texto1,Texto2,Reiteraciones){
 					Resultado = StringGuion + StringUno;
 				}	
 			}	
-		}	
-		
+		}
+		Resultado = FormatNumberDecimalsLenght(Resultado, Reitera / Dos );	
 	}
+	
 	return Resultado;	
 }
 
@@ -2477,6 +2478,7 @@ function FactorialIntegers(Texto){
 }
 function ElevaIntegers(Texto1,Texto2, Reiterations){
 	var Resultado = StringCero;
+	var Reitera = parseInt(Reiterations);
 	//if (IsNumber(Texto1) == true && IsNumber(Texto2) == true){
 		if (IsEquals(Texto1, StringCero) == false && IsEquals(Texto2, StringCero) == false){
 			var EsReal2 = IsRealNumber(Texto2);
@@ -2488,8 +2490,9 @@ function ElevaIntegers(Texto1,Texto2, Reiterations){
 						var i;
 						for ( i = Dos; i < parseInt(Texto2); i++ ){
 							Resultado = MultiplicaReales(Resultado,Texto1);
+							
 							//if(IsMayor(Resultado, StringUno) == false ){
-								Resultado = FormatNumberDecimalsLenght(Resultado, parseInt(Reiterations));
+								Resultado = FormatNumberDecimalsLenght(Resultado, Reitera );
 							//}
 						}
 					}else{
@@ -2499,7 +2502,7 @@ function ElevaIntegers(Texto1,Texto2, Reiterations){
 			}
 		}	
 	//}
-	Resultado = FormatNumberDecimalsLenght(Resultado, parseInt(Reiterations) - Tres);
+	Resultado = FormatNumberDecimalsLenght(Resultado, parseInt(Reitera) / Dos);
 	return FormatCeros(Resultado);
 }
 function MultiplicaIntegers(Texto1,Texto2){
@@ -3013,8 +3016,12 @@ function FormatNumberDecimalsLenght(Texto1, NumberDecimals){
 			if (IsRealNumber(Texto1) == true ){
 				var Izq = GetIntegerPart(Texto1);
 				var Der = GetDecimalPart(Texto1);
-				var DerCompleta = StringsLeft(Der, NumberDecimals);
-				return Izq + StringComa + DerCompleta;
+				//if (Der.length < parseInt(NumberDecimals) ){
+					var DerCompleta = StringsLeft(Der, parseInt(NumberDecimals));
+					return Izq + StringComa + DerCompleta;
+				//}else{
+				//	return Texto1;
+				//}
 			}else{
 				return Texto1;
 			}
