@@ -127,16 +127,18 @@ function IsPrimeNumber(Texto, Reiterations){
 					Retorno1 = false; 
 				}else{
 					if ( IsEquals(Texto, StringDos) == false && IsEquals(Texto, StringTres) == false ) {	
-						var NumeroTemp = StringNullString + DivideSignos(Texto, StringDos, Reiterations);
+						var NumeroTemp = StringNullString + Texto;
 						var Temporal = parseInt(GetIntegerPart(NumeroTemp));
+						var ElLimite = 0;
 						var ElNumero = parseInt(Texto);
-						if (IsMayor(Texto, "100000") == false ){							
+						if (IsMayor(Texto, "999") == false ){							
 							if (ElNumero >= 4 ){
 								if ( ElNumero % Dos == Cero ) { 
 									Retorno1 = false;
 								}
 								if ( Retorno1 == true ){
-									for ( x = Tres; x < Temporal; x = x + Dos) {
+									ElLimite = (50 * Temporal ) / 100;
+									for ( x = Tres; x < ElLimite; x = x + Dos) {
 										if ( ElNumero % x == Cero ) { 
 											Retorno1 = false;
 											break;	
@@ -145,7 +147,20 @@ function IsPrimeNumber(Texto, Reiterations){
 								}
 							}		
 					    }else{
-							Retorno1 = false;
+							if (ElNumero >= 4 ){
+								if ( ElNumero % Dos == Cero ) { 
+									Retorno1 = false;
+								}
+								if ( Retorno1 == true ){
+									ElLimite = (10 * Temporal ) / 100;
+									for ( x = Tres; x < ElLimite; x = x + Dos) {
+										if ( ElNumero % x == Cero ) { 
+											Retorno1 = false;
+											break;	
+										}
+									}
+								}
+							}
 						}		
 					}	
 				}
