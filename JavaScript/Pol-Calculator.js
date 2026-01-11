@@ -1841,7 +1841,7 @@ function RootYSignos(Texto1, Texto2, Reiterations, LongDecimales){
 			}
 			
 			//if (IsMayor(Num1,StringCero) == true && IsMayor(Num2,StringCero) == true ){
-				if (IsMayor(Num2, StringUno + StringDos + StringOcho) == false ){
+				if (IsMayor(Num2, StringDos + StringCuatro ) == false ){
 			//		var SubNumero1 = StringCero;
 			//		var Longitud1 = Cero;
 			//		var SubLongitud1 = Cero;

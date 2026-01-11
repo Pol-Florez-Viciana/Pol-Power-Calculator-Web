@@ -1,0 +1,41 @@
+* { margin: 0px; }
+body { background-color: rgb(24,24,24); }
+h1 { text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue; }
+h2 { font-size: 5mm; text-align: left; }
+#Numeros1 { display: inline-block; min-width: 460px; width: 48%; vertical-align: top; }
+#Numeros2 { display: inline-block; min-width: 460px; width: 48%; vertical-align: top; }
+#ParteNum1 { margin: 4px; border-radius: 10px 10px 10px 10px; background-color: white; }
+#ParteNum2 { margin: 4px; border-radius: 10px 10px 10px 10px; background-color: white; }
+#ParteNum3 { margin: 4px; border-radius: 10px 10px 10px 10px; background-color: white; }
+#ParteNumResultado { margin: 4px; border-radius: 10px 10px 10px 10px; background-color: white; }
+#ParteListado { margin: 4px; border-radius: 10px 10px 10px 10px; background-color: white; }
+#Controles0 { padding: 0px 10px 10px 10px; border-radius: 0px 0px 10px 10px; vertical-align: top; }
+#Controles1 { padding: 0px 10px 10px 10px; border-radius: 0px 0px 10px 10px; vertical-align: top; }
+#Controles2 { padding: 0px 10px 10px 10px; border-radius: 0px 0px 10px 10px; vertical-align: top; }
+#Controles3 { padding: 0px 10px 10px 10px; border-radius: 0px 0px 10px 10px; vertical-align: top; }
+#Controles4 { padding: 0px 10px 10px 10px; border-radius: 0px 0px 10px 10px; vertical-align: top; }
+#Controles5 { padding: 0px 10px 10px 10px; border-radius: 0px 0px 10px 10px; vertical-align: top; }
+#Controles6 { padding: 0px 10px 10px 10px; border-radius: 0px 0px 10px 10px; vertical-align: top; }
+#Controles7 { padding: 0px 10px 10px 10px; border-radius: 0px 0px 10px 10px; vertical-align: top; }
+#Controles8 { padding: 0px 10px 10px 10px; border-radius: 0px 0px 10px 10px; vertical-align: top; }
+#Controles9 { padding: 0px 10px 10px 10px; border-radius: 0px 0px 10px 10px; vertical-align: top; }
+#Numero1 { font-size: 5mm; }
+#Numero2 { font-size: 5mm; }
+#Numero3 { font-size: 5mm; }
+#TextoNum1 { padding: 2px; font-size: 5mm; background-color: yellow; border-radius: 10px 10px 0px 0px; }
+#TextoNum2 { padding: 2px; font-size: 5mm; background-color: yellow; border-radius: 10px 10px 0px 0px; }
+#TextoNum3 { padding: 2px; font-size: 5mm; background-color: yellow; border-radius: 10px 10px 0px 0px; }
+#TextoNumResultado { padding: 2px; font-size: 5mm; background-color: yellow; border-radius: 10px 10px 0px 0px; }
+#PropiedadesNumero1 { border-radius: 0px 0px 10px 10px; background-color: yellow; }
+#PropiedadesNumero2 { border-radius: 0px 0px 10px 10px; background-color: yellow; }
+#PropiedadesNumero3 { border-radius: 0px 0px 10px 10px; background-color: yellow; }
+#PropiedadesResultado { border-radius: 0px 0px 10px 10px; background-color: yellow; }
+#Resultado { font-size: 5mm; }
+#BtnFactorial { width: 40px; height: 40px; border-radius: 20px; }
+#BtnFactorialdeSumas { width: 40px; height: 40px; border-radius: 20px; }
+#BtnSumar { width: 40px; height: 40px; border-radius: 20px; }
+#BtnRestar { width: 40px; height: 40px; border-radius: 20px; }
+#BtnDividir { width: 40px; height: 40px; border-radius: 20px; }	
+#BtnResiduo { width: 40px; height: 40px; border-radius: 20px; }
+#BtnLog { width: 40px; height: 40px; border-radius: 20px; }
+#BtnPorUnidaje { width: 40px; height: 40px; border-radius: 20px; }
