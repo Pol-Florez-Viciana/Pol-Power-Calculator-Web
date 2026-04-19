@@ -1,8 +1,8 @@
 // Modulo Pol-Calculator.js **********************************************************************************************
 // ***********************************************************************************************************************
 // ***********************************************************************************************************************
-// Día Creación 06/12/2021 - Hasta - 02/11/2023 ** Autor: Pol Flórez Viciana *********************************************
-// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 02/11/2023 ***************************************************************
+// Día Creación 06/12/2021 - Hasta - 19/04/2026 ** Autor: Pol Flórez Viciana *********************************************
+// Fecha Publicado ON-LINE 19/12/2021 - Hasta - 19/04/2026 ***************************************************************
 // ***********************************************************************************************************************
 // Constantes de Uso Reiterado
 const StringNullString = ""; 
@@ -114,64 +114,57 @@ function LogaritmoSistema(Texto1,Texto2){
 
 // Funciones Avanzadas de Otro Tipo
 function IsPrimeNumber(Texto, Reiterations){
-	var Retorno1 = true;
-	if (IsNumber(Reiterations) == true || IsNegativeAndNumber(Reiterations) == true ){
-		Reiterations = ConvertPositive(Reiterations);	
+	let Retorno1 = StringCero;
+	let Largada = "" + Texto;
+	let ElLimite = 10;
+	if (Largada.length == 1 ){ ElLimite = 10; }
+	if (Largada.length == 2 ){ ElLimite = 10; }
+	if (Largada.length == 3 ){ ElLimite = 100; }
+	if (Largada.length == 4 ){ ElLimite = 100; }
+	if (Largada.length == 5 ){ ElLimite = 100; }
+	if (Largada.length == 6 ){ ElLimite = 100; }
+	if (Largada.length == 7 ){ ElLimite = 1000; }
+	if (Largada.length == 8 ){ ElLimite = 1000; }
+	if (Largada.length == 9 ){ ElLimite = 1000; }
+	if (Largada.length == 10 ){ ElLimite = 10000; }
+	if (Largada.length == 11 ){ ElLimite = 10000; }
+	if (Largada.length == 12 ){ ElLimite = 100000; }
+	if (Largada.length == 13 ){ ElLimite = 100000; }
+	if (Largada.length == 14 ){ ElLimite = 1000000; }
+	if (Largada.length == 15 ){ ElLimite = 10000000; }
+	if (Largada.length == 16 ){ ElLimite = 10000000; }
+	
 		
-		if (IsNegativeAndNumber(Texto) == true || IsNumber(Texto) == true){
-			if (IsNegativeAndNumber(Texto) == true){
-				Texto = ConvertPositive(Texto);
-			}
-			if (IsRealNumber(Texto) == false ){				
-				if (IsEquals(Texto, StringCero) == true  || IsEquals(Texto, StringUno) == true || IsEquals(Texto, StringCuatro) == true) { 
-					Retorno1 = false; 
-				}else{
-					if ( IsEquals(Texto, StringDos) == false && IsEquals(Texto, StringTres) == false ) {	
-						var NumeroTemp = StringNullString + Texto;
-						var Temporal = parseInt(GetIntegerPart(NumeroTemp));
-						var ElLimite = 0;
-						var ElNumero = parseInt(Texto);
-						if (IsMayor(Texto, "999") == false ){							
-							if (ElNumero >= 4 ){
-								if ( ElNumero % Dos == Cero ) { 
-									Retorno1 = false;
-								}
-								if ( Retorno1 == true ){
-									ElLimite = (50 * Temporal ) / 100;
-									for ( x = Tres; x < ElLimite; x = x + Dos) {
-										if ( ElNumero % x == Cero ) { 
-											Retorno1 = false;
-											break;	
-										}
-									}
-								}
-							}		
-					    }else{
-							if (ElNumero >= 4 ){
-								if ( ElNumero % Dos == Cero ) { 
-									Retorno1 = false;
-								}
-								if ( Retorno1 == true ){
-									ElLimite = (10 * Temporal ) / 100;
-									for ( x = Tres; x < ElLimite; x = x + Dos) {
-										if ( ElNumero % x == Cero ) { 
-											Retorno1 = false;
-											break;	
-										}
-									}
-								}
-							}
-						}		
-					}	
-				}
+	if (IsNegativeAndNumber(Texto) == true || IsNumber(Texto) == true){
+		if (IsNegativeAndNumber(Texto) == true){
+			Texto = ConvertPositive(Texto);
+		}
+		if (IsRealNumber(Texto) == false ){				
+			if (IsEquals(Texto, StringCero) == true  || IsEquals(Texto, StringUno) == true || IsEquals(Texto, StringDos) == true || IsEquals(Texto, StringCuatro) == true || IsEquals(Texto, StringSeis) == true ) { 
+				if (IsEquals(Texto, StringCero) == true) { Retorno1 = StringUno; }
+				if (IsEquals(Texto, StringUno) == true){ Retorno1 = StringUno; }
+				if (IsEquals(Texto, StringDos) == true){ Retorno1 = StringDos; }
+				if (IsEquals(Texto, StringCuatro) == true){ Retorno1 = StringDos; }
+				if (IsEquals(Texto, StringSeis) == true){ Retorno1 = StringDos; }					
 			}else{
-				Retorno1 = false;
+				var ElNumero = parseInt(Texto);
+				if (ElNumero >= 8 ){
+					if ( ElNumero % Dos == Cero ) { 
+						Retorno1 = StringDos;
+					}
+					for ( x = Tres; x < ElLimite; x = x + Dos) {
+						if ( ElNumero % x == Cero ) { 
+							Retorno1 = x;
+							break;	
+						}
+					}
+				}								
 			}
 		}else{
-			Retorno1 = false;
-		}	
+			Retorno1 = StringUno;
+		}
 	}else{
-		Retorno1 = false;
+		Retorno1 = StringUno;
 	}	
 	return Retorno1;	
 }
