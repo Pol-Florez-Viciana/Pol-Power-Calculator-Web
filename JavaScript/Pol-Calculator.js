@@ -150,7 +150,7 @@ function IsPrimeNumber(Texto, Reiterations){
 				var ElNumero = parseInt(Texto);
 				if (ElNumero >= 8 ){
 					if ( ElNumero % Dos == Cero ) { 
-						Retorno1 = StringDos;
+						return StringDos;
 					}
 					for ( x = Tres; x < ElLimite; x = x + Dos) {
 						if ( ElNumero % x == Cero ) { 
