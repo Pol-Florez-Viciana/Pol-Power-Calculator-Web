@@ -115,25 +115,6 @@ function LogaritmoSistema(Texto1,Texto2){
 // Funciones Avanzadas de Otro Tipo
 function IsPrimeNumber(Texto, Reiterations){
 	let Retorno1 = StringCero;
-	let Largada = "" + Texto;
-	let ElLimite = 10;
-	if (Largada.length == 1 ){ ElLimite = 10; }
-	if (Largada.length == 2 ){ ElLimite = 10; }
-	if (Largada.length == 3 ){ ElLimite = 100; }
-	if (Largada.length == 4 ){ ElLimite = 100; }
-	if (Largada.length == 5 ){ ElLimite = 100; }
-	if (Largada.length == 6 ){ ElLimite = 100; }
-	if (Largada.length == 7 ){ ElLimite = 1000; }
-	if (Largada.length == 8 ){ ElLimite = 1000; }
-	if (Largada.length == 9 ){ ElLimite = 1000; }
-	if (Largada.length == 10 ){ ElLimite = 10000; }
-	if (Largada.length == 11 ){ ElLimite = 10000; }
-	if (Largada.length == 12 ){ ElLimite = 100000; }
-	if (Largada.length == 13 ){ ElLimite = 100000; }
-	if (Largada.length == 14 ){ ElLimite = 1000000; }
-	if (Largada.length == 15 ){ ElLimite = 10000000; }
-	if (Largada.length == 16 ){ ElLimite = 10000000; }
-	
 		
 	if (IsNegativeAndNumber(Texto) == true || IsNumber(Texto) == true){
 		if (IsNegativeAndNumber(Texto) == true){
@@ -148,11 +129,12 @@ function IsPrimeNumber(Texto, Reiterations){
 				if (IsEquals(Texto, StringSeis) == true){ Retorno1 = StringDos; }					
 			}else{
 				var ElNumero = parseInt(Texto);
+				let ElLimite = parseInt(Math.sqrt(ElNumero));
 				if (ElNumero >= 8 ){
 					if ( ElNumero % Dos == Cero ) { 
 						return StringDos;
 					}
-					for ( x = Tres; x < ElLimite; x = x + Dos) {
+					for ( x = Nueve; x < ElLimite; x = x + Dos) {
 						if ( ElNumero % x == Cero ) { 
 							Retorno1 = x;
 							break;	
