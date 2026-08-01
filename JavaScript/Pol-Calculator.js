@@ -134,7 +134,7 @@ function IsPrimeNumber(Texto, Reiterations){
 					if ( ElNumero % Dos == Cero ) { 
 						return StringDos;
 					}
-					for ( x = Tres; x < ElLimite; x = x + Dos) {
+					for ( x = Tres; x <= ElLimite; x = x + Dos) {
 						if ( ElNumero % x == Cero ) { 
 							Retorno1 = x;
 							break;	
