@@ -123,11 +123,11 @@
 					<label style="color: white;" >With Num1 And Num2 And Num3 And Reiterations</label><br>
 					<input id="BtnPorUnidaje" onclick="TraePorunidaje()" type="button" style="font-size: 4mm;" value="1%" title="Perunitage of X%" />
 					<input id="BtnPowAsimetrico" onclick="PowAsimetrico()" type="button" style="font-size: 4mm;" value="Pow Asimetric" title="Pow Asimetric" />
-					<input id="BtnModLogPow" onclick="ModLogPowAsimetrico()" type="button" style="font-size: 4mm;" value="Mod.Log.Pow." title="ModLogPow Function" />
+					<input id="BtnModLogPow" onclick="ModLogPowAsimetrico()" type="button" style="font-size: 4mm;" value="Mod.Pow." title="ModPow Function" />
 					
 					<br><br>
 					<input id="BtnPowAsimetricoReverse" onclick="PowAsimetricoReverse()" type="button" style="font-size: 4mm;" value="Reverse Pow Asimetric" title="Reverse Pow Asimetric" />
-					<input id="BtnModLogPowReverse" onclick="ModLogPowAsimetricoReverse()" type="button" style="font-size: 4mm;" value="Mod.Log.Reverse.Pow." title="Mod Log Reverse Pow Function" />
+					<input id="BtnModLogPowReverse" onclick="ModLogPowAsimetricoReverse()" type="button" style="font-size: 4mm;" value="Mod.Reverse.Pow." title="Mod Reverse Pow Function" />
 					<br><br>
 					<input id="BtnMultiplicaRepetidasVeces" onclick="MultiplicarRepeat()" type="button" style="font-size: 4mm;" value="Multiply Repeat" title="Multiply Repeat" />
 				</div>
@@ -613,7 +613,7 @@
 			var Resultado = ModLogPow(Numero1, Numero2,Numero3, Reiteraciones);
 			document.getElementById("Resultado").value = Resultado;
 			ActualizarResultado();
-			AddListadoResultados(Resultado + " = " + Numero1 + " - ( " + Numero2 + " ^ " + Numero3 + " )" );
+			AddListadoResultados(Resultado + " = " + Numero1 + " - CInt( " + Numero2 + " ^ " + Numero3 + " )" );
 		}
 		function ModLogPowAsimetricoReverse(){
 			var Numero1 = document.getElementById("Numero1").value;
@@ -623,7 +623,7 @@
 			var Resultado = ModLogPowReverse(Numero1, Numero2,Numero3, Reiteraciones);
 			document.getElementById("Resultado").value = Resultado;
 			ActualizarResultado();
-			AddListadoResultados(Resultado + " = " + Numero1 + " - (( 1 / " + Numero2 + " ) ^ " + Numero3 + " )" );
+			AddListadoResultados(Resultado + " = " + Numero1 + " - CInt(( 1 / " + Numero2 + " ) ^ " + Numero3 + " )" );
 		}
 		function PowAsimetrico(){
 			var Numero1 = document.getElementById("Numero1").value;
@@ -633,7 +633,7 @@
 			var Resultado = PowAsimetric(Numero1, Numero2,Numero3, Reiteraciones);
 			document.getElementById("Resultado").value = Resultado;
 			ActualizarResultado();
-			AddListadoResultados(Resultado + " = ( " + Numero1 + " ^ " + Numero2 + " ) + " + Numero3 );
+			AddListadoResultados(Resultado + " = CInt( " + Numero1 + " ^ " + Numero2 + " ) + " + Numero3 );
 		}
 		function PowAsimetricoReverse(){
 			var Numero1 = document.getElementById("Numero1").value;
@@ -643,7 +643,7 @@
 			var Resultado = PowAsimetricReverse(Numero1, Numero2,Numero3, Reiteraciones);
 			document.getElementById("Resultado").value = Resultado;
 			ActualizarResultado();
-			AddListadoResultados(Resultado + " = (( 1 / " + Numero1 + " ) ^ " + Numero2 + " ) + " + Numero3 );
+			AddListadoResultados(Resultado + " = CInt(( 1 / " + Numero1 + " ) ^ " + Numero2 + " ) + " + Numero3 );
 		}
 		function PotenciarSistema(){
 			var Numero1 = document.getElementById("Numero1").value;
