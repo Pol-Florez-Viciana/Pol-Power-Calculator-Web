@@ -1046,12 +1046,12 @@ function PowAsimetric(Texto1,Texto2,Texto3,Reiteraciones){
 			if(IsNegativeAndNumber(Texto3) == true || IsNumber(Texto3) == true){
 				if(IsNegativeAndNumber(Texto2) == true){
 					//var SubTexto2 = StringGuion + GetIntegerPart(ConvertPositive(Texto2));
-					var Elevacion = ElevaSignos(Texto1,Texto2,Reiteraciones);
+					var Elevacion =  GetIntegerPart(ElevaSignos(Texto1,Texto2,Reiteraciones));
 					Sumacion = SumaSignos(Elevacion,Texto3);
 				}else{
 					if(IsNumber(Texto2) == true ){
 						//var SubTexto2 = GetIntegerPart(Texto2);
-						var Elevacion = ElevaSignos(Texto1,Texto2,Reiteraciones);
+						var Elevacion = GetIntegerPart(ElevaSignos(Texto1,Texto2,Reiteraciones));
 						Sumacion = SumaSignos(Elevacion,Texto3);
 					}
 				}
