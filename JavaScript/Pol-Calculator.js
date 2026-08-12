@@ -1025,12 +1025,12 @@ function ModLogPow(Texto1,Texto2,Texto3,Reiteraciones){
 			if(IsNegativeAndNumber(Texto3) == true || IsNumber(Texto3) == true){
 				if(IsNegativeAndNumber(Texto3) == true){
 					//var SubTexto3 = StringGuion + GetIntegerPart(ConvertPositive(Texto3));
-					var Elevacion = ElevaSignos(Texto2,Texto3,Reiteraciones);
+					var Elevacion = GetIntegerPart(ElevaSignos(Texto2,Texto3,Reiteraciones));
 					Restacion = RestaSignos(Texto1,Elevacion);
 				}else{
 					if(IsNumber(Texto3) == true ){
 						//var SubTexto3 = GetIntegerPart(Texto3);
-						var Elevacion = ElevaSignos(Texto2,Texto3,Reiteraciones);
+						var Elevacion = GetIntegerPart(ElevaSignos(Texto2,Texto3,Reiteraciones));
 						Restacion = RestaSignos(Texto1,Elevacion);
 					}
 				}
