@@ -5,7 +5,7 @@
 	<meta name="author" content="Pol Flórez Viciana" >
 	<meta name="owner" content="Pol Flórez Viciana" >
 	<meta name="keywords" content="Calculadora, Números, Cálculos" >
-	<title>Pol Power Calculator Web 21.2</title>
+	<title>Pol Power Calculator Web 22.0</title>
 	<meta name="description" content="Calculadora Pol Power Calculator Web" >
 	<meta name="robots" content="index, dofollow" >
 	<link rel="icon" type="image/png" href="./imagenes/Logo.ico">
@@ -14,7 +14,7 @@
 </head>
 <body >
 	<center>
-		<h1 style="color: blue;">Pol Power Calculator Web Version 21.2</h1>
+		<h1 style="color: blue;">Pol Power Calculator Web Version 22.0</h1>
 		<div style="width: 98%;" >
 			<section id="Numeros1">
 				<div id="ParteNum1">
@@ -154,7 +154,7 @@
 				</div>
 			</section>
 		</div>
-		<p style="font-size: 5mm; text-align: right;"><a href="mailto:polflorez@hotmail.com"  >polflorez@hotmail.com</a> - 04/06/2019 a 12/08/2026</p>
+		<p style="font-size: 5mm; text-align: right;"><a href="mailto:polflorez@hotmail.com"  >polflorez@hotmail.com</a> - 04/06/2019 a 16/08/2026</p>
 	</center>
 	<script type="text/javascript">
 		var Tiempo = window.setInterval("ActualizarPropiedades()",1000);
@@ -374,14 +374,14 @@
 			var Numero2 = document.getElementById("Numero2").value;
 			var Numero3 = document.getElementById("Numero3").value;
 			var Resultado = MultiplicaSignosAsimetricos(Numero1,Numero2,Numero3);
-			var EsNegativa = IsNegativeAndNumber(Numero1);
+			//var EsNegativa = IsNegativeAndNumber(Numero1);
 			document.getElementById("Resultado").value = Resultado;
 			ActualizarResultado();
-			if (EsNegativa == false ){
-				AddListadoResultados(Resultado + " = ((" + GetIntegerPart(Numero1) + " · " + Numero2 + ") + " + Numero3 + ")" );
-			}else{
-				AddListadoResultados(Resultado + " = (( -" + GetIntegerPart(ConvertPositive(Numero1)) + " · " + Numero2 + ") + " + Numero3 + ")" );
-			}
+			//if (EsNegativa == false ){
+				AddListadoResultados(Resultado + " = (CInt(" + Numero1 + ") · " + Numero2 + ") + " + Numero3 );
+			//}else{
+			//	AddListadoResultados(Resultado + " = (CInt( -" + ConvertPositive(Numero1) + " · CInt(" + Numero2 + ")) + " + Numero3 + ")" );
+			//}
 		}
 		function MultiplicarRepeat(){
 			var Numero1 = document.getElementById("Numero1").value;

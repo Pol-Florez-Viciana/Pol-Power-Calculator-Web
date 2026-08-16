@@ -1441,7 +1441,7 @@ function MultiplicaSignosAsimetricos(Texto1,Texto2,Texto3){
 		if (EsNegativo1 == true ){
 			Resultado = SumaSignos(MultiplicaSignos(StringGuion + GetIntegerPart(ConvertPositive(Num1)),Num2), Num3);
 		}else{
-			Resultado = SumaSignos(MultiplicaSignos(GetIntegerPart(Num1),Num2), Num3);
+			Resultado = SumaSignos(MultiplicaSignos(GetIntegerPart(Num1), Num2), Num3);
 		}
 	}
 	return Resultado;
