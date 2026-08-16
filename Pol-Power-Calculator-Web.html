@@ -5,7 +5,7 @@
 	<meta name="author" content="Pol Flórez Viciana" >
 	<meta name="owner" content="Pol Flórez Viciana" >
 	<meta name="keywords" content="Calculadora, Números, Cálculos" >
-	<title>Pol Power Calculator Web 22.0</title>
+	<title>Pol Power Calculator Web 24.0</title>
 	<meta name="description" content="Calculadora Pol Power Calculator Web" >
 	<meta name="robots" content="index, dofollow" >
 	<link rel="icon" type="image/png" href="./imagenes/Logo.ico">
@@ -14,7 +14,7 @@
 </head>
 <body >
 	<center>
-		<h1 style="color: blue;">Pol Power Calculator Web Version 22.0</h1>
+		<h1 style="color: blue;">Pol Power Calculator Web Version 24.0</h1>
 		<div style="width: 98%;" >
 			<section id="Numeros1">
 				<div id="ParteNum1">
@@ -386,7 +386,7 @@
 		function MultiplicarRepeat(){
 			var Numero1 = document.getElementById("Numero1").value;
 			var Numero2 = document.getElementById("Numero2").value;
-			var Numero3 = document.getElementById("Numero3").value;
+			var Numero3 = "" + document.getElementById("Numero3").value;
 			var Resultado = MultiplyRepeat(Numero1,Numero2,Numero3);
 			var EsNegativa = IsNegativeAndNumber(Numero3);
 			document.getElementById("Resultado").value = Resultado;
@@ -671,7 +671,7 @@
 		}
 		function EsunNumeroPrimo(){
 			var Numero1 = document.getElementById("Numero1").value;
-			var Reiteraciones = document.getElementById("NumeroReiteraciones").value;
+			var Reiteraciones = "" + document.getElementById("NumeroReiteraciones").value;
 			var Resultado = IsPrimeNumber(Numero1, Reiteraciones);
 			//alert(Resultado);
 			document.getElementById("Resultado").value = Resultado;

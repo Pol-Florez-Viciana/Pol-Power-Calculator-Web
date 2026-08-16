@@ -1678,14 +1678,14 @@ function DivideSignos(Texto1,Texto2,Reiteraciones){
 	var Num1 = StringNullString;
 	var Num2 = StringNullString;
 	var Resultado = StringCero;
-	var Reitera = Cero;
+	var Reitera = parseInt(Reiteraciones);
 	if(IsEquals(ConvertPositive(Texto1),StringCero) == false && IsEquals(ConvertPositive(Texto2),StringCero) == false ){
 	//if (IsNumber(Reiteraciones) == true ){
-		var R1 = IsMayor(StringTreintaiDos,Reiteraciones);
-		if(R1 == true ){
+		//let R1 = IsMayor(StringTreintaiDos, "" + Reiteraciones);
+		if(Reitera < 32 ){
 			Reitera = TreintaiDos;	
 		}else{
-			Reitera = Reiteraciones;
+			Reitera = parseInt(Reiteraciones);
 		} 
 		if (IsNegativeAndNumber(Texto1) == true ){
 			EsNegativoNum1 = true;
@@ -1741,28 +1741,25 @@ function DivideNotacion(Texto1,Texto2,Reiteraciones){
 	var EsNum1 = IsNumber(Texto1);
 	var EsNum2 = IsNumber(Texto2);
 	var Resultado = StringCero;
-	var Reitera = Cero;
-	//if (IsNumber(Reiteraciones) == true ){
-		var R1 = IsMayor(StringTreintaiDos,Reiteraciones);
-		if(R1 == true ){
-			Reitera = TreintaiDos;	
+	var Reitera = parseInt(Reiteraciones);
+	if(Reitera < TreintaiDos ){
+		Reitera = TreintaiDos;	
+	}else{
+		Reitera = parseInt(Reiteraciones);
+	}
+	if (EsNum1 == true && EsNum2 == true){
+		var Num1 = FormatCeros(Texto1);
+		var Num2 = FormatCeros(Texto2);
+		var Centralizacion = CentralizeNumbers(Num1,Num2);
+		var Separacion = GetNumCerosInLeft(Centralizacion[Uno]);
+		if (parseInt(Separacion) >= 3){
+			var Multiplo = parseInt(Separacion) - Uno;
+			Num2 = MultiplicaReales(Texto2, StringsCerosToRight(StringUno, parseInt(Separacion)));
+			Resultado = DivideReales(Num1,Num2,Reitera) + StringLetraE + Multiplo; 
 		}else{
-			Reitera = parseInt(Reiteraciones);
+			Resultado = DivideReales(Num1,Num2,Reitera);
 		}
-		if (EsNum1 == true && EsNum2 == true){
-			var Num1 = FormatCeros(Texto1);
-			var Num2 = FormatCeros(Texto2);
-			var Centralizacion = CentralizeNumbers(Num1,Num2);
-			var Separacion = GetNumCerosInLeft(Centralizacion[Uno]);
-			if (parseInt(Separacion) >= 3){
-				var Multiplo = parseInt(Separacion) - Uno;
-				Num2 = MultiplicaReales(Texto2, StringsCerosToRight(StringUno, parseInt(Separacion)));
-				Resultado = DivideReales(Num1,Num2,Reitera) + StringLetraE + Multiplo; 
-			}else{
-				Resultado = DivideReales(Num1,Num2,Reitera);
-			}
-		}
-	//}
+	}
 	return Resultado;	
 }
 
@@ -2311,13 +2308,13 @@ function RaizYReal(Texto1, Texto2, Reiterations, LongDecimales){
 	
 }
 function DivideReales(Texto1,Texto2,Reiteraciones){
-	var EsNum1 = StringNullString;
-	var EsNum2 = StringNullString;
-	var Resultado = StringCero;
-	var Reitera = Reiteraciones;
-	var SubResultado = StringCero;
+	let EsNum1 = StringNullString;
+	let EsNum2 = StringNullString;
+	let Resultado = StringCero;
+	let Reitera = parseInt(Reiteraciones);
+	let SubResultado = StringCero;
 	//if (typeof(Reiteraciones) == "number" ){
-		if (parseInt(Reitera) < 32 ) {
+		if (Reitera < 32 ) {
 			Reitera = 32;	
 		}
 		//if (IsNumber(Texto1) == true && IsNumber(Texto2) == true){
